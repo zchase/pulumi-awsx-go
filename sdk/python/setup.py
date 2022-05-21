@@ -8,46 +8,61 @@ from setuptools.command.install import install
 from subprocess import check_call
 
 
+VERSION = "0.0.0"
+PLUGIN_VERSION = "0.0.0"
+
 class InstallPluginCommand(install):
     def run(self):
         install.run(self)
         try:
-            check_call(['pulumi', 'plugin', 'install', 'resource', 'xyz', '${PLUGIN_VERSION}'])
+            check_call(['pulumi', 'plugin', 'install', 'resource', 'awsx-go', PLUGIN_VERSION])
         except OSError as error:
             if error.errno == errno.ENOENT:
-                print("""
-                There was an error installing the xyz resource provider plugin.
+                print(f"""
+                There was an error installing the awsx-go resource provider plugin.
                 It looks like `pulumi` is not installed on your system.
                 Please visit https://pulumi.com/ to install the Pulumi CLI.
                 You may try manually installing the plugin by running
-                `pulumi plugin install resource xyz ${PLUGIN_VERSION}`
+                `pulumi plugin install resource awsx-go {PLUGIN_VERSION}`
                 """)
             else:
                 raise
 
 
 def readme():
-    with open('README.md', encoding='utf-8') as f:
-        return f.read()
+    try:
+        with open('README.md', encoding='utf-8') as f:
+            return f.read()
+    except FileNotFoundError:
+        return "awsx-go Pulumi Package - Development Version"
 
 
-setup(name='pulumi_xyz',
-      version='${VERSION}',
+setup(name='pulumi_awsx_go',
+      version=VERSION,
+      description="Pulumi Amazon Web Services (AWS) awsx-go Components.",
       long_description=readme(),
       long_description_content_type='text/markdown',
       cmdclass={
           'install': InstallPluginCommand,
       },
+      keywords='pulumi aws awsx-go',
+      url='https://pulumi.com',
+      project_urls={
+          'Repository': 'https://github.com/zchase/pulumi-awsx-go'
+      },
+      license='Apache-2.0',
       packages=find_packages(),
       package_data={
-          'pulumi_xyz': [
+          'pulumi_awsx_go': [
               'py.typed',
+              'pulumi-plugin.json',
           ]
       },
       install_requires=[
           'parver>=0.2.1',
           'pulumi>=3.0.0,<4.0.0',
-          'pulumi-aws>=4.0.0,<5.0.0',
+          'pulumi-aws>=5.3.0,<6.0.0',
+          'pulumi-docker>=3.0.0,<4.0.0',
           'semver>=2.8.1'
       ],
       zip_safe=False)

@@ -6,30 +6,30 @@ import * as utilities from "./utilities";
 
 // Export members:
 export * from "./provider";
-export * from "./staticPage";
 
-// Import resources to register:
-import { StaticPage } from "./staticPage";
+// Export sub-modules:
+import * as cloudtrail from "./cloudtrail";
+import * as ec2 from "./ec2";
+import * as ecr from "./ecr";
+import * as ecs from "./ecs";
+import * as lb from "./lb";
+import * as types from "./types";
 
-const _module = {
-    version: utilities.getVersion(),
-    construct: (name: string, type: string, urn: string): pulumi.Resource => {
-        switch (type) {
-            case "xyz:index:StaticPage":
-                return new StaticPage(name, <any>undefined, { urn })
-            default:
-                throw new Error(`unknown resource type ${type}`);
-        }
-    },
+export {
+    cloudtrail,
+    ec2,
+    ecr,
+    ecs,
+    lb,
+    types,
 };
-pulumi.runtime.registerResourceModule("xyz", "index", _module)
 
 import { Provider } from "./provider";
 
-pulumi.runtime.registerResourcePackage("xyz", {
+pulumi.runtime.registerResourcePackage("awsx-go", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {
-        if (type !== "pulumi:providers:xyz") {
+        if (type !== "pulumi:providers:awsx-go") {
             throw new Error(`unknown provider type ${type}`);
         }
         return new Provider(name, <any>undefined, { urn });

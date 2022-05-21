@@ -15,48 +15,33 @@
 package resources
 
 import (
-	"github.com/aws/aws-sdk-go/service/cloudtrail"
-	"github.com/aws/aws-sdk-go/service/cloudwatch"
+	"fmt"
+
+	"github.com/pulumi/pulumi-aws/sdk/v5/go/aws/cloudtrail"
+	"github.com/pulumi/pulumi-aws/sdk/v5/go/aws/cloudwatch"
+	"github.com/pulumi/pulumi-aws/sdk/v5/go/aws/iam"
 	"github.com/pulumi/pulumi-aws/sdk/v5/go/aws/s3"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 const trailIdentifier = "awsx-go:cloudtrail:Trail"
 
-type RequiredBucketInputs struct {
-	Args     BucketArgs           `pulumi:"args"`
-	Existing ExistingBucketInputs `pulumi:"existing"`
-}
-
-type LogGroupInputs struct {
-	KMSKeyID        string            `pulumi:"kmsKeyId"`
-	NamePrefix      string            `pulumi:"namePrefix"`
-	RetentionInDays int               `pulumi:"retentionInDays"`
-	Tags            map[string]string `pulumi:"tags"`
-}
-
-type OptionalLogGroupInputs struct {
-	Args     LogGroupInputs `pulumi:"args"`
-	Enable   bool           `pulumi:"enable"`
-	Existing bool           `pulumi:"existing"`
-}
-
 type TrailArgs struct {
-	AdvancedEventSelector      []cloudtrail.AdvancedEventSelector `pulumi:"advancedEventSelectors"`
-	CloudWatchLogsGroup        OptionalLogGroupInputs             `pulumi:"cloudWatchLogsGroup"`
-	EnableLogFileValidation    bool                               `pulumi:"enableLogFileValidation"`
-	EnableLogging              bool                               `pulumi:"enableLogging"`
-	EventSelectors             []cloudtrail.EventSelector         `pulumi:"eventSelectors"`
-	IncludeGlobalServiceEvents bool                               `pulumi:"includeGlobalServiceEvents"`
-	InsightSelectors           []cloudtrail.InsightSelector       `pulumi:"insightSelectors"`
-	IsMultiRegionTrail         bool                               `pulumi:"isMultiRegionTrail"`
-	isOrganizationTrail        bool                               `pulumi:"isOrganizationTrail"`
-	KMSKeyID                   string                             `pulumi:"kmsKeyId"`
-	Name                       string                             `pulumi:"name"`
-	S3Bucket                   RequiredBucketInputs               `pulumi:"s3Bucket"`
-	S3KeyPrefix                string                             `pulumi:"s3KeyPrefix"`
-	SNSTopicName               string                             `pulumi:"snsTopicName"`
-	Tags                       map[string]string                  `pulumi:"tags"`
+	AdvancedEventSelector      cloudtrail.TrailAdvancedEventSelectorArray `pulumi:"advancedEventSelectors"`
+	CloudWatchLogsGroup        *OptionalLogGroupInputs                    `pulumi:"cloudWatchLogsGroup"`
+	EnableLogFileValidation    bool                                       `pulumi:"enableLogFileValidation"`
+	EnableLogging              bool                                       `pulumi:"enableLogging"`
+	EventSelectors             cloudtrail.TrailEventSelectorArray         `pulumi:"eventSelectors"`
+	IncludeGlobalServiceEvents bool                                       `pulumi:"includeGlobalServiceEvents"`
+	InsightSelectors           cloudtrail.TrailInsightSelectorArray       `pulumi:"insightSelectors"`
+	IsMultiRegionTrail         bool                                       `pulumi:"isMultiRegionTrail"`
+	isOrganizationTrail        bool                                       `pulumi:"isOrganizationTrail"`
+	KMSKeyID                   string                                     `pulumi:"kmsKeyId"`
+	Name                       string                                     `pulumi:"name"`
+	S3Bucket                   RequiredBucketInputs                       `pulumi:"s3Bucket"`
+	S3KeyPrefix                string                                     `pulumi:"s3KeyPrefix"`
+	SNSTopicName               string                                     `pulumi:"snsTopicName"`
+	Tags                       map[string]string                          `pulumi:"tags"`
 }
 
 type Trail struct {
@@ -80,5 +65,102 @@ func NewTrail(ctx *pulumi.Context, name string, args *TrailArgs, opts ...pulumi.
 
 	opts = append(opts, pulumi.Parent(component))
 
+	bucket, err := requiredBucket(ctx, name, &args.S3Bucket, opts...)
+	if err != nil {
+		return nil, err
+	}
+
+	policy, err := createBucketCloudTrailPolicy(ctx, name, bucket.BucketID, bucket.Bucket, component)
+	if err != nil {
+		return nil, err
+	}
+
+	logGroup, err := optionalLogGroup(ctx, name, args.CloudWatchLogsGroup, opts...)
+	if err != nil {
+		return nil, err
+	}
+
+	trail, err := cloudtrail.NewTrail(ctx, name, &cloudtrail.TrailArgs{
+		S3BucketName: bucket.Bucket.Bucket,
+		CloudWatchLogsGroupArn: logGroup.LogGroupID.ApplyT(func(logGropuID LogGroupID) string {
+			return fmt.Sprintf("%s:*", logGropuID.ARN)
+		}).(pulumi.StringPtrInput),
+
+		AdvancedEventSelectors:     args.AdvancedEventSelector,
+		EnableLogFileValidation:    pulumi.BoolPtr(args.EnableLogFileValidation),
+		EnableLogging:              pulumi.BoolPtr(args.EnableLogging),
+		EventSelectors:             args.EventSelectors,
+		IncludeGlobalServiceEvents: pulumi.BoolPtr(args.IncludeGlobalServiceEvents),
+		InsightSelectors:           args.InsightSelectors,
+		IsMultiRegionTrail:         pulumi.BoolPtr(args.IsMultiRegionTrail),
+		IsOrganizationTrail:        pulumi.BoolPtr(args.isOrganizationTrail),
+		KmsKeyId:                   pulumi.String(args.KMSKeyID),
+		Name:                       pulumi.String(args.Name),
+		S3KeyPrefix:                pulumi.String(args.S3KeyPrefix),
+		SnsTopicName:               pulumi.String(args.SNSTopicName),
+		Tags:                       pulumi.ToStringMap(args.Tags),
+	}, pulumi.DependsOn([]pulumi.Resource{policy}), opts)
+	if err != nil {
+		return nil, err
+	}
+
+	component.Bucket = bucket.Bucket
+	component.LogGroup = logGroup.LogGroup
+	component.Trail = trail
+
 	return component, nil
+}
+
+func createBucketCloudTrailPolicy(ctx *pulumi.Context, name string, bucketID BucketResultBucketID, bucket *s3.Bucket, parent pulumi.Resource) (*s3.BucketPolicy, error) {
+	opts := []pulumi.ResourceOption{pulumi.Parent(parent)}
+	if bucket != nil {
+		opts = append(opts, pulumi.DependsOn([]pulumi.Resource{bucket}))
+	}
+
+	return s3.NewBucketPolicy(ctx, name, &s3.BucketPolicyArgs{
+		Bucket: bucketID.Name,
+		Policy: bucketID.ARN.ApplyT(func(arn string) string {
+			policy := defaultCloudTrailPolicy(arn)
+			return policy.Json
+		}),
+	}, opts...)
+}
+
+func defaultCloudTrailPolicy(bucketARN string) iam.GetPolicyDocumentResult {
+	return iam.GetPolicyDocumentResult{
+		Version: pulumi.StringRef("2012-10-17"),
+		Statements: []iam.GetPolicyDocumentStatement{
+			{
+				Sid:       pulumi.StringRef("AWSCloudTrailAclCheck"),
+				Effect:    pulumi.StringRef("Allow"),
+				Actions:   []string{"s3:GetBucketAcl"},
+				Resources: []string{bucketARN},
+				Principals: []iam.GetPolicyDocumentStatementPrincipal{
+					{
+						Type:        "Service",
+						Identifiers: []string{"cloudtrail.amazonaws.com"},
+					},
+				},
+			},
+			{
+				Sid:       pulumi.StringRef("AWSCloudTrailWrite"),
+				Effect:    pulumi.StringRef("Allow"),
+				Actions:   []string{"s3:PutObject"},
+				Resources: []string{fmt.Sprintf("%s/*", bucketARN)},
+				Principals: []iam.GetPolicyDocumentStatementPrincipal{
+					{
+						Type:        "Service",
+						Identifiers: []string{"cloudtrail.amazonaws.com"},
+					},
+				},
+				Conditions: []iam.GetPolicyDocumentStatementCondition{
+					{
+						Test:     "StringEquals",
+						Variable: "s3:x-amz-acl",
+						Values:   []string{"bucket-owner-full-control"},
+					},
+				},
+			},
+		},
+	}
 }

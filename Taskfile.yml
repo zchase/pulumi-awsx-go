@@ -2,7 +2,7 @@ version: '3'
 
 vars:
   VERSION: 0.0.1
-  PACK: aws-iam
+  PACK: awsx-go
   PROJECT: github.com/zchase/pulumi-{{ .PACK }}
   PROVIDER: pulumi-resource-{{ .PACK }}
   CODEGEN: pulumi-gen-{{ .PACK }}

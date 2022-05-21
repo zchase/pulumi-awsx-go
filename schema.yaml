@@ -3140,6 +3140,8 @@ language:
       Pulumi.Aws: 5.*
       Pulumi.Docker: 3.*
   go:
+    moduleToPackage:
+      "awsx-go": "awsxgo"
     generateResourceContainerTypes: true
     importBasePath: github.com/pulumi/pulumi-awsx-go/sdk/go/awsx-go
     internalDependencies:
