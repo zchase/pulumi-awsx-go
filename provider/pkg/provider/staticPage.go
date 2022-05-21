@@ -41,7 +41,7 @@ func NewStaticPage(ctx *pulumi.Context,
 	}
 
 	component := &StaticPage{}
-	err := ctx.RegisterComponentResource("xyz:index:StaticPage", name, component, opts...)
+	err := ctx.RegisterComponentResource("awsx-go:index:StaticPage", name, component, opts...)
 	if err != nil {
 		return nil, err
 	}

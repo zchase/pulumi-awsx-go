@@ -17,11 +17,11 @@
 package main
 
 import (
-	"github.com/pulumi/pulumi-xyz/pkg/provider"
-	"github.com/pulumi/pulumi-xyz/pkg/version"
+	"github.com/zchase/pulumi-awsx-go/pkg/provider"
+	"github.com/zchase/pulumi-awsx-go/pkg/version"
 )
 
-var providerName = "xyz"
+var providerName = "awsx-go"
 
 func main() {
 	provider.Serve(providerName, version.Version, pulumiSchema)
