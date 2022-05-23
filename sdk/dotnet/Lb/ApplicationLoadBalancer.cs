@@ -89,7 +89,7 @@ namespace Pulumi.AwsxGo.Lb
         /// Options for creating a default security group if [securityGroups] not specified.
         /// </summary>
         [Input("defaultSecurityGroup")]
-        public Pulumi.AwsxGo.AwsxGo.Inputs.DefaultSecurityGroupArgs? DefaultSecurityGroup { get; set; }
+        public Pulumi.AwsxGo.Inputs.DefaultSecurityGroupArgs? DefaultSecurityGroup { get; set; }
 
         /// <summary>
         /// Options creating a default target group.

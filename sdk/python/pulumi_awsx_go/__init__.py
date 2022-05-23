@@ -6,11 +6,10 @@ from . import _utilities
 import typing
 # Export this package's modules as members:
 from .provider import *
+from ._inputs import *
 
 # Make subpackages available:
 if typing.TYPE_CHECKING:
-    import pulumi_awsx_go.awsx_go as __awsx_go
-    awsx_go = __awsx_go
     import pulumi_awsx_go.cloudtrail as __cloudtrail
     cloudtrail = __cloudtrail
     import pulumi_awsx_go.ec2 as __ec2
@@ -22,7 +21,6 @@ if typing.TYPE_CHECKING:
     import pulumi_awsx_go.lb as __lb
     lb = __lb
 else:
-    awsx_go = _utilities.lazy_import('pulumi_awsx_go.awsx_go')
     cloudtrail = _utilities.lazy_import('pulumi_awsx_go.cloudtrail')
     ec2 = _utilities.lazy_import('pulumi_awsx_go.ec2')
     ecr = _utilities.lazy_import('pulumi_awsx_go.ecr')

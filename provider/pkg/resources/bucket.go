@@ -5,7 +5,7 @@ import (
 
 	"github.com/pulumi/pulumi-aws/sdk/v5/go/aws/s3"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/zchase/pulumi-awsx-go/provider/pkg/utils"
+	"github.com/zchase/pulumi-awsx-go/pkg/utils"
 )
 
 type ExistingBucketInputs struct {
@@ -91,8 +91,6 @@ func requiredBucket(ctx *pulumi.Context, name string, inputs *RequiredBucketInpu
 		return nil, fmt.Errorf("One of an existing log group name or ARN must be specified")
 	}
 
-	t := utils.ReturnValueOrDefault()
-
 	bucketArgs := inputs.Args
 	bucket, err := s3.NewBucket(ctx, name, &s3.BucketArgs{
 		ForceDestroy:                      pulumi.Bool(true),
@@ -128,4 +126,20 @@ func requiredBucket(ctx *pulumi.Context, name string, inputs *RequiredBucketInpu
 			Name: bucket.Bucket,
 		},
 	}, nil
+}
+
+type DefaultBucketInputs struct {
+	Args     *BucketArgs           `pulumi:"args"`
+	Existing *ExistingBucketInputs `pulumi:"existing"`
+	Skip     bool                  `pulumi:"skip"`
+}
+
+func defaultBucket(ctx *pulumi.Context, name string, inputs DefaultBucketInputs, opts ...pulumi.ResourceOption) (*BucketResult, error) {
+	if inputs.Skip {
+		return nil, nil
+	}
+	return requiredBucket(ctx, name, &RequiredBucketInputs{
+		Args:     inputs.Args,
+		Existing: inputs.Existing,
+	}, opts...)
 }

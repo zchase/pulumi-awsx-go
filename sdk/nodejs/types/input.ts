@@ -7,355 +7,352 @@ import { input as inputs, output as outputs, enums } from "../types";
 import * as pulumiAws from "@pulumi/aws";
 import * as utilities from "../utilities";
 
-export namespace awsx-go {
+/**
+ * The set of arguments for constructing a Bucket resource.
+ */
+export interface BucketArgs {
     /**
-     * The set of arguments for constructing a Bucket resource.
+     * Sets the accelerate configuration of an existing bucket. Can be `Enabled` or `Suspended`.
      */
-    export interface BucketArgs {
-        /**
-         * Sets the accelerate configuration of an existing bucket. Can be `Enabled` or `Suspended`.
-         */
-        accelerationStatus?: pulumi.Input<string>;
-        /**
-         * The [canned ACL](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl) to apply. Valid values are `private`, `public-read`, `public-read-write`, `aws-exec-read`, `authenticated-read`, and `log-delivery-write`. Defaults to `private`.  Conflicts with `grant`.
-         */
-        acl?: pulumi.Input<string>;
-        /**
-         * The ARN of the bucket. Will be of format `arn:aws:s3:::bucketname`.
-         */
-        arn?: pulumi.Input<string>;
-        /**
-         * The name of the bucket. If omitted, this provider will assign a random, unique name. Must be lowercase and less than or equal to 63 characters in length. A full list of bucket naming rules [may be found here](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html).
-         */
-        bucket?: pulumi.Input<string>;
-        /**
-         * Creates a unique bucket name beginning with the specified prefix. Conflicts with `bucket`. Must be lowercase and less than or equal to 37 characters in length. A full list of bucket naming rules [may be found here](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html).
-         */
-        bucketPrefix?: pulumi.Input<string>;
-        /**
-         * A rule of [Cross-Origin Resource Sharing](https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html) (documented below).
-         */
-        corsRules?: pulumi.Input<pulumi.Input<pulumiAws.types.input.s3.BucketCorsRule>[]>;
-        /**
-         * A boolean that indicates all objects (including any [locked objects](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock-overview.html)) should be deleted from the bucket so that the bucket can be destroyed without error. These objects are *not* recoverable.
-         */
-        forceDestroy?: pulumi.Input<boolean>;
-        /**
-         * An [ACL policy grant](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#sample-acl) (documented below). Conflicts with `acl`.
-         */
-        grants?: pulumi.Input<pulumi.Input<pulumiAws.types.input.s3.BucketGrant>[]>;
-        /**
-         * The [Route 53 Hosted Zone ID](https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_website_region_endpoints) for this bucket's region.
-         */
-        hostedZoneId?: pulumi.Input<string>;
-        /**
-         * A configuration of [object lifecycle management](http://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html) (documented below).
-         */
-        lifecycleRules?: pulumi.Input<pulumi.Input<pulumiAws.types.input.s3.BucketLifecycleRule>[]>;
-        /**
-         * A settings of [bucket logging](https://docs.aws.amazon.com/AmazonS3/latest/UG/ManagingBucketLogging.html) (documented below).
-         */
-        loggings?: pulumi.Input<pulumi.Input<pulumiAws.types.input.s3.BucketLogging>[]>;
-        /**
-         * A configuration of [S3 object locking](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html) (documented below)
-         */
-        objectLockConfiguration?: pulumi.Input<pulumiAws.types.input.s3.BucketObjectLockConfiguration>;
-        /**
-         * A valid [bucket policy](https://docs.aws.amazon.com/AmazonS3/latest/dev/example-bucket-policies.html) JSON document. Note that if the policy document is not specific enough (but still valid), this provider may view the policy as constantly changing in a `pulumi preview`. In this case, please make sure you use the verbose/specific version of the policy.
-         */
-        policy?: pulumi.Input<string>;
-        /**
-         * A configuration of [replication configuration](http://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html) (documented below).
-         */
-        replicationConfiguration?: pulumi.Input<pulumiAws.types.input.s3.BucketReplicationConfiguration>;
-        /**
-         * Specifies who should bear the cost of Amazon S3 data transfer.
-         * Can be either `BucketOwner` or `Requester`. By default, the owner of the S3 bucket would incur
-         * the costs of any data transfer. See [Requester Pays Buckets](http://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html)
-         * developer guide for more information.
-         */
-        requestPayer?: pulumi.Input<string>;
-        /**
-         * A configuration of [server-side encryption configuration](http://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-encryption.html) (documented below)
-         */
-        serverSideEncryptionConfiguration?: pulumi.Input<pulumiAws.types.input.s3.BucketServerSideEncryptionConfiguration>;
-        /**
-         * A map of tags to assign to the bucket. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-         */
-        tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-        /**
-         * A state of [versioning](https://docs.aws.amazon.com/AmazonS3/latest/dev/Versioning.html) (documented below)
-         */
-        versioning?: pulumi.Input<pulumiAws.types.input.s3.BucketVersioning>;
-        /**
-         * A website object (documented below).
-         */
-        website?: pulumi.Input<pulumiAws.types.input.s3.BucketWebsite>;
-        /**
-         * The domain of the website endpoint, if the bucket is configured with a website. If not, this will be an empty string. This is used to create Route 53 alias records.
-         */
-        websiteDomain?: pulumi.Input<string>;
-        /**
-         * The website endpoint, if the bucket is configured with a website. If not, this will be an empty string.
-         */
-        websiteEndpoint?: pulumi.Input<string>;
-    }
-
+    accelerationStatus?: pulumi.Input<string>;
     /**
-     * Log group with default setup unless explicitly skipped.
+     * The [canned ACL](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl) to apply. Valid values are `private`, `public-read`, `public-read-write`, `aws-exec-read`, `authenticated-read`, and `log-delivery-write`. Defaults to `private`.  Conflicts with `grant`.
      */
-    export interface DefaultLogGroupArgs {
-        /**
-         * Arguments to use instead of the default values during creation.
-         */
-        args?: inputs.awsx-go.LogGroupArgs;
-        /**
-         * Identity of an existing log group to use. Cannot be used in combination with `args` or `opts`.
-         */
-        existing?: inputs.awsx-go.ExistingLogGroupArgs;
-        /**
-         * Skip creation of the log group.
-         */
-        skip?: boolean;
-    }
-
+    acl?: pulumi.Input<string>;
     /**
-     * Role and policy attachments with default setup unless explicitly skipped or an existing role ARN provided.
+     * The ARN of the bucket. Will be of format `arn:aws:s3:::bucketname`.
      */
-    export interface DefaultRoleWithPolicyArgs {
-        /**
-         * Args to use when creating the role and policies. Can't be specified if `roleArn` is used.
-         */
-        args?: inputs.awsx-go.RoleWithPolicyArgs;
-        /**
-         * ARN of existing role to use instead of creating a new role. Cannot be used in combination with `args` or `opts`.
-         */
-        roleArn?: pulumi.Input<string>;
-        /**
-         * Skips creation of the role if set to `true`.
-         */
-        skip?: boolean;
-    }
-
+    arn?: pulumi.Input<string>;
     /**
-     * Security Group with default setup unless explicitly skipped or an existing security group id provided.
+     * The name of the bucket. If omitted, this provider will assign a random, unique name. Must be lowercase and less than or equal to 63 characters in length. A full list of bucket naming rules [may be found here](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html).
      */
-    export interface DefaultSecurityGroupArgs {
-        /**
-         * Args to use when creating the security group. Can't be specified if `securityGroupId` is used.
-         */
-        args?: inputs.awsx-go.SecurityGroupArgs;
-        /**
-         * Id of existing security group to use instead of creating a new security group. Cannot be used in combination with `args` or `opts`.
-         */
-        securityGroupId?: pulumi.Input<string>;
-        /**
-         * Skips creation of the security group if set to `true`.
-         */
-        skip?: boolean;
-    }
+    bucket?: pulumi.Input<string>;
     /**
-     * defaultSecurityGroupArgsProvideDefaults sets the appropriate defaults for DefaultSecurityGroupArgs
+     * Creates a unique bucket name beginning with the specified prefix. Conflicts with `bucket`. Must be lowercase and less than or equal to 37 characters in length. A full list of bucket naming rules [may be found here](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html).
      */
-    export function defaultSecurityGroupArgsProvideDefaults(val: DefaultSecurityGroupArgs): DefaultSecurityGroupArgs {
-        return {
-            ...val,
-            args: (val.args ? inputs.awsx-go.securityGroupArgsProvideDefaults(val.args) : undefined),
-        };
-    }
-
+    bucketPrefix?: pulumi.Input<string>;
     /**
-     * Reference to an existing bucket.
+     * A rule of [Cross-Origin Resource Sharing](https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html) (documented below).
      */
-    export interface ExistingBucketArgs {
-        /**
-         * Arn of the bucket. Only one of [arn] or [name] can be specified.
-         */
-        arn?: pulumi.Input<string>;
-        /**
-         * Name of the bucket. Only one of [arn] or [name] can be specified.
-         */
-        name?: pulumi.Input<string>;
-    }
-
+    corsRules?: pulumi.Input<pulumi.Input<pulumiAws.types.input.s3.BucketCorsRule>[]>;
     /**
-     * Reference to an existing log group.
+     * A boolean that indicates all objects (including any [locked objects](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock-overview.html)) should be deleted from the bucket so that the bucket can be destroyed without error. These objects are *not* recoverable.
      */
-    export interface ExistingLogGroupArgs {
-        /**
-         * Arn of the log group. Only one of [arn] or [name] can be specified.
-         */
-        arn?: pulumi.Input<string>;
-        /**
-         * Name of the log group. Only one of [arn] or [name] can be specified.
-         */
-        name?: pulumi.Input<string>;
-        /**
-         * Region of the log group. If not specified, the provider region will be used.
-         */
-        region?: pulumi.Input<string>;
-    }
-
+    forceDestroy?: pulumi.Input<boolean>;
     /**
-     * The set of arguments for constructing a LogGroup resource.
+     * An [ACL policy grant](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#sample-acl) (documented below). Conflicts with `acl`.
      */
-    export interface LogGroupArgs {
-        /**
-         * The ARN of the KMS Key to use when encrypting log data. Please note, after the AWS KMS CMK is disassociated from the log group,
-         * AWS CloudWatch Logs stops encrypting newly ingested data for the log group. All previously ingested data remains encrypted, and AWS CloudWatch Logs requires
-         * permissions for the CMK whenever the encrypted data is requested.
-         */
-        kmsKeyId?: pulumi.Input<string>;
-        /**
-         * The name of the log group. If omitted, this provider will assign a random, unique name.
-         */
-        name?: pulumi.Input<string>;
-        /**
-         * Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-         */
-        namePrefix?: pulumi.Input<string>;
-        /**
-         * Specifies the number of days
-         * you want to retain log events in the specified log group.  Possible values are: 1, 3, 5, 7, 14, 30, 60, 90, 120, 150, 180, 365, 400, 545, 731, 1827, 3653, and 0.
-         * If you select 0, the events in the log group are always retained and never expire.
-         */
-        retentionInDays?: pulumi.Input<number>;
-        /**
-         * A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-         */
-        tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    }
-
+    grants?: pulumi.Input<pulumi.Input<pulumiAws.types.input.s3.BucketGrant>[]>;
     /**
-     * Log group which is only created if enabled.
+     * The [Route 53 Hosted Zone ID](https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_website_region_endpoints) for this bucket's region.
      */
-    export interface OptionalLogGroupArgs {
-        /**
-         * Arguments to use instead of the default values during creation.
-         */
-        args?: inputs.awsx-go.LogGroupArgs;
-        /**
-         * Enable creation of the log group.
-         */
-        enable?: boolean;
-        /**
-         * Identity of an existing log group to use. Cannot be used in combination with `args` or `opts`.
-         */
-        existing?: inputs.awsx-go.ExistingLogGroupArgs;
-    }
-
+    hostedZoneId?: pulumi.Input<string>;
     /**
-     * Bucket with default setup.
+     * A configuration of [object lifecycle management](http://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html) (documented below).
      */
-    export interface RequiredBucketArgs {
-        /**
-         * Arguments to use instead of the default values during creation.
-         */
-        args?: inputs.awsx-go.BucketArgs;
-        /**
-         * Identity of an existing bucket to use. Cannot be used in combination with `args`.
-         */
-        existing?: inputs.awsx-go.ExistingBucketArgs;
-    }
-
+    lifecycleRules?: pulumi.Input<pulumi.Input<pulumiAws.types.input.s3.BucketLifecycleRule>[]>;
     /**
-     * The set of arguments for constructing a Role resource and Policy attachments.
+     * A settings of [bucket logging](https://docs.aws.amazon.com/AmazonS3/latest/UG/ManagingBucketLogging.html) (documented below).
      */
-    export interface RoleWithPolicyArgs {
-        /**
-         * Description of the role.
-         */
-        description?: pulumi.Input<string>;
-        /**
-         * Whether to force detaching any policies the role has before destroying it. Defaults to `false`.
-         */
-        forceDetachPolicies?: pulumi.Input<boolean>;
-        /**
-         * Configuration block defining an exclusive set of IAM inline policies associated with the IAM role. See below. If no blocks are configured, this provider will not manage any inline policies in this resource. Configuring one empty block (i.e., `inline_policy {}`) will cause the provider to remove _all_ inline policies added out of band on `apply`.
-         */
-        inlinePolicies?: pulumi.Input<pulumi.Input<pulumiAws.types.input.iam.RoleInlinePolicy>[]>;
-        /**
-         * Set of exclusive IAM managed policy ARNs to attach to the IAM role. If this attribute is not configured, this provider will ignore policy attachments to this resource. When configured, the provider will align the role's managed policy attachments with this set by attaching or detaching managed policies. Configuring an empty set (i.e., `managed_policy_arns = []`) will cause the provider to remove _all_ managed policy attachments.
-         */
-        managedPolicyArns?: pulumi.Input<pulumi.Input<string>[]>;
-        /**
-         * Maximum session duration (in seconds) that you want to set for the specified role. If you do not specify a value for this setting, the default maximum of one hour is applied. This setting can have a value from 1 hour to 12 hours.
-         */
-        maxSessionDuration?: pulumi.Input<number>;
-        /**
-         * Name of the role policy.
-         */
-        name?: pulumi.Input<string>;
-        /**
-         * Creates a unique friendly name beginning with the specified prefix. Conflicts with `name`.
-         */
-        namePrefix?: pulumi.Input<string>;
-        /**
-         * Path to the role. See [IAM Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html) for more information.
-         */
-        path?: pulumi.Input<string>;
-        /**
-         * ARN of the policy that is used to set the permissions boundary for the role.
-         */
-        permissionsBoundary?: pulumi.Input<string>;
-        /**
-         * ARNs of the policies to attach to the created role.
-         */
-        policyArns?: string[];
-        /**
-         * Key-value mapping of tags for the IAM role. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-         */
-        tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    }
-
+    loggings?: pulumi.Input<pulumi.Input<pulumiAws.types.input.s3.BucketLogging>[]>;
     /**
-     * The set of arguments for constructing a Security Group resource.
+     * A configuration of [S3 object locking](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html) (documented below)
      */
-    export interface SecurityGroupArgs {
-        /**
-         * Description of this egress rule.
-         */
-        description?: pulumi.Input<string>;
-        /**
-         * Configuration block for egress rules. Can be specified multiple times for each egress rule. Each egress block supports fields documented below.
-         */
-        egress?: pulumi.Input<pulumi.Input<pulumiAws.types.input.ec2.SecurityGroupEgress>[]>;
-        /**
-         * Configuration block for egress rules. Can be specified multiple times for each ingress rule. Each ingress block supports fields documented below.
-         */
-        ingress?: pulumi.Input<pulumi.Input<pulumiAws.types.input.ec2.SecurityGroupIngress>[]>;
-        /**
-         * Name of the security group. If omitted, this provider will assign a random, unique name.
-         */
-        name?: pulumi.Input<string>;
-        /**
-         * Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-         */
-        namePrefix?: pulumi.Input<string>;
-        /**
-         * Instruct this provider to revoke all of the Security Groups attached ingress and egress rules before deleting the rule itself. This is normally not needed, however certain AWS services such as Elastic Map Reduce may automatically add required rules to security groups used with the service, and those rules may contain a cyclic dependency that prevent the security groups from being destroyed without removing the dependency first. Default `false`.
-         */
-        revokeRulesOnDelete?: pulumi.Input<boolean>;
-        /**
-         * Map of tags to assign to the resource.
-         */
-        tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-        /**
-         * VPC ID.
-         */
-        vpcId?: pulumi.Input<string>;
-    }
+    objectLockConfiguration?: pulumi.Input<pulumiAws.types.input.s3.BucketObjectLockConfiguration>;
     /**
-     * securityGroupArgsProvideDefaults sets the appropriate defaults for SecurityGroupArgs
+     * A valid [bucket policy](https://docs.aws.amazon.com/AmazonS3/latest/dev/example-bucket-policies.html) JSON document. Note that if the policy document is not specific enough (but still valid), this provider may view the policy as constantly changing in a `pulumi preview`. In this case, please make sure you use the verbose/specific version of the policy.
      */
-    export function securityGroupArgsProvideDefaults(val: SecurityGroupArgs): SecurityGroupArgs {
-        return {
-            ...val,
-            description: (val.description) ?? "Managed by Pulumi",
-        };
-    }
+    policy?: pulumi.Input<string>;
+    /**
+     * A configuration of [replication configuration](http://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html) (documented below).
+     */
+    replicationConfiguration?: pulumi.Input<pulumiAws.types.input.s3.BucketReplicationConfiguration>;
+    /**
+     * Specifies who should bear the cost of Amazon S3 data transfer.
+     * Can be either `BucketOwner` or `Requester`. By default, the owner of the S3 bucket would incur
+     * the costs of any data transfer. See [Requester Pays Buckets](http://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html)
+     * developer guide for more information.
+     */
+    requestPayer?: pulumi.Input<string>;
+    /**
+     * A configuration of [server-side encryption configuration](http://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-encryption.html) (documented below)
+     */
+    serverSideEncryptionConfiguration?: pulumi.Input<pulumiAws.types.input.s3.BucketServerSideEncryptionConfiguration>;
+    /**
+     * A map of tags to assign to the bucket. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * A state of [versioning](https://docs.aws.amazon.com/AmazonS3/latest/dev/Versioning.html) (documented below)
+     */
+    versioning?: pulumi.Input<pulumiAws.types.input.s3.BucketVersioning>;
+    /**
+     * A website object (documented below).
+     */
+    website?: pulumi.Input<pulumiAws.types.input.s3.BucketWebsite>;
+    /**
+     * The domain of the website endpoint, if the bucket is configured with a website. If not, this will be an empty string. This is used to create Route 53 alias records.
+     */
+    websiteDomain?: pulumi.Input<string>;
+    /**
+     * The website endpoint, if the bucket is configured with a website. If not, this will be an empty string.
+     */
+    websiteEndpoint?: pulumi.Input<string>;
 }
 
+/**
+ * Log group with default setup unless explicitly skipped.
+ */
+export interface DefaultLogGroupArgs {
+    /**
+     * Arguments to use instead of the default values during creation.
+     */
+    args?: inputs.LogGroupArgs;
+    /**
+     * Identity of an existing log group to use. Cannot be used in combination with `args` or `opts`.
+     */
+    existing?: inputs.ExistingLogGroupArgs;
+    /**
+     * Skip creation of the log group.
+     */
+    skip?: boolean;
+}
+
+/**
+ * Role and policy attachments with default setup unless explicitly skipped or an existing role ARN provided.
+ */
+export interface DefaultRoleWithPolicyArgs {
+    /**
+     * Args to use when creating the role and policies. Can't be specified if `roleArn` is used.
+     */
+    args?: inputs.RoleWithPolicyArgs;
+    /**
+     * ARN of existing role to use instead of creating a new role. Cannot be used in combination with `args` or `opts`.
+     */
+    roleArn?: pulumi.Input<string>;
+    /**
+     * Skips creation of the role if set to `true`.
+     */
+    skip?: boolean;
+}
+
+/**
+ * Security Group with default setup unless explicitly skipped or an existing security group id provided.
+ */
+export interface DefaultSecurityGroupArgs {
+    /**
+     * Args to use when creating the security group. Can't be specified if `securityGroupId` is used.
+     */
+    args?: inputs.SecurityGroupArgs;
+    /**
+     * Id of existing security group to use instead of creating a new security group. Cannot be used in combination with `args` or `opts`.
+     */
+    securityGroupId?: pulumi.Input<string>;
+    /**
+     * Skips creation of the security group if set to `true`.
+     */
+    skip?: boolean;
+}
+/**
+ * defaultSecurityGroupArgsProvideDefaults sets the appropriate defaults for DefaultSecurityGroupArgs
+ */
+export function defaultSecurityGroupArgsProvideDefaults(val: DefaultSecurityGroupArgs): DefaultSecurityGroupArgs {
+    return {
+        ...val,
+        args: (val.args ? inputs.securityGroupArgsProvideDefaults(val.args) : undefined),
+    };
+}
+
+/**
+ * Reference to an existing bucket.
+ */
+export interface ExistingBucketArgs {
+    /**
+     * Arn of the bucket. Only one of [arn] or [name] can be specified.
+     */
+    arn?: pulumi.Input<string>;
+    /**
+     * Name of the bucket. Only one of [arn] or [name] can be specified.
+     */
+    name?: pulumi.Input<string>;
+}
+
+/**
+ * Reference to an existing log group.
+ */
+export interface ExistingLogGroupArgs {
+    /**
+     * Arn of the log group. Only one of [arn] or [name] can be specified.
+     */
+    arn?: pulumi.Input<string>;
+    /**
+     * Name of the log group. Only one of [arn] or [name] can be specified.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Region of the log group. If not specified, the provider region will be used.
+     */
+    region?: pulumi.Input<string>;
+}
+
+/**
+ * The set of arguments for constructing a LogGroup resource.
+ */
+export interface LogGroupArgs {
+    /**
+     * The ARN of the KMS Key to use when encrypting log data. Please note, after the AWS KMS CMK is disassociated from the log group,
+     * AWS CloudWatch Logs stops encrypting newly ingested data for the log group. All previously ingested data remains encrypted, and AWS CloudWatch Logs requires
+     * permissions for the CMK whenever the encrypted data is requested.
+     */
+    kmsKeyId?: pulumi.Input<string>;
+    /**
+     * The name of the log group. If omitted, this provider will assign a random, unique name.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Creates a unique name beginning with the specified prefix. Conflicts with `name`.
+     */
+    namePrefix?: pulumi.Input<string>;
+    /**
+     * Specifies the number of days
+     * you want to retain log events in the specified log group.  Possible values are: 1, 3, 5, 7, 14, 30, 60, 90, 120, 150, 180, 365, 400, 545, 731, 1827, 3653, and 0.
+     * If you select 0, the events in the log group are always retained and never expire.
+     */
+    retentionInDays?: pulumi.Input<number>;
+    /**
+     * A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+/**
+ * Log group which is only created if enabled.
+ */
+export interface OptionalLogGroupArgs {
+    /**
+     * Arguments to use instead of the default values during creation.
+     */
+    args?: inputs.LogGroupArgs;
+    /**
+     * Enable creation of the log group.
+     */
+    enable?: boolean;
+    /**
+     * Identity of an existing log group to use. Cannot be used in combination with `args` or `opts`.
+     */
+    existing?: inputs.ExistingLogGroupArgs;
+}
+
+/**
+ * Bucket with default setup.
+ */
+export interface RequiredBucketArgs {
+    /**
+     * Arguments to use instead of the default values during creation.
+     */
+    args?: inputs.BucketArgs;
+    /**
+     * Identity of an existing bucket to use. Cannot be used in combination with `args`.
+     */
+    existing?: inputs.ExistingBucketArgs;
+}
+
+/**
+ * The set of arguments for constructing a Role resource and Policy attachments.
+ */
+export interface RoleWithPolicyArgs {
+    /**
+     * Description of the role.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Whether to force detaching any policies the role has before destroying it. Defaults to `false`.
+     */
+    forceDetachPolicies?: pulumi.Input<boolean>;
+    /**
+     * Configuration block defining an exclusive set of IAM inline policies associated with the IAM role. See below. If no blocks are configured, this provider will not manage any inline policies in this resource. Configuring one empty block (i.e., `inline_policy {}`) will cause the provider to remove _all_ inline policies added out of band on `apply`.
+     */
+    inlinePolicies?: pulumi.Input<pulumi.Input<pulumiAws.types.input.iam.RoleInlinePolicy>[]>;
+    /**
+     * Set of exclusive IAM managed policy ARNs to attach to the IAM role. If this attribute is not configured, this provider will ignore policy attachments to this resource. When configured, the provider will align the role's managed policy attachments with this set by attaching or detaching managed policies. Configuring an empty set (i.e., `managed_policy_arns = []`) will cause the provider to remove _all_ managed policy attachments.
+     */
+    managedPolicyArns?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Maximum session duration (in seconds) that you want to set for the specified role. If you do not specify a value for this setting, the default maximum of one hour is applied. This setting can have a value from 1 hour to 12 hours.
+     */
+    maxSessionDuration?: pulumi.Input<number>;
+    /**
+     * Name of the role policy.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Creates a unique friendly name beginning with the specified prefix. Conflicts with `name`.
+     */
+    namePrefix?: pulumi.Input<string>;
+    /**
+     * Path to the role. See [IAM Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html) for more information.
+     */
+    path?: pulumi.Input<string>;
+    /**
+     * ARN of the policy that is used to set the permissions boundary for the role.
+     */
+    permissionsBoundary?: pulumi.Input<string>;
+    /**
+     * ARNs of the policies to attach to the created role.
+     */
+    policyArns?: string[];
+    /**
+     * Key-value mapping of tags for the IAM role. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+/**
+ * The set of arguments for constructing a Security Group resource.
+ */
+export interface SecurityGroupArgs {
+    /**
+     * Description of this egress rule.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Configuration block for egress rules. Can be specified multiple times for each egress rule. Each egress block supports fields documented below.
+     */
+    egress?: pulumi.Input<pulumi.Input<pulumiAws.types.input.ec2.SecurityGroupEgress>[]>;
+    /**
+     * Configuration block for egress rules. Can be specified multiple times for each ingress rule. Each ingress block supports fields documented below.
+     */
+    ingress?: pulumi.Input<pulumi.Input<pulumiAws.types.input.ec2.SecurityGroupIngress>[]>;
+    /**
+     * Name of the security group. If omitted, this provider will assign a random, unique name.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Creates a unique name beginning with the specified prefix. Conflicts with `name`.
+     */
+    namePrefix?: pulumi.Input<string>;
+    /**
+     * Instruct this provider to revoke all of the Security Groups attached ingress and egress rules before deleting the rule itself. This is normally not needed, however certain AWS services such as Elastic Map Reduce may automatically add required rules to security groups used with the service, and those rules may contain a cyclic dependency that prevent the security groups from being destroyed without removing the dependency first. Default `false`.
+     */
+    revokeRulesOnDelete?: pulumi.Input<boolean>;
+    /**
+     * Map of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * VPC ID.
+     */
+    vpcId?: pulumi.Input<string>;
+}
+/**
+ * securityGroupArgsProvideDefaults sets the appropriate defaults for SecurityGroupArgs
+ */
+export function securityGroupArgsProvideDefaults(val: SecurityGroupArgs): SecurityGroupArgs {
+    return {
+        ...val,
+        description: (val.description) ?? "Managed by Pulumi",
+    };
+}
 export namespace cloudtrail {
 }
 
@@ -999,7 +996,7 @@ export namespace ecs {
          * The execution role that the Amazon ECS container agent and the Docker daemon can assume.
          * Will be created automatically if not defined.
          */
-        executionRole?: inputs.awsx-go.DefaultRoleWithPolicyArgs;
+        executionRole?: inputs.DefaultRoleWithPolicyArgs;
         /**
          * An optional unique name for your task definition. If not specified, then a default will be created.
          */
@@ -1015,7 +1012,7 @@ export namespace ecs {
         /**
          * A set of volume blocks that containers in your task may use.
          */
-        logGroup?: inputs.awsx-go.DefaultLogGroupArgs;
+        logGroup?: inputs.DefaultLogGroupArgs;
         /**
          * The amount (in MiB) of memory used by the task.  If not provided, a default will be computed
          * based on the cumulative needs specified by [containerDefinitions]
@@ -1050,7 +1047,7 @@ export namespace ecs {
          * IAM role that allows your Amazon ECS container task to make calls to other AWS services.
          * Will be created automatically if not defined.
          */
-        taskRole?: inputs.awsx-go.DefaultRoleWithPolicyArgs;
+        taskRole?: inputs.DefaultRoleWithPolicyArgs;
         /**
          * Configuration block for volumes that containers in your task may use. Detailed below.
          */
@@ -1089,7 +1086,7 @@ export namespace ecs {
          * The execution role that the Amazon ECS container agent and the Docker daemon can assume.
          * Will be created automatically if not defined.
          */
-        executionRole?: inputs.awsx-go.DefaultRoleWithPolicyArgs;
+        executionRole?: inputs.DefaultRoleWithPolicyArgs;
         /**
          * An optional unique name for your task definition. If not specified, then a default will be created.
          */
@@ -1105,7 +1102,7 @@ export namespace ecs {
         /**
          * A set of volume blocks that containers in your task may use.
          */
-        logGroup?: inputs.awsx-go.DefaultLogGroupArgs;
+        logGroup?: inputs.DefaultLogGroupArgs;
         /**
          * The amount (in MiB) of memory used by the task.  If not provided, a default will be computed
          * based on the cumulative needs specified by [containerDefinitions]
@@ -1136,7 +1133,7 @@ export namespace ecs {
          * IAM role that allows your Amazon ECS container task to make calls to other AWS services.
          * Will be created automatically if not defined.
          */
-        taskRole?: inputs.awsx-go.DefaultRoleWithPolicyArgs;
+        taskRole?: inputs.DefaultRoleWithPolicyArgs;
         /**
          * Configuration block for volumes that containers in your task may use. Detailed below.
          */

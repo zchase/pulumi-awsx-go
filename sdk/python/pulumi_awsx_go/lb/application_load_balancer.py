@@ -7,7 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
-from .. import awsx_go as _awsx_go
+from .. import _inputs as _root_inputs
 from ._inputs import *
 import pulumi_aws
 
@@ -18,7 +18,7 @@ class ApplicationLoadBalancerArgs:
     def __init__(__self__, *,
                  access_logs: Optional[pulumi.Input['pulumi_aws.lb.LoadBalancerAccessLogsArgs']] = None,
                  customer_owned_ipv4_pool: Optional[pulumi.Input[str]] = None,
-                 default_security_group: Optional['_awsx_go.DefaultSecurityGroupArgs'] = None,
+                 default_security_group: Optional['_root_inputs.DefaultSecurityGroupArgs'] = None,
                  default_target_group: Optional['TargetGroupArgs'] = None,
                  desync_mitigation_mode: Optional[pulumi.Input[str]] = None,
                  drop_invalid_header_fields: Optional[pulumi.Input[bool]] = None,
@@ -41,7 +41,7 @@ class ApplicationLoadBalancerArgs:
         The set of arguments for constructing a ApplicationLoadBalancer resource.
         :param pulumi.Input['pulumi_aws.lb.LoadBalancerAccessLogsArgs'] access_logs: An Access Logs block. Access Logs documented below.
         :param pulumi.Input[str] customer_owned_ipv4_pool: The ID of the customer owned ipv4 pool to use for this load balancer.
-        :param '_awsx_go.DefaultSecurityGroupArgs' default_security_group: Options for creating a default security group if [securityGroups] not specified.
+        :param '_root_inputs.DefaultSecurityGroupArgs' default_security_group: Options for creating a default security group if [securityGroups] not specified.
         :param 'TargetGroupArgs' default_target_group: Options creating a default target group.
         :param pulumi.Input[str] desync_mitigation_mode: Determines how the load balancer handles requests that might pose a security risk to an application due to HTTP desync. Valid values are `monitor`, `defensive` (default), `strictest`.
         :param pulumi.Input[bool] drop_invalid_header_fields: Indicates whether HTTP headers with header fields that are not valid are removed by the load balancer (true) or routed to targets (false). The default is false. Elastic Load Balancing requires that message header names contain only alphanumeric characters and hyphens. Only valid for Load Balancers of type `application`.
@@ -135,14 +135,14 @@ class ApplicationLoadBalancerArgs:
 
     @property
     @pulumi.getter(name="defaultSecurityGroup")
-    def default_security_group(self) -> Optional['_awsx_go.DefaultSecurityGroupArgs']:
+    def default_security_group(self) -> Optional['_root_inputs.DefaultSecurityGroupArgs']:
         """
         Options for creating a default security group if [securityGroups] not specified.
         """
         return pulumi.get(self, "default_security_group")
 
     @default_security_group.setter
-    def default_security_group(self, value: Optional['_awsx_go.DefaultSecurityGroupArgs']):
+    def default_security_group(self, value: Optional['_root_inputs.DefaultSecurityGroupArgs']):
         pulumi.set(self, "default_security_group", value)
 
     @property
@@ -374,7 +374,7 @@ class ApplicationLoadBalancer(pulumi.ComponentResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_logs: Optional[pulumi.Input[pulumi.InputType['pulumi_aws.lb.LoadBalancerAccessLogsArgs']]] = None,
                  customer_owned_ipv4_pool: Optional[pulumi.Input[str]] = None,
-                 default_security_group: Optional[pulumi.InputType['_awsx_go.DefaultSecurityGroupArgs']] = None,
+                 default_security_group: Optional[pulumi.InputType['_root_inputs.DefaultSecurityGroupArgs']] = None,
                  default_target_group: Optional[pulumi.InputType['TargetGroupArgs']] = None,
                  desync_mitigation_mode: Optional[pulumi.Input[str]] = None,
                  drop_invalid_header_fields: Optional[pulumi.Input[bool]] = None,
@@ -401,7 +401,7 @@ class ApplicationLoadBalancer(pulumi.ComponentResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['pulumi_aws.lb.LoadBalancerAccessLogsArgs']] access_logs: An Access Logs block. Access Logs documented below.
         :param pulumi.Input[str] customer_owned_ipv4_pool: The ID of the customer owned ipv4 pool to use for this load balancer.
-        :param pulumi.InputType['_awsx_go.DefaultSecurityGroupArgs'] default_security_group: Options for creating a default security group if [securityGroups] not specified.
+        :param pulumi.InputType['_root_inputs.DefaultSecurityGroupArgs'] default_security_group: Options for creating a default security group if [securityGroups] not specified.
         :param pulumi.InputType['TargetGroupArgs'] default_target_group: Options creating a default target group.
         :param pulumi.Input[str] desync_mitigation_mode: Determines how the load balancer handles requests that might pose a security risk to an application due to HTTP desync. Valid values are `monitor`, `defensive` (default), `strictest`.
         :param pulumi.Input[bool] drop_invalid_header_fields: Indicates whether HTTP headers with header fields that are not valid are removed by the load balancer (true) or routed to targets (false). The default is false. Elastic Load Balancing requires that message header names contain only alphanumeric characters and hyphens. Only valid for Load Balancers of type `application`.
@@ -452,7 +452,7 @@ class ApplicationLoadBalancer(pulumi.ComponentResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_logs: Optional[pulumi.Input[pulumi.InputType['pulumi_aws.lb.LoadBalancerAccessLogsArgs']]] = None,
                  customer_owned_ipv4_pool: Optional[pulumi.Input[str]] = None,
-                 default_security_group: Optional[pulumi.InputType['_awsx_go.DefaultSecurityGroupArgs']] = None,
+                 default_security_group: Optional[pulumi.InputType['_root_inputs.DefaultSecurityGroupArgs']] = None,
                  default_target_group: Optional[pulumi.InputType['TargetGroupArgs']] = None,
                  desync_mitigation_mode: Optional[pulumi.Input[str]] = None,
                  drop_invalid_header_fields: Optional[pulumi.Input[bool]] = None,

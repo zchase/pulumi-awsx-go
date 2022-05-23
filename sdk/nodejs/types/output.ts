@@ -7,9 +7,6 @@ import { input as inputs, output as outputs, enums } from "../types";
 import * as pulumiAws from "@pulumi/aws";
 import * as utilities from "../utilities";
 
-export namespace awsx-go {
-}
-
 export namespace cloudtrail {
 }
 

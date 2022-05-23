@@ -9,7 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-aws/sdk/v5/go/aws/ec2"
 	"github.com/pulumi/pulumi-aws/sdk/v5/go/aws/lb"
-	"github.com/pulumi/pulumi-awsx-go/sdk/go/awsx-go/awsxgo"
+	"github.com/pulumi/pulumi-awsx-go/sdk/go/awsx-go"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 

@@ -3,7 +3,6 @@ module github.com/zchase/pulumi-awsx-go
 go 1.18
 
 require (
-	github.com/aws/aws-sdk-go v1.44.19
 	github.com/ghodss/yaml v1.0.0
 	github.com/pkg/errors v0.9.1
 	github.com/pulumi/pulumi-aws/sdk/v4 v4.38.1
@@ -13,10 +12,15 @@ require (
 )
 
 require (
+	github.com/Azure/go-ansiterm v0.0.0-20210617225240-d185dfc1b5a1 // indirect
+	github.com/Azure/go-autorest v14.2.0+incompatible // indirect
+	github.com/HdrHistogram/hdrhistogram-go v1.1.2 // indirect
 	github.com/Masterminds/semver v1.5.0 // indirect
 	github.com/Microsoft/go-winio v0.5.1 // indirect
+	github.com/aws/aws-sdk-go v1.44.19 // indirect
 	github.com/inconshreveable/mousetrap v1.0.0 // indirect
 	github.com/mitchellh/go-ps v1.0.0 // indirect
+	google.golang.org/appengine v1.6.7 // indirect
 )
 
 require (

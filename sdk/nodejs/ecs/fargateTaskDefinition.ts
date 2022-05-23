@@ -121,7 +121,7 @@ export interface FargateTaskDefinitionArgs {
      * The execution role that the Amazon ECS container agent and the Docker daemon can assume.
      * Will be created automatically if not defined.
      */
-    executionRole?: inputs.awsx-go.DefaultRoleWithPolicyArgs;
+    executionRole?: inputs.DefaultRoleWithPolicyArgs;
     /**
      * An optional unique name for your task definition. If not specified, then a default will be created.
      */
@@ -137,7 +137,7 @@ export interface FargateTaskDefinitionArgs {
     /**
      * A set of volume blocks that containers in your task may use.
      */
-    logGroup?: inputs.awsx-go.DefaultLogGroupArgs;
+    logGroup?: inputs.DefaultLogGroupArgs;
     /**
      * The amount (in MiB) of memory used by the task.  If not provided, a default will be computed
      * based on the cumulative needs specified by [containerDefinitions]
@@ -168,7 +168,7 @@ export interface FargateTaskDefinitionArgs {
      * IAM role that allows your Amazon ECS container task to make calls to other AWS services.
      * Will be created automatically if not defined.
      */
-    taskRole?: inputs.awsx-go.DefaultRoleWithPolicyArgs;
+    taskRole?: inputs.DefaultRoleWithPolicyArgs;
     /**
      * Configuration block for volumes that containers in your task may use. Detailed below.
      */

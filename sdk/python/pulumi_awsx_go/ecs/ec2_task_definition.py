@@ -7,7 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
-from .. import awsx_go as _awsx_go
+from .. import _inputs as _root_inputs
 from ._inputs import *
 import pulumi_aws
 
@@ -20,11 +20,11 @@ class EC2TaskDefinitionArgs:
                  containers: Optional[Mapping[str, 'TaskDefinitionContainerDefinitionArgs']] = None,
                  cpu: Optional[pulumi.Input[str]] = None,
                  ephemeral_storage: Optional[pulumi.Input['pulumi_aws.ecs.TaskDefinitionEphemeralStorageArgs']] = None,
-                 execution_role: Optional['_awsx_go.DefaultRoleWithPolicyArgs'] = None,
+                 execution_role: Optional['_root_inputs.DefaultRoleWithPolicyArgs'] = None,
                  family: Optional[pulumi.Input[str]] = None,
                  inference_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['pulumi_aws.ecs.TaskDefinitionInferenceAcceleratorArgs']]]] = None,
                  ipc_mode: Optional[pulumi.Input[str]] = None,
-                 log_group: Optional['_awsx_go.DefaultLogGroupArgs'] = None,
+                 log_group: Optional['_root_inputs.DefaultLogGroupArgs'] = None,
                  memory: Optional[pulumi.Input[str]] = None,
                  network_mode: Optional[pulumi.Input[str]] = None,
                  pid_mode: Optional[pulumi.Input[str]] = None,
@@ -33,7 +33,7 @@ class EC2TaskDefinitionArgs:
                  runtime_platform: Optional[pulumi.Input['pulumi_aws.ecs.TaskDefinitionRuntimePlatformArgs']] = None,
                  skip_destroy: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 task_role: Optional['_awsx_go.DefaultRoleWithPolicyArgs'] = None,
+                 task_role: Optional['_root_inputs.DefaultRoleWithPolicyArgs'] = None,
                  volumes: Optional[pulumi.Input[Sequence[pulumi.Input['pulumi_aws.ecs.TaskDefinitionVolumeArgs']]]] = None):
         """
         The set of arguments for constructing a EC2TaskDefinition resource.
@@ -47,12 +47,12 @@ class EC2TaskDefinitionArgs:
                Either [container] or [containers] must be provided.
         :param pulumi.Input[str] cpu: The number of cpu units used by the task. If not provided, a default will be computed based on the cumulative needs specified by [containerDefinitions]
         :param pulumi.Input['pulumi_aws.ecs.TaskDefinitionEphemeralStorageArgs'] ephemeral_storage: The amount of ephemeral storage to allocate for the task. This parameter is used to expand the total amount of ephemeral storage available, beyond the default amount, for tasks hosted on AWS Fargate. See Ephemeral Storage.
-        :param '_awsx_go.DefaultRoleWithPolicyArgs' execution_role: The execution role that the Amazon ECS container agent and the Docker daemon can assume.
+        :param '_root_inputs.DefaultRoleWithPolicyArgs' execution_role: The execution role that the Amazon ECS container agent and the Docker daemon can assume.
                Will be created automatically if not defined.
         :param pulumi.Input[str] family: An optional unique name for your task definition. If not specified, then a default will be created.
         :param pulumi.Input[Sequence[pulumi.Input['pulumi_aws.ecs.TaskDefinitionInferenceAcceleratorArgs']]] inference_accelerators: Configuration block(s) with Inference Accelerators settings. Detailed below.
         :param pulumi.Input[str] ipc_mode: IPC resource namespace to be used for the containers in the task The valid values are `host`, `task`, and `none`.
-        :param '_awsx_go.DefaultLogGroupArgs' log_group: A set of volume blocks that containers in your task may use.
+        :param '_root_inputs.DefaultLogGroupArgs' log_group: A set of volume blocks that containers in your task may use.
         :param pulumi.Input[str] memory: The amount (in MiB) of memory used by the task.  If not provided, a default will be computed
                based on the cumulative needs specified by [containerDefinitions]
         :param pulumi.Input[str] network_mode: Docker networking mode to use for the containers in the task. Valid values are `none`, `bridge`, `awsvpc`, and `host`.
@@ -61,7 +61,7 @@ class EC2TaskDefinitionArgs:
         :param pulumi.Input['pulumi_aws.ecs.TaskDefinitionProxyConfigurationArgs'] proxy_configuration: Configuration block for the App Mesh proxy. Detailed below.
         :param pulumi.Input['pulumi_aws.ecs.TaskDefinitionRuntimePlatformArgs'] runtime_platform: Configuration block for runtime_platform that containers in your task may use.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value map of resource tags.
-        :param '_awsx_go.DefaultRoleWithPolicyArgs' task_role: IAM role that allows your Amazon ECS container task to make calls to other AWS services.
+        :param '_root_inputs.DefaultRoleWithPolicyArgs' task_role: IAM role that allows your Amazon ECS container task to make calls to other AWS services.
                Will be created automatically if not defined.
         :param pulumi.Input[Sequence[pulumi.Input['pulumi_aws.ecs.TaskDefinitionVolumeArgs']]] volumes: Configuration block for volumes that containers in your task may use. Detailed below.
         """
@@ -160,7 +160,7 @@ class EC2TaskDefinitionArgs:
 
     @property
     @pulumi.getter(name="executionRole")
-    def execution_role(self) -> Optional['_awsx_go.DefaultRoleWithPolicyArgs']:
+    def execution_role(self) -> Optional['_root_inputs.DefaultRoleWithPolicyArgs']:
         """
         The execution role that the Amazon ECS container agent and the Docker daemon can assume.
         Will be created automatically if not defined.
@@ -168,7 +168,7 @@ class EC2TaskDefinitionArgs:
         return pulumi.get(self, "execution_role")
 
     @execution_role.setter
-    def execution_role(self, value: Optional['_awsx_go.DefaultRoleWithPolicyArgs']):
+    def execution_role(self, value: Optional['_root_inputs.DefaultRoleWithPolicyArgs']):
         pulumi.set(self, "execution_role", value)
 
     @property
@@ -209,14 +209,14 @@ class EC2TaskDefinitionArgs:
 
     @property
     @pulumi.getter(name="logGroup")
-    def log_group(self) -> Optional['_awsx_go.DefaultLogGroupArgs']:
+    def log_group(self) -> Optional['_root_inputs.DefaultLogGroupArgs']:
         """
         A set of volume blocks that containers in your task may use.
         """
         return pulumi.get(self, "log_group")
 
     @log_group.setter
-    def log_group(self, value: Optional['_awsx_go.DefaultLogGroupArgs']):
+    def log_group(self, value: Optional['_root_inputs.DefaultLogGroupArgs']):
         pulumi.set(self, "log_group", value)
 
     @property
@@ -315,7 +315,7 @@ class EC2TaskDefinitionArgs:
 
     @property
     @pulumi.getter(name="taskRole")
-    def task_role(self) -> Optional['_awsx_go.DefaultRoleWithPolicyArgs']:
+    def task_role(self) -> Optional['_root_inputs.DefaultRoleWithPolicyArgs']:
         """
         IAM role that allows your Amazon ECS container task to make calls to other AWS services.
         Will be created automatically if not defined.
@@ -323,7 +323,7 @@ class EC2TaskDefinitionArgs:
         return pulumi.get(self, "task_role")
 
     @task_role.setter
-    def task_role(self, value: Optional['_awsx_go.DefaultRoleWithPolicyArgs']):
+    def task_role(self, value: Optional['_root_inputs.DefaultRoleWithPolicyArgs']):
         pulumi.set(self, "task_role", value)
 
     @property
@@ -348,11 +348,11 @@ class EC2TaskDefinition(pulumi.ComponentResource):
                  containers: Optional[Mapping[str, pulumi.InputType['TaskDefinitionContainerDefinitionArgs']]] = None,
                  cpu: Optional[pulumi.Input[str]] = None,
                  ephemeral_storage: Optional[pulumi.Input[pulumi.InputType['pulumi_aws.ecs.TaskDefinitionEphemeralStorageArgs']]] = None,
-                 execution_role: Optional[pulumi.InputType['_awsx_go.DefaultRoleWithPolicyArgs']] = None,
+                 execution_role: Optional[pulumi.InputType['_root_inputs.DefaultRoleWithPolicyArgs']] = None,
                  family: Optional[pulumi.Input[str]] = None,
                  inference_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['pulumi_aws.ecs.TaskDefinitionInferenceAcceleratorArgs']]]]] = None,
                  ipc_mode: Optional[pulumi.Input[str]] = None,
-                 log_group: Optional[pulumi.InputType['_awsx_go.DefaultLogGroupArgs']] = None,
+                 log_group: Optional[pulumi.InputType['_root_inputs.DefaultLogGroupArgs']] = None,
                  memory: Optional[pulumi.Input[str]] = None,
                  network_mode: Optional[pulumi.Input[str]] = None,
                  pid_mode: Optional[pulumi.Input[str]] = None,
@@ -361,7 +361,7 @@ class EC2TaskDefinition(pulumi.ComponentResource):
                  runtime_platform: Optional[pulumi.Input[pulumi.InputType['pulumi_aws.ecs.TaskDefinitionRuntimePlatformArgs']]] = None,
                  skip_destroy: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 task_role: Optional[pulumi.InputType['_awsx_go.DefaultRoleWithPolicyArgs']] = None,
+                 task_role: Optional[pulumi.InputType['_root_inputs.DefaultRoleWithPolicyArgs']] = None,
                  volumes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['pulumi_aws.ecs.TaskDefinitionVolumeArgs']]]]] = None,
                  __props__=None):
         """
@@ -381,12 +381,12 @@ class EC2TaskDefinition(pulumi.ComponentResource):
                Either [container] or [containers] must be provided.
         :param pulumi.Input[str] cpu: The number of cpu units used by the task. If not provided, a default will be computed based on the cumulative needs specified by [containerDefinitions]
         :param pulumi.Input[pulumi.InputType['pulumi_aws.ecs.TaskDefinitionEphemeralStorageArgs']] ephemeral_storage: The amount of ephemeral storage to allocate for the task. This parameter is used to expand the total amount of ephemeral storage available, beyond the default amount, for tasks hosted on AWS Fargate. See Ephemeral Storage.
-        :param pulumi.InputType['_awsx_go.DefaultRoleWithPolicyArgs'] execution_role: The execution role that the Amazon ECS container agent and the Docker daemon can assume.
+        :param pulumi.InputType['_root_inputs.DefaultRoleWithPolicyArgs'] execution_role: The execution role that the Amazon ECS container agent and the Docker daemon can assume.
                Will be created automatically if not defined.
         :param pulumi.Input[str] family: An optional unique name for your task definition. If not specified, then a default will be created.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['pulumi_aws.ecs.TaskDefinitionInferenceAcceleratorArgs']]]] inference_accelerators: Configuration block(s) with Inference Accelerators settings. Detailed below.
         :param pulumi.Input[str] ipc_mode: IPC resource namespace to be used for the containers in the task The valid values are `host`, `task`, and `none`.
-        :param pulumi.InputType['_awsx_go.DefaultLogGroupArgs'] log_group: A set of volume blocks that containers in your task may use.
+        :param pulumi.InputType['_root_inputs.DefaultLogGroupArgs'] log_group: A set of volume blocks that containers in your task may use.
         :param pulumi.Input[str] memory: The amount (in MiB) of memory used by the task.  If not provided, a default will be computed
                based on the cumulative needs specified by [containerDefinitions]
         :param pulumi.Input[str] network_mode: Docker networking mode to use for the containers in the task. Valid values are `none`, `bridge`, `awsvpc`, and `host`.
@@ -395,7 +395,7 @@ class EC2TaskDefinition(pulumi.ComponentResource):
         :param pulumi.Input[pulumi.InputType['pulumi_aws.ecs.TaskDefinitionProxyConfigurationArgs']] proxy_configuration: Configuration block for the App Mesh proxy. Detailed below.
         :param pulumi.Input[pulumi.InputType['pulumi_aws.ecs.TaskDefinitionRuntimePlatformArgs']] runtime_platform: Configuration block for runtime_platform that containers in your task may use.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value map of resource tags.
-        :param pulumi.InputType['_awsx_go.DefaultRoleWithPolicyArgs'] task_role: IAM role that allows your Amazon ECS container task to make calls to other AWS services.
+        :param pulumi.InputType['_root_inputs.DefaultRoleWithPolicyArgs'] task_role: IAM role that allows your Amazon ECS container task to make calls to other AWS services.
                Will be created automatically if not defined.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['pulumi_aws.ecs.TaskDefinitionVolumeArgs']]]] volumes: Configuration block for volumes that containers in your task may use. Detailed below.
         """
@@ -429,11 +429,11 @@ class EC2TaskDefinition(pulumi.ComponentResource):
                  containers: Optional[Mapping[str, pulumi.InputType['TaskDefinitionContainerDefinitionArgs']]] = None,
                  cpu: Optional[pulumi.Input[str]] = None,
                  ephemeral_storage: Optional[pulumi.Input[pulumi.InputType['pulumi_aws.ecs.TaskDefinitionEphemeralStorageArgs']]] = None,
-                 execution_role: Optional[pulumi.InputType['_awsx_go.DefaultRoleWithPolicyArgs']] = None,
+                 execution_role: Optional[pulumi.InputType['_root_inputs.DefaultRoleWithPolicyArgs']] = None,
                  family: Optional[pulumi.Input[str]] = None,
                  inference_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['pulumi_aws.ecs.TaskDefinitionInferenceAcceleratorArgs']]]]] = None,
                  ipc_mode: Optional[pulumi.Input[str]] = None,
-                 log_group: Optional[pulumi.InputType['_awsx_go.DefaultLogGroupArgs']] = None,
+                 log_group: Optional[pulumi.InputType['_root_inputs.DefaultLogGroupArgs']] = None,
                  memory: Optional[pulumi.Input[str]] = None,
                  network_mode: Optional[pulumi.Input[str]] = None,
                  pid_mode: Optional[pulumi.Input[str]] = None,
@@ -442,7 +442,7 @@ class EC2TaskDefinition(pulumi.ComponentResource):
                  runtime_platform: Optional[pulumi.Input[pulumi.InputType['pulumi_aws.ecs.TaskDefinitionRuntimePlatformArgs']]] = None,
                  skip_destroy: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 task_role: Optional[pulumi.InputType['_awsx_go.DefaultRoleWithPolicyArgs']] = None,
+                 task_role: Optional[pulumi.InputType['_root_inputs.DefaultRoleWithPolicyArgs']] = None,
                  volumes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['pulumi_aws.ecs.TaskDefinitionVolumeArgs']]]]] = None,
                  __props__=None):
         if opts is None:

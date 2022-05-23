@@ -9,10 +9,10 @@ import (
 	"github.com/pulumi/pulumi-aws/sdk/v5/go/aws/ecr"
 	do "github.com/pulumi/pulumi-docker/sdk/v3/go/docker"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/zchase/pulumi-awsx-go/provider/pkg/utils"
+	"github.com/zchase/pulumi-awsx-go/pkg/utils"
 )
 
-const imageIdentifier = "awsx-go:ecr:Image"
+const ImageIdentifier = "awsx-go:ecr:Image"
 
 type ImageArgs struct {
 	Args          map[string]string `pulumi:"args"`
@@ -37,7 +37,7 @@ func NewImage(ctx *pulumi.Context, name string, args *ImageArgs, opts ...pulumi.
 	}
 
 	component := &Image{}
-	err := ctx.RegisterComponentResource(imageIdentifier, name, component, opts...)
+	err := ctx.RegisterComponentResource(ImageIdentifier, name, component, opts...)
 	if err != nil {
 		return nil, err
 	}

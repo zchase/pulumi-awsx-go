@@ -59,7 +59,7 @@ export class ApplicationLoadBalancer extends pulumi.ComponentResource {
         if (!opts.id) {
             resourceInputs["accessLogs"] = args ? args.accessLogs : undefined;
             resourceInputs["customerOwnedIpv4Pool"] = args ? args.customerOwnedIpv4Pool : undefined;
-            resourceInputs["defaultSecurityGroup"] = args ? (args.defaultSecurityGroup ? inputs.awsx-go.defaultSecurityGroupArgsProvideDefaults(args.defaultSecurityGroup) : undefined) : undefined;
+            resourceInputs["defaultSecurityGroup"] = args ? (args.defaultSecurityGroup ? inputs.defaultSecurityGroupArgsProvideDefaults(args.defaultSecurityGroup) : undefined) : undefined;
             resourceInputs["defaultTargetGroup"] = args ? args.defaultTargetGroup : undefined;
             resourceInputs["desyncMitigationMode"] = args ? args.desyncMitigationMode : undefined;
             resourceInputs["dropInvalidHeaderFields"] = args ? args.dropInvalidHeaderFields : undefined;
@@ -107,7 +107,7 @@ export interface ApplicationLoadBalancerArgs {
     /**
      * Options for creating a default security group if [securityGroups] not specified.
      */
-    defaultSecurityGroup?: inputs.awsx-go.DefaultSecurityGroupArgs;
+    defaultSecurityGroup?: inputs.DefaultSecurityGroupArgs;
     /**
      * Options creating a default target group.
      */

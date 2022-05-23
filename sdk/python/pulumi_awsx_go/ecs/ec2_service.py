@@ -7,7 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
-from .. import awsx_go as _awsx_go
+from .. import _inputs as _root_inputs
 from ._inputs import *
 import pulumi_aws
 

@@ -24,13 +24,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+const VPCIdentifier = "awsx-go:ec2:Vpc"
+
 func NewVPC(ctx *pulumi.Context, name string, args *VPCArgs, opts ...pulumi.ResourceOption) (*VPCOutput, error) {
 	if args == nil {
 		args = &VPCArgs{}
 	}
 
 	component := &VPCOutput{}
-	err := ctx.RegisterComponentResource("awsx-go:ec2:Vpc", name, component, opts...)
+	err := ctx.RegisterComponentResource(VPCIdentifier, name, component, opts...)
 	if err != nil {
 		return nil, err
 	}

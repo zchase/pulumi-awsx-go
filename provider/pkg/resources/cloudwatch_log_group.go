@@ -6,10 +6,12 @@ import (
 	"github.com/pulumi/pulumi-aws/sdk/v5/go/aws"
 	"github.com/pulumi/pulumi-aws/sdk/v5/go/aws/cloudwatch"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/zchase/pulumi-awsx-go/provider/pkg/utils"
+	"github.com/zchase/pulumi-awsx-go/pkg/utils"
 )
 
 type LogGroupID struct {
+	pulumi.Output
+
 	ARN            pulumi.StringOutput `pulumi:"arn"`
 	LogGroupName   pulumi.StringOutput `pulumi:"logGroupName"`
 	LogGroupRegion pulumi.StringOutput `pulumi:"logGroupRegion"`
@@ -41,7 +43,23 @@ type LogGroupArgs struct {
 
 type LogGroupResult struct {
 	LogGroup   *cloudwatch.LogGroup
-	LogGroupID pulumi.Output
+	LogGroupID LogGroupID
+}
+
+type DefaultLogGroupInputs struct {
+	Args     *LogGroupInputs         `pulumi:"args"`
+	Existing *ExistingLogGroupInputs `pulumi:"existing"`
+	Skip     bool                    `pulumi:"skip"`
+}
+
+func defaultLogGroup(ctx *pulumi.Context, name string, inputs *DefaultLogGroupInputs, opts ...pulumi.ResourceOption) (*LogGroupResult, error) {
+	if inputs.Skip {
+		return nil, nil
+	}
+	return requiredLogGroup(ctx, name, &LogGroupArgs{
+		Args:     inputs.Args,
+		Existing: inputs.Existing,
+	}, opts...)
 }
 
 func optionalLogGroup(ctx *pulumi.Context, name string, args *OptionalLogGroupInputs, opts ...pulumi.ResourceOption) (*LogGroupResult, error) {
@@ -142,17 +160,17 @@ func (m MakeLogGroupIDArgs) Validate() error {
 	return nil
 }
 
-func idFromARN(arn string) (*LogGroupID, error) {
+func idFromARN(arn string) (LogGroupID, error) {
 	parts, err := utils.ParseARN(arn)
 	if err != nil {
-		return nil, err
+		return LogGroupID{}, err
 	}
 
 	if parts.Service != "logs" || parts.ResourceType != "log-group" {
-		return nil, fmt.Errorf("Invalid log group ARN")
+		return LogGroupID{}, fmt.Errorf("Invalid log group ARN")
 	}
 
-	return &LogGroupID{
+	return LogGroupID{
 		ARN:            pulumi.String(arn).ToStringOutput(),
 		LogGroupName:   pulumi.String(parts.ResourceID).ToStringOutput(),
 		LogGroupRegion: pulumi.String(parts.Region).ToStringOutput(),
@@ -163,27 +181,27 @@ func buildLogGroupARN(region, name, accountID string) string {
 	return fmt.Sprintf("arn:aws:logs:%s:%s:log-group:%s", region, accountID, name)
 }
 
-func makeLogGroupID(ctx *pulumi.Context, args MakeLogGroupIDArgs) (pulumi.Output, error) {
+func makeLogGroupID(ctx *pulumi.Context, args MakeLogGroupIDArgs) (LogGroupID, error) {
 	err := args.Validate()
 	if err != nil {
-		return nil, err
+		return LogGroupID{}, err
 	}
 
 	if args.ARN != nil {
-		return args.ARN.ApplyT(idFromARN), nil
+		return args.ARN.ApplyT(idFromARN).(LogGroupID), nil
 	}
 
 	callerIdentity, err := aws.GetCallerIdentity(ctx)
 	if err != nil {
-		return nil, err
+		return LogGroupID{}, err
 	}
 
-	return pulumi.All(args.Region, args.Name, pulumi.String(callerIdentity.AccountId)).ApplyT(func(args []interface{}) (*LogGroupID, error) {
+	return pulumi.All(args.Region, args.Name, pulumi.String(callerIdentity.AccountId)).ApplyT(func(args []interface{}) (LogGroupID, error) {
 		region := args[0].(string)
 		name := args[1].(string)
 		accountId := args[2].(string)
 
 		arn := buildLogGroupARN(region, name, accountId)
 		return idFromARN(arn)
-	}), nil
+	}).(LogGroupID), nil
 }

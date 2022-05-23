@@ -11,7 +11,7 @@ license: Apache-2.0
 repository: 'https://github.com/zchase/pulumi-awsx-go'
 config: {}
 types:
-  'awsx-go:awsx-go:Bucket':
+  'awsx-go:index:Bucket':
     description: The set of arguments for constructing a Bucket resource.
     properties:
       accelerationStatus:
@@ -168,15 +168,15 @@ types:
           The website endpoint, if the bucket is configured with a website. If
           not, this will be an empty string.
     type: object
-  'awsx-go:awsx-go:DefaultBucket':
+  'awsx-go:index:DefaultBucket':
     description: Bucket with default setup unless explicitly skipped.
     properties:
       args:
-        $ref: '#/types/awsx-go:awsx-go:Bucket'
+        $ref: '#/types/awsx-go:index:Bucket'
         plain: true
         description: Arguments to use instead of the default values during creation.
       existing:
-        $ref: '#/types/awsx-go:awsx-go:ExistingBucket'
+        $ref: '#/types/awsx-go:index:ExistingBucket'
         plain: true
         description: >-
           Identity of an existing bucket to use. Cannot be used in combination
@@ -186,15 +186,15 @@ types:
         plain: true
         description: Skip creation of the bucket.
     type: object
-  'awsx-go:awsx-go:DefaultLogGroup':
+  'awsx-go:index:DefaultLogGroup':
     description: Log group with default setup unless explicitly skipped.
     properties:
       args:
-        $ref: '#/types/awsx-go:awsx-go:LogGroup'
+        $ref: '#/types/awsx-go:index:LogGroup'
         plain: true
         description: Arguments to use instead of the default values during creation.
       existing:
-        $ref: '#/types/awsx-go:awsx-go:ExistingLogGroup'
+        $ref: '#/types/awsx-go:index:ExistingLogGroup'
         plain: true
         description: >-
           Identity of an existing log group to use. Cannot be used in
@@ -204,13 +204,13 @@ types:
         plain: true
         description: Skip creation of the log group.
     type: object
-  'awsx-go:awsx-go:DefaultRoleWithPolicy':
+  'awsx-go:index:DefaultRoleWithPolicy':
     description: >-
       Role and policy attachments with default setup unless explicitly skipped
       or an existing role ARN provided.
     properties:
       args:
-        $ref: '#/types/awsx-go:awsx-go:RoleWithPolicy'
+        $ref: '#/types/awsx-go:index:RoleWithPolicy'
         plain: true
         description: >-
           Args to use when creating the role and policies. Can't be specified if
@@ -225,13 +225,13 @@ types:
         plain: true
         description: Skips creation of the role if set to `true`.
     type: object
-  'awsx-go:awsx-go:DefaultSecurityGroup':
+  'awsx-go:index:DefaultSecurityGroup':
     description: >-
       Security Group with default setup unless explicitly skipped or an existing
       security group id provided.
     properties:
       args:
-        $ref: '#/types/awsx-go:awsx-go:SecurityGroup'
+        $ref: '#/types/awsx-go:index:SecurityGroup'
         plain: true
         description: >-
           Args to use when creating the security group. Can't be specified if
@@ -246,7 +246,7 @@ types:
         plain: true
         description: Skips creation of the security group if set to `true`.
     type: object
-  'awsx-go:awsx-go:ExistingBucket':
+  'awsx-go:index:ExistingBucket':
     description: Reference to an existing bucket.
     properties:
       arn:
@@ -256,7 +256,7 @@ types:
         type: string
         description: 'Name of the bucket. Only one of [arn] or [name] can be specified.'
     type: object
-  'awsx-go:awsx-go:ExistingLogGroup':
+  'awsx-go:index:ExistingLogGroup':
     description: Reference to an existing log group.
     properties:
       arn:
@@ -271,7 +271,7 @@ types:
           Region of the log group. If not specified, the provider region will be
           used.
     type: object
-  'awsx-go:awsx-go:LogGroup':
+  'awsx-go:index:LogGroup':
     description: The set of arguments for constructing a LogGroup resource.
     properties:
       kmsKeyId:
@@ -315,11 +315,11 @@ types:
           provider `default_tags` configuration block present, tags with
           matching keys will overwrite those defined at the provider-level.
     type: object
-  'awsx-go:awsx-go:OptionalLogGroup':
+  'awsx-go:index:OptionalLogGroup':
     description: Log group which is only created if enabled.
     properties:
       args:
-        $ref: '#/types/awsx-go:awsx-go:LogGroup'
+        $ref: '#/types/awsx-go:index:LogGroup'
         plain: true
         description: Arguments to use instead of the default values during creation.
       enable:
@@ -327,41 +327,41 @@ types:
         plain: true
         description: Enable creation of the log group.
       existing:
-        $ref: '#/types/awsx-go:awsx-go:ExistingLogGroup'
+        $ref: '#/types/awsx-go:index:ExistingLogGroup'
         plain: true
         description: >-
           Identity of an existing log group to use. Cannot be used in
           combination with `args` or `opts`.
     type: object
-  'awsx-go:awsx-go:RequiredBucket':
+  'awsx-go:index:RequiredBucket':
     description: Bucket with default setup.
     properties:
       args:
-        $ref: '#/types/awsx-go:awsx-go:Bucket'
+        $ref: '#/types/awsx-go:index:Bucket'
         plain: true
         description: Arguments to use instead of the default values during creation.
       existing:
-        $ref: '#/types/awsx-go:awsx-go:ExistingBucket'
+        $ref: '#/types/awsx-go:index:ExistingBucket'
         plain: true
         description: >-
           Identity of an existing bucket to use. Cannot be used in combination
           with `args`.
     type: object
-  'awsx-go:awsx-go:RequiredLogGroup':
+  'awsx-go:index:RequiredLogGroup':
     description: Log group with default setup.
     properties:
       args:
-        $ref: '#/types/awsx-go:awsx-go:LogGroup'
+        $ref: '#/types/awsx-go:index:LogGroup'
         plain: true
         description: Arguments to use instead of the default values during creation.
       existing:
-        $ref: '#/types/awsx-go:awsx-go:ExistingLogGroup'
+        $ref: '#/types/awsx-go:index:ExistingLogGroup'
         plain: true
         description: >-
           Identity of an existing log group to use. Cannot be used in
           combination with `args` or `opts`.
     type: object
-  'awsx-go:awsx-go:RoleWithPolicy':
+  'awsx-go:index:RoleWithPolicy':
     description: >-
       The set of arguments for constructing a Role resource and Policy
       attachments.
@@ -441,7 +441,7 @@ types:
           provider `default_tags` configuration block present, tags with
           matching keys will overwrite those defined at the provider-level.
     type: object
-  'awsx-go:awsx-go:SecurityGroup':
+  'awsx-go:index:SecurityGroup':
     description: The set of arguments for constructing a Security Group resource.
     properties:
       description:
@@ -842,7 +842,7 @@ types:
           available, beyond the default amount, for tasks hosted on AWS Fargate.
           See Ephemeral Storage.
       executionRole:
-        $ref: '#/types/awsx-go:awsx-go:DefaultRoleWithPolicy'
+        $ref: '#/types/awsx-go:index:DefaultRoleWithPolicy'
         plain: true
         description: >-
           The execution role that the Amazon ECS container agent and the Docker
@@ -868,7 +868,7 @@ types:
           IPC resource namespace to be used for the containers in the task The
           valid values are `host`, `task`, and `none`.
       logGroup:
-        $ref: '#/types/awsx-go:awsx-go:DefaultLogGroup'
+        $ref: '#/types/awsx-go:index:DefaultLogGroup'
         plain: true
         description: A set of volume blocks that containers in your task may use.
       memory:
@@ -917,7 +917,7 @@ types:
         description: |
           Key-value map of resource tags.
       taskRole:
-        $ref: '#/types/awsx-go:awsx-go:DefaultRoleWithPolicy'
+        $ref: '#/types/awsx-go:index:DefaultRoleWithPolicy'
         plain: true
         description: >-
           IAM role that allows your Amazon ECS container task to make calls to
@@ -984,7 +984,7 @@ types:
           available, beyond the default amount, for tasks hosted on AWS Fargate.
           See Ephemeral Storage.
       executionRole:
-        $ref: '#/types/awsx-go:awsx-go:DefaultRoleWithPolicy'
+        $ref: '#/types/awsx-go:index:DefaultRoleWithPolicy'
         plain: true
         description: >-
           The execution role that the Amazon ECS container agent and the Docker
@@ -1010,7 +1010,7 @@ types:
           IPC resource namespace to be used for the containers in the task The
           valid values are `host`, `task`, and `none`.
       logGroup:
-        $ref: '#/types/awsx-go:awsx-go:DefaultLogGroup'
+        $ref: '#/types/awsx-go:index:DefaultLogGroup'
         plain: true
         description: A set of volume blocks that containers in your task may use.
       memory:
@@ -1054,7 +1054,7 @@ types:
         description: |
           Key-value map of resource tags.
       taskRole:
-        $ref: '#/types/awsx-go:awsx-go:DefaultRoleWithPolicy'
+        $ref: '#/types/awsx-go:index:DefaultRoleWithPolicy'
         plain: true
         description: >-
           IAM role that allows your Amazon ECS container task to make calls to
@@ -1600,7 +1600,7 @@ resources:
           Specifies an advanced event selector for enabling data event logging.
           Fields documented below. Conflicts with `event_selector`.
       cloudWatchLogsGroup:
-        $ref: '#/types/awsx-go:awsx-go:OptionalLogGroup'
+        $ref: '#/types/awsx-go:index:OptionalLogGroup'
         plain: true
         description: Log group to which CloudTrail logs will be delivered.
       enableLogFileValidation:
@@ -1655,7 +1655,7 @@ resources:
         description: |
           Specifies the name of the advanced event selector.
       s3Bucket:
-        $ref: '#/types/awsx-go:awsx-go:RequiredBucket'
+        $ref: '#/types/awsx-go:index:RequiredBucket'
         plain: true
         description: S3 bucket designated for publishing log files.
       s3KeyPrefix:
@@ -2312,7 +2312,7 @@ resources:
           available, beyond the default amount, for tasks hosted on AWS Fargate.
           See Ephemeral Storage.
       executionRole:
-        $ref: '#/types/awsx-go:awsx-go:DefaultRoleWithPolicy'
+        $ref: '#/types/awsx-go:index:DefaultRoleWithPolicy'
         plain: true
         description: >-
           The execution role that the Amazon ECS container agent and the Docker
@@ -2338,7 +2338,7 @@ resources:
           IPC resource namespace to be used for the containers in the task The
           valid values are `host`, `task`, and `none`.
       logGroup:
-        $ref: '#/types/awsx-go:awsx-go:DefaultLogGroup'
+        $ref: '#/types/awsx-go:index:DefaultLogGroup'
         plain: true
         description: A set of volume blocks that containers in your task may use.
       memory:
@@ -2387,7 +2387,7 @@ resources:
         description: |
           Key-value map of resource tags.
       taskRole:
-        $ref: '#/types/awsx-go:awsx-go:DefaultRoleWithPolicy'
+        $ref: '#/types/awsx-go:index:DefaultRoleWithPolicy'
         plain: true
         description: >-
           IAM role that allows your Amazon ECS container task to make calls to
@@ -2652,7 +2652,7 @@ resources:
           available, beyond the default amount, for tasks hosted on AWS Fargate.
           See Ephemeral Storage.
       executionRole:
-        $ref: '#/types/awsx-go:awsx-go:DefaultRoleWithPolicy'
+        $ref: '#/types/awsx-go:index:DefaultRoleWithPolicy'
         plain: true
         description: >-
           The execution role that the Amazon ECS container agent and the Docker
@@ -2678,7 +2678,7 @@ resources:
           IPC resource namespace to be used for the containers in the task The
           valid values are `host`, `task`, and `none`.
       logGroup:
-        $ref: '#/types/awsx-go:awsx-go:DefaultLogGroup'
+        $ref: '#/types/awsx-go:index:DefaultLogGroup'
         plain: true
         description: A set of volume blocks that containers in your task may use.
       memory:
@@ -2722,7 +2722,7 @@ resources:
         description: |
           Key-value map of resource tags.
       taskRole:
-        $ref: '#/types/awsx-go:awsx-go:DefaultRoleWithPolicy'
+        $ref: '#/types/awsx-go:index:DefaultRoleWithPolicy'
         plain: true
         description: >-
           IAM role that allows your Amazon ECS container task to make calls to
@@ -2776,7 +2776,7 @@ resources:
         description: |
           The ID of the customer owned ipv4 pool to use for this load balancer.
       defaultSecurityGroup:
-        $ref: '#/types/awsx-go:awsx-go:DefaultSecurityGroup'
+        $ref: '#/types/awsx-go:index:DefaultSecurityGroup'
         plain: true
         description: >-
           Options for creating a default security group if [securityGroups] not

@@ -24,7 +24,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-const trailIdentifier = "awsx-go:cloudtrail:Trail"
+const TrailIdentifier = "awsx-go:cloudtrail:Trail"
 
 type TrailArgs struct {
 	AdvancedEventSelector      cloudtrail.TrailAdvancedEventSelectorArray `pulumi:"advancedEventSelectors"`
@@ -58,7 +58,7 @@ func NewTrail(ctx *pulumi.Context, name string, args *TrailArgs, opts ...pulumi.
 	}
 
 	component := &Trail{}
-	err := ctx.RegisterComponentResource(trailIdentifier, name, component, opts...)
+	err := ctx.RegisterComponentResource(TrailIdentifier, name, component, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -80,10 +80,12 @@ func NewTrail(ctx *pulumi.Context, name string, args *TrailArgs, opts ...pulumi.
 		return nil, err
 	}
 
+	trailOpts := append(opts, pulumi.DependsOn([]pulumi.Resource{policy}))
+
 	trail, err := cloudtrail.NewTrail(ctx, name, &cloudtrail.TrailArgs{
 		S3BucketName: bucket.Bucket.Bucket,
-		CloudWatchLogsGroupArn: logGroup.LogGroupID.ApplyT(func(logGropuID LogGroupID) string {
-			return fmt.Sprintf("%s:*", logGropuID.ARN)
+		CloudWatchLogsGroupArn: logGroup.LogGroupID.ApplyT(func(logGroupID LogGroupID) string {
+			return fmt.Sprintf("%s:*", logGroupID.ARN)
 		}).(pulumi.StringPtrInput),
 
 		AdvancedEventSelectors:     args.AdvancedEventSelector,
@@ -99,7 +101,7 @@ func NewTrail(ctx *pulumi.Context, name string, args *TrailArgs, opts ...pulumi.
 		S3KeyPrefix:                pulumi.String(args.S3KeyPrefix),
 		SnsTopicName:               pulumi.String(args.SNSTopicName),
 		Tags:                       pulumi.ToStringMap(args.Tags),
-	}, pulumi.DependsOn([]pulumi.Resource{policy}), opts)
+	}, trailOpts...)
 	if err != nil {
 		return nil, err
 	}

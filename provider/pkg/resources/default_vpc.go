@@ -2,7 +2,7 @@ package resources
 
 import "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 
-const defaultVPCIdentifier = "awsx-go:ec2:DefaultVpc"
+const DefaultVPCIdentifier = "awsx-go:ec2:DefaultVpc"
 
 type DefaultVPCArgs struct{}
 
@@ -20,7 +20,7 @@ func NewDefaultVPC(ctx *pulumi.Context, name string, args *DefaultVPCArgs, opts 
 	}
 
 	component := &DefaultVPC{}
-	err := ctx.RegisterComponentResource(defaultVPCIdentifier, name, component, opts...)
+	err := ctx.RegisterComponentResource(DefaultVPCIdentifier, name, component, opts...)
 	if err != nil {
 		return nil, err
 	}

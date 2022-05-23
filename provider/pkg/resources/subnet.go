@@ -200,7 +200,7 @@ func getSubnetSpecs(vpcName, vpcCidr string, azNames []string, subnetInputs []su
 	newBitsPerAZ := math.Log2(float64(nextPow2(len(azNames))))
 
 	var azBases []string
-	for i, _ := range azNames {
+	for i := range azNames {
 		azBase, err := cidrSubnetV4(vpcCidr, int(newBitsPerAZ), i)
 		if err != nil {
 			return nil, err

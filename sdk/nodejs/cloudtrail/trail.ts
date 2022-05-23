@@ -85,7 +85,7 @@ export interface TrailArgs {
     /**
      * Log group to which CloudTrail logs will be delivered.
      */
-    cloudWatchLogsGroup?: inputs.awsx-go.OptionalLogGroupArgs;
+    cloudWatchLogsGroup?: inputs.OptionalLogGroupArgs;
     /**
      * Whether log file integrity validation is enabled. Defaults to `false`.
      */
@@ -125,7 +125,7 @@ export interface TrailArgs {
     /**
      * S3 bucket designated for publishing log files.
      */
-    s3Bucket?: inputs.awsx-go.RequiredBucketArgs;
+    s3Bucket?: inputs.RequiredBucketArgs;
     /**
      * S3 key prefix that follows the name of the bucket you have designated for log file delivery.
      */
