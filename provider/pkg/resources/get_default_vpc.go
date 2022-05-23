@@ -14,8 +14,6 @@ type DefaultVPCOutput struct {
 }
 
 type defaultSubnetOutput struct {
-	pulumi.Output
-
 	PrivateSubnetIDs pulumi.StringArrayOutput
 	PublicSubnetIDs  pulumi.StringArrayOutput
 }
@@ -41,43 +39,52 @@ func getDefaultVPC(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*DefaultVP
 		},
 	}, opts...)
 
-	subnets := subnetOutput.Ids().ApplyT(func(subnetIDs ec2.LookupSubnetResult) pulumi.AnyOutput {
-		return pulumi.All(subnetIDs).ApplyT(func(ids []string) []ec2.LookupSubnetResultOutput {
-			var result []ec2.LookupSubnetResultOutput
-			for _, id := range ids {
-				lookupResult := ec2.LookupSubnetOutput(ctx, ec2.LookupSubnetOutputArgs{
-					Id: pulumi.StringPtr(id),
-				}, opts...)
+	subnets := subnetOutput.Ids().ApplyT(func(subnetIDs []string) []ec2.LookupSubnetResultOutput {
+		var result []ec2.LookupSubnetResultOutput
+		for _, id := range subnetIDs {
+			lookupResult := ec2.LookupSubnetOutput(ctx, ec2.LookupSubnetOutputArgs{
+				Id: pulumi.StringPtr(id),
+			}, opts...)
 
-				result = append(result, lookupResult)
-			}
+			result = append(result, lookupResult)
+		}
 
-			return result
-		}).(pulumi.AnyOutput)
+		return result
 	}).(pulumi.AnyOutput)
 
-	subnetValues := subnets.ApplyT(func(subs []ec2.LookupSubnetResult) defaultSubnetOutput {
+	subnetValues := subnets.ApplyT(func(subs interface{}) defaultSubnetOutput {
 		var publicSubnetIDs []pulumi.StringOutput
 		var privateSubnetIDs []pulumi.StringOutput
 
-		for _, s := range subs {
-			if s.MapPublicIpOnLaunch {
-				publicSubnetIDs = append(publicSubnetIDs, pulumi.String(s.Id).ToStringOutput())
-				continue
-			}
+		switch subs := subs.(type) {
+		case []ec2.LookupSubnetResult:
+			for _, s := range subs {
+				fmt.Println(s.Id)
 
-			privateSubnetIDs = append(privateSubnetIDs, pulumi.String(s.Id).ToStringOutput())
+				if s.MapPublicIpOnLaunch {
+					publicSubnetIDs = append(publicSubnetIDs, pulumi.String(s.Id).ToStringOutput())
+					continue
+				}
+
+				privateSubnetIDs = append(privateSubnetIDs, pulumi.String(s.Id).ToStringOutput())
+			}
 		}
 
 		return defaultSubnetOutput{
 			PublicSubnetIDs:  pulumi.ToStringArrayOutput(publicSubnetIDs),
 			PrivateSubnetIDs: pulumi.ToStringArrayOutput(privateSubnetIDs),
 		}
-	}).(defaultSubnetOutput)
+	}).(pulumi.AnyOutput)
 
 	return &DefaultVPCOutput{
-		VPCID:            pulumi.String(vpc.Id).ToStringOutput(),
-		PublicSubnetIDs:  subnetValues.PublicSubnetIDs,
-		PrivateSubnetIDs: subnetValues.PrivateSubnetIDs,
+		VPCID: pulumi.String(vpc.Id).ToStringOutput(),
+		PublicSubnetIDs: subnetValues.ApplyT(func(v interface{}) pulumi.StringArrayOutput {
+			so := v.(defaultSubnetOutput)
+			return so.PublicSubnetIDs
+		}).(pulumi.StringArrayOutput),
+		PrivateSubnetIDs: subnetValues.ApplyT(func(v interface{}) pulumi.StringArrayOutput {
+			so := v.(defaultSubnetOutput)
+			return so.PrivateSubnetIDs
+		}).(pulumi.StringArrayOutput),
 	}, nil
 }

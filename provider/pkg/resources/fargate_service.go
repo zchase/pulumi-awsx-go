@@ -11,7 +11,7 @@ import (
 const FargateServiceIdentifier = "awsx-go:ecs:FargateService"
 
 type FargateServiceArgs struct {
-	Cluster                         string                                      `pulumi:"cluster"`
+	Cluster                         pulumi.StringOutput                         `pulumi:"cluster"`
 	ContinueBeforeSteadyState       bool                                        `pulumi:"continueBeforeSteadyState"`
 	DeploymentCircuitBreaker        ecs.ServiceDeploymentCircuitBreakerPtrInput `pulumi:"deploymentCircuitBreaker"`
 	DeploymentController            ecs.ServiceDeploymentControllerPtrInput     `pulumi:"deploymentController"`
@@ -23,7 +23,7 @@ type FargateServiceArgs struct {
 	ForceNewDeployment              bool                                        `pulumi:"forceNewDeployment"`
 	HealthCheckGracePeriodSeconds   int                                         `pulumi:"healthCheckGracePeriodSeconds"`
 	IAMRole                         string                                      `pulumi:"iamRole"`
-	LoadBalancers                   ecs.ServiceLoadBalancerArrayInput           `pulumi:"loadBalancers"`
+	LoadBalancers                   *ecs.ServiceLoadBalancerArrayOutput         `pulumi:"loadBalancers"`
 	Name                            string                                      `pulumi:"name"`
 	NetworkConfiguration            ecs.ServiceNetworkConfigurationPtrInput     `pulumi:"networkConfiguration"`
 	PlacementConstraints            ecs.ServicePlacementConstraintArrayInput    `pulumi:"placementConstraints"`
@@ -60,8 +60,15 @@ func NewFargateService(ctx *pulumi.Context, name string, args *FargateServiceArg
 		return nil, fmt.Errorf("Only one of `taskDefinition` or `taskDefinitionArgs` can be provided.")
 	}
 
+	if args.TaskDefinition == "" && args.TaskDefinitionArgs == nil {
+		return nil, fmt.Errorf("Either `taskDefinition` or `taskDefinitionArgs` must be provided.")
+	}
+
 	var taskDefinition *FargateTaskDefinition
-	taskDefinitionIdentifier := pulumi.String(args.TaskDefinition).ToStringPtrOutput()
+	var taskDefinitionIdentifier pulumi.StringOutput
+	if args.TaskDefinition != "" {
+		taskDefinitionIdentifier = pulumi.String(args.TaskDefinition).ToStringOutput()
+	}
 
 	if args.TaskDefinitionArgs != nil {
 		taskDefinition, err = NewFargateTaskDefinition(ctx, name, args.TaskDefinitionArgs, opts...)
@@ -70,7 +77,7 @@ func NewFargateService(ctx *pulumi.Context, name string, args *FargateServiceArg
 		}
 
 		component.TaskDefinition = taskDefinition
-		taskDefinitionIdentifier = taskDefinition.TaskDefinition.Arn.ToStringPtrOutput()
+		taskDefinitionIdentifier = taskDefinition.TaskDefinition.Arn
 	}
 
 	if args.DesiredCount == 0 {
@@ -84,16 +91,22 @@ func NewFargateService(ctx *pulumi.Context, name string, args *FargateServiceArg
 		}
 	}
 
-	//args.LoadBalancers
-	args.LoadBalancers = pulumi.All(args.LoadBalancers.ToServiceLoadBalancerArrayOutput(), taskDefinition.LoadBalancers).ApplyT(func(argsLBs, tdLBs []ecs.ServiceLoadBalancer) []ecs.ServiceLoadBalancer {
-		if len(argsLBs) == 0 {
-			return tdLBs
-		}
-		return argsLBs
-	}).(ecs.ServiceLoadBalancerArrayOutput)
+	if args.LoadBalancers == nil && taskDefinition != nil {
+		args.LoadBalancers = &taskDefinition.LoadBalancers
+	}
+
+	var propagateTags pulumi.StringPtrInput
+	if args.PropagateTags != "" {
+		propagateTags = pulumi.StringPtr(args.PropagateTags)
+	}
+
+	var schedulingStrategy pulumi.StringPtrInput
+	if args.SchedulingStrategy != "" {
+		schedulingStrategy = pulumi.StringPtr(args.SchedulingStrategy)
+	}
 
 	service, err := ecs.NewService(ctx, name, &ecs.ServiceArgs{
-		Cluster:                         pulumi.StringPtr(args.Cluster),
+		Cluster:                         args.Cluster,
 		DeploymentCircuitBreaker:        args.DeploymentCircuitBreaker,
 		DeploymentController:            args.DeploymentController,
 		DeploymentMaximumPercent:        pulumi.IntPtr(args.DeploymentMaximumPercent),
@@ -110,8 +123,8 @@ func NewFargateService(ctx *pulumi.Context, name string, args *FargateServiceArg
 		NetworkConfiguration:            args.NetworkConfiguration,
 		PlacementConstraints:            args.PlacementConstraints,
 		PlatformVersion:                 pulumi.StringPtr(args.PlatformVersions),
-		PropagateTags:                   pulumi.StringPtr(args.PropagateTags),
-		SchedulingStrategy:              pulumi.StringPtr(args.SchedulingStrategy),
+		PropagateTags:                   propagateTags,
+		SchedulingStrategy:              schedulingStrategy,
 		ServiceRegistries:               args.ServiceRegistries,
 		Tags:                            pulumi.ToStringMap(args.Tags),
 		TaskDefinition:                  taskDefinitionIdentifier,

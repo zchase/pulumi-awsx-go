@@ -41,7 +41,7 @@ type TargetGroupInputs struct {
 	ProtocolVersion                string                            `pulumi:"protocolVersion"`
 	ProxyProtocolV2                bool                              `pulumi:"proxyProtocolV2"`
 	SlowStart                      int                               `pulumi:"slowStart"`
-	Stickiness                     lb.TargetGroupStickinessInput     `pulumi:"stickiness"`
+	Stickiness                     lb.TargetGroupStickinessPtrInput  `pulumi:"stickiness"`
 	Tags                           map[string]string                 `pulumi:"tags"`
 	TargetType                     string                            `pulumi:"targetType"`
 	VpcID                          string                            `pulumi:"vpcId"`
@@ -219,24 +219,41 @@ func NewApplicationLoadBalancer(ctx *pulumi.Context, name string, args *Applicat
 		securityGroups = pulumi.ToStringArrayOutput(securityGroupIDs)
 	}
 
+	var lbNamePrefix pulumi.StringPtrInput
+	var lbName pulumi.StringPtrInput
+	if args.Name != "" {
+		lbName = pulumi.StringPtr(args.Name)
+	}
+
+	if args.NamePrefix != "" {
+		lbNamePrefix = pulumi.StringPtr(args.NamePrefix)
+		lbName = nil
+	}
+
 	loadBalancerType := "application"
 	lbArgs := &lb.LoadBalancerArgs{
 		AccessLogs:               args.AccessLogs,
 		CustomerOwnedIpv4Pool:    pulumi.String(args.CustomerOwnedIpv4Pool),
-		DesyncMitigationMode:     pulumi.StringPtr(args.DesyncMitigationMode),
 		DropInvalidHeaderFields:  pulumi.BoolPtr(args.DropInvalidHeaderFields),
 		EnableDeletionProtection: pulumi.BoolPtr(args.EnableDeletionProtection),
 		EnableHttp2:              pulumi.BoolPtr(args.EnableHttp2),
 		EnableWafFailOpen:        pulumi.BoolPtr(args.EnableWafFailOpen),
 		IdleTimeout:              pulumi.IntPtr(args.IdleTimeout),
 		Internal:                 pulumi.BoolPtr(args.Internal),
-		IpAddressType:            pulumi.StringPtr(args.IPAddressType),
 		LoadBalancerType:         pulumi.String(loadBalancerType),
-		Name:                     pulumi.StringPtr(args.Name),
-		NamePrefix:               pulumi.StringPtr(args.NamePrefix),
+		Name:                     lbName,
+		NamePrefix:               lbNamePrefix,
 		SecurityGroups:           securityGroups,
 		Subnets:                  subnetIDs,
 		Tags:                     pulumi.ToStringMap(args.Tags),
+	}
+
+	if args.IPAddressType != "" {
+		lbArgs.IpAddressType = pulumi.StringPtr(args.IPAddressType)
+	}
+
+	if args.DesyncMitigationMode != "" {
+		lbArgs.DesyncMitigationMode = pulumi.StringPtr(args.DesyncMitigationMode)
 	}
 
 	loadBalancer, err := lb.NewLoadBalancer(ctx, name, lbArgs, opts...)
@@ -247,6 +264,17 @@ func NewApplicationLoadBalancer(ctx *pulumi.Context, name string, args *Applicat
 
 	defaultProtocol := getDefaultProtocol(args)
 
+	var tgNamePrefix pulumi.StringPtrInput
+	var tgName pulumi.StringPtrInput
+	if args.DefaultTargetGroup.Name != "" {
+		tgName = pulumi.StringPtr(args.DefaultTargetGroup.Name)
+	}
+
+	if args.DefaultTargetGroup.NamePrefix != "" {
+		tgNamePrefix = pulumi.StringPtr(args.DefaultTargetGroup.NamePrefix)
+		tgName = nil
+	}
+
 	tgArgs := &lb.TargetGroupArgs{
 		VpcId:                          component.VpcID,
 		TargetType:                     pulumi.StringPtr("ip"),
@@ -256,13 +284,11 @@ func NewApplicationLoadBalancer(ctx *pulumi.Context, name string, args *Applicat
 		DeregistrationDelay:            pulumi.IntPtr(args.DefaultTargetGroup.DeRegistrationDelay),
 		HealthCheck:                    args.DefaultTargetGroup.HealthCheck,
 		LambdaMultiValueHeadersEnabled: pulumi.BoolPtr(args.DefaultTargetGroup.LambdaMultiValueHeadersEnabled),
-		LoadBalancingAlgorithmType:     pulumi.String(args.DefaultTargetGroup.LoadBalancingAlgorithmType),
-		Name:                           pulumi.String(args.DefaultTargetGroup.Name),
-		NamePrefix:                     pulumi.String(args.DefaultTargetGroup.NamePrefix),
+		Name:                           tgName,
+		NamePrefix:                     tgNamePrefix,
 		PreserveClientIp:               pulumi.StringPtr(args.DefaultTargetGroup.PreserveClientIp),
-		ProtocolVersion:                pulumi.StringPtr(args.DefaultTargetGroup.ProtocolVersion),
 		SlowStart:                      pulumi.IntPtr(args.DefaultTargetGroup.SlowStart),
-		Stickiness:                     args.DefaultTargetGroup.Stickiness.ToTargetGroupStickinessOutput(),
+		Stickiness:                     args.DefaultTargetGroup.Stickiness,
 		Tags:                           pulumi.ToStringMap(args.DefaultTargetGroup.Tags),
 	}
 
@@ -280,6 +306,14 @@ func NewApplicationLoadBalancer(ctx *pulumi.Context, name string, args *Applicat
 
 	if args.DefaultTargetGroup.Protocol != "" {
 		tgArgs.Protocol = pulumi.String(args.DefaultTargetGroup.Protocol)
+	}
+
+	if args.DefaultTargetGroup.ProtocolVersion != "" {
+		tgArgs.ProtocolVersion = pulumi.StringPtr(args.DefaultTargetGroup.ProtocolVersion)
+	}
+
+	if args.DefaultTargetGroup.LoadBalancingAlgorithmType != "" {
+		tgArgs.LoadBalancingAlgorithmType = pulumi.String(args.DefaultTargetGroup.LoadBalancingAlgorithmType)
 	}
 
 	targetGroup, err := lb.NewTargetGroup(ctx, name, tgArgs, opts...)

@@ -137,6 +137,13 @@ func NewNetworkLoadBalancer(ctx *pulumi.Context, name string, args *NetworkLoadB
 	}
 	component.LoadBalancer = loadBalancer
 
+	var tgNamePrefix pulumi.StringPtrInput
+	tgName := pulumi.StringPtr(args.DefaultTargetGroup.Name)
+	if args.DefaultTargetGroup.NamePrefix != "" {
+		tgNamePrefix = pulumi.StringPtr(args.DefaultTargetGroup.NamePrefix)
+		tgName = nil
+	}
+
 	tgArgs := &lb.TargetGroupArgs{
 		VpcId:                          component.VpcID,
 		TargetType:                     pulumi.StringPtr(args.DefaultTargetGroup.TargetType),
@@ -146,13 +153,11 @@ func NewNetworkLoadBalancer(ctx *pulumi.Context, name string, args *NetworkLoadB
 		DeregistrationDelay:            pulumi.IntPtr(args.DefaultTargetGroup.DeRegistrationDelay),
 		HealthCheck:                    args.DefaultTargetGroup.HealthCheck,
 		LambdaMultiValueHeadersEnabled: pulumi.BoolPtr(args.DefaultTargetGroup.LambdaMultiValueHeadersEnabled),
-		LoadBalancingAlgorithmType:     pulumi.String(args.DefaultTargetGroup.LoadBalancingAlgorithmType),
-		Name:                           pulumi.String(args.DefaultTargetGroup.Name),
-		NamePrefix:                     pulumi.String(args.DefaultTargetGroup.NamePrefix),
+		Name:                           tgName,
+		NamePrefix:                     tgNamePrefix,
 		PreserveClientIp:               pulumi.StringPtr(args.DefaultTargetGroup.PreserveClientIp),
-		ProtocolVersion:                pulumi.StringPtr(args.DefaultTargetGroup.ProtocolVersion),
 		SlowStart:                      pulumi.IntPtr(args.DefaultTargetGroup.SlowStart),
-		Stickiness:                     args.DefaultTargetGroup.Stickiness.ToTargetGroupStickinessOutput(),
+		Stickiness:                     args.DefaultTargetGroup.Stickiness,
 		Tags:                           pulumi.ToStringMap(args.DefaultTargetGroup.Tags),
 	}
 
@@ -166,6 +171,14 @@ func NewNetworkLoadBalancer(ctx *pulumi.Context, name string, args *NetworkLoadB
 
 	if args.DefaultTargetGroup.Protocol != "" {
 		tgArgs.Protocol = pulumi.String(args.DefaultTargetGroup.Protocol)
+	}
+
+	if args.DefaultTargetGroup.ProtocolVersion != "" {
+		tgArgs.ProtocolVersion = pulumi.StringPtr(args.DefaultTargetGroup.ProtocolVersion)
+	}
+
+	if args.DefaultTargetGroup.LoadBalancingAlgorithmType != "" {
+		tgArgs.LoadBalancingAlgorithmType = pulumi.String(args.DefaultTargetGroup.LoadBalancingAlgorithmType)
 	}
 
 	targetGroup, err := lb.NewTargetGroup(ctx, name, tgArgs, opts...)

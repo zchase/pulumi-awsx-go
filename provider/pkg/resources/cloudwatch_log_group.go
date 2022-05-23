@@ -10,7 +10,13 @@ import (
 )
 
 type LogGroupID struct {
-	pulumi.Output
+	ARN            pulumi.StringOutput `pulumi:"arn"`
+	LogGroupName   pulumi.StringOutput `pulumi:"logGroupName"`
+	LogGroupRegion pulumi.StringOutput `pulumi:"logGroupRegion"`
+}
+
+type LogGroupIDOutput struct {
+	pulumi.AnyOutput
 
 	ARN            pulumi.StringOutput `pulumi:"arn"`
 	LogGroupName   pulumi.StringOutput `pulumi:"logGroupName"`
@@ -43,7 +49,7 @@ type LogGroupArgs struct {
 
 type LogGroupResult struct {
 	LogGroup   *cloudwatch.LogGroup
-	LogGroupID LogGroupID
+	LogGroupID pulumi.AnyOutput
 }
 
 type DefaultLogGroupInputs struct {
@@ -63,8 +69,12 @@ func defaultLogGroup(ctx *pulumi.Context, name string, inputs *DefaultLogGroupIn
 }
 
 func optionalLogGroup(ctx *pulumi.Context, name string, args *OptionalLogGroupInputs, opts ...pulumi.ResourceOption) (*LogGroupResult, error) {
-	if args.Enable == false {
+	if args != nil && args.Enable == false {
 		return &LogGroupResult{}, nil
+	}
+
+	if args == nil {
+		args = &OptionalLogGroupInputs{}
 	}
 
 	return requiredLogGroup(ctx, name, &LogGroupArgs{
@@ -181,19 +191,21 @@ func buildLogGroupARN(region, name, accountID string) string {
 	return fmt.Sprintf("arn:aws:logs:%s:%s:log-group:%s", region, accountID, name)
 }
 
-func makeLogGroupID(ctx *pulumi.Context, args MakeLogGroupIDArgs) (LogGroupID, error) {
+type AnyOutput struct{ *pulumi.OutputState }
+
+func makeLogGroupID(ctx *pulumi.Context, args MakeLogGroupIDArgs) (pulumi.AnyOutput, error) {
 	err := args.Validate()
 	if err != nil {
-		return LogGroupID{}, err
+		return pulumi.AnyOutput{}, err
 	}
 
 	if args.ARN != nil {
-		return args.ARN.ApplyT(idFromARN).(LogGroupID), nil
+		return args.ARN.ApplyT(idFromARN).(pulumi.AnyOutput), nil
 	}
 
 	callerIdentity, err := aws.GetCallerIdentity(ctx)
 	if err != nil {
-		return LogGroupID{}, err
+		return pulumi.AnyOutput{}, err
 	}
 
 	return pulumi.All(args.Region, args.Name, pulumi.String(callerIdentity.AccountId)).ApplyT(func(args []interface{}) (LogGroupID, error) {
@@ -203,5 +215,5 @@ func makeLogGroupID(ctx *pulumi.Context, args MakeLogGroupIDArgs) (LogGroupID, e
 
 		arn := buildLogGroupARN(region, name, accountId)
 		return idFromARN(arn)
-	}).(LogGroupID), nil
+	}).(pulumi.AnyOutput), nil
 }

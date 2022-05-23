@@ -81,6 +81,23 @@ func defaultRoleWithPolicies(ctx *pulumi.Context, name string, inputs DefaultRol
 	}
 
 	args := inputs.Args
+
+	if args.MaxSessionDuration == 0 {
+		args.MaxSessionDuration = 3600
+	}
+
+	var roleName pulumi.StringPtrInput
+	var roleNamePrefix pulumi.StringPtrInput
+
+	if args.Name != "" {
+		roleName = pulumi.StringPtr(args.Name)
+	}
+
+	if args.NamePrefix != "" {
+		roleName = nil
+		roleNamePrefix = pulumi.StringPtr(args.NamePrefix)
+	}
+
 	role, err := iam.NewRole(ctx, name, &iam.RoleArgs{
 		AssumeRolePolicy:    pulumi.String(assumeRolePolicy),
 		Description:         pulumi.StringPtr(args.Description),
@@ -88,8 +105,8 @@ func defaultRoleWithPolicies(ctx *pulumi.Context, name string, inputs DefaultRol
 		InlinePolicies:      args.InlinePolicies,
 		ManagedPolicyArns:   pulumi.ToStringArray(args.ManagedPolicyArns),
 		MaxSessionDuration:  pulumi.IntPtr(args.MaxSessionDuration),
-		Name:                pulumi.StringPtr(args.Name),
-		NamePrefix:          pulumi.StringPtr(args.NamePrefix),
+		Name:                roleName,
+		NamePrefix:          roleNamePrefix,
 		Path:                pulumi.StringPtr(args.Path),
 		PermissionsBoundary: pulumi.StringPtr(args.PermissionsBoundary),
 		Tags:                pulumi.ToStringMap(args.Tags),

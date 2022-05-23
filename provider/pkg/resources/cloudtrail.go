@@ -29,6 +29,7 @@ const TrailIdentifier = "awsx-go:cloudtrail:Trail"
 type TrailArgs struct {
 	AdvancedEventSelector      cloudtrail.TrailAdvancedEventSelectorArray `pulumi:"advancedEventSelectors"`
 	CloudWatchLogsGroup        *OptionalLogGroupInputs                    `pulumi:"cloudWatchLogsGroup"`
+	CloudWatchLogsRoleArn      string                                     `pulumi:"cloudWatchLogsRoleArn"`
 	EnableLogFileValidation    bool                                       `pulumi:"enableLogFileValidation"`
 	EnableLogging              bool                                       `pulumi:"enableLogging"`
 	EventSelectors             cloudtrail.TrailEventSelectorArray         `pulumi:"eventSelectors"`
@@ -82,12 +83,31 @@ func NewTrail(ctx *pulumi.Context, name string, args *TrailArgs, opts ...pulumi.
 
 	trailOpts := append(opts, pulumi.DependsOn([]pulumi.Resource{policy}))
 
-	trail, err := cloudtrail.NewTrail(ctx, name, &cloudtrail.TrailArgs{
-		S3BucketName: bucket.Bucket.Bucket,
-		CloudWatchLogsGroupArn: logGroup.LogGroupID.ApplyT(func(logGroupID LogGroupID) string {
-			return fmt.Sprintf("%s:*", logGroupID.ARN)
-		}).(pulumi.StringPtrInput),
+	var cloudWatchLogsRoleArn pulumi.StringPtrInput
+	var cloudWatchLogsGroup pulumi.StringPtrInput
+	if args.CloudWatchLogsRoleArn != "" {
+		cloudWatchLogsRoleArn = pulumi.String(args.CloudWatchLogsRoleArn)
 
+		cloudWatchLogsGroup = logGroup.LogGroupID.ApplyT(func(x interface{}) pulumi.StringPtrOutput {
+			logGroupID := x.(LogGroupID)
+			return logGroupID.ARN.ToStringPtrOutput().ApplyT(func(arn *string) *string {
+				fmt.Println("wow result cool")
+				result := fmt.Sprintf("%s:*", *arn)
+				fmt.Println(result)
+				return &result
+			}).(pulumi.StringPtrOutput)
+		}).(pulumi.StringPtrOutput)
+	}
+
+	var trailName pulumi.StringPtrInput
+	if args.Name != "" {
+		trailName = pulumi.StringPtr(args.Name)
+	}
+
+	trail, err := cloudtrail.NewTrail(ctx, name, &cloudtrail.TrailArgs{
+		S3BucketName:               bucket.Bucket.Bucket,
+		CloudWatchLogsGroupArn:     cloudWatchLogsGroup,
+		CloudWatchLogsRoleArn:      cloudWatchLogsRoleArn,
 		AdvancedEventSelectors:     args.AdvancedEventSelector,
 		EnableLogFileValidation:    pulumi.BoolPtr(args.EnableLogFileValidation),
 		EnableLogging:              pulumi.BoolPtr(args.EnableLogging),
@@ -97,7 +117,7 @@ func NewTrail(ctx *pulumi.Context, name string, args *TrailArgs, opts ...pulumi.
 		IsMultiRegionTrail:         pulumi.BoolPtr(args.IsMultiRegionTrail),
 		IsOrganizationTrail:        pulumi.BoolPtr(args.isOrganizationTrail),
 		KmsKeyId:                   pulumi.String(args.KMSKeyID),
-		Name:                       pulumi.String(args.Name),
+		Name:                       trailName,
 		S3KeyPrefix:                pulumi.String(args.S3KeyPrefix),
 		SnsTopicName:               pulumi.String(args.SNSTopicName),
 		Tags:                       pulumi.ToStringMap(args.Tags),
@@ -121,15 +141,19 @@ func createBucketCloudTrailPolicy(ctx *pulumi.Context, name string, bucketID Buc
 
 	return s3.NewBucketPolicy(ctx, name, &s3.BucketPolicyArgs{
 		Bucket: bucketID.Name,
-		Policy: bucketID.ARN.ApplyT(func(arn string) string {
-			policy := defaultCloudTrailPolicy(arn)
-			return policy.Json
+		Policy: bucketID.ARN.ApplyT(func(arn string) (string, error) {
+			policy, err := defaultCloudTrailPolicy(ctx, arn)
+			if err != nil {
+				return "", nil
+			}
+
+			return policy.Json, nil
 		}),
 	}, opts...)
 }
 
-func defaultCloudTrailPolicy(bucketARN string) iam.GetPolicyDocumentResult {
-	return iam.GetPolicyDocumentResult{
+func defaultCloudTrailPolicy(ctx *pulumi.Context, bucketARN string) (*iam.GetPolicyDocumentResult, error) {
+	args := &iam.GetPolicyDocumentArgs{
 		Version: pulumi.StringRef("2012-10-17"),
 		Statements: []iam.GetPolicyDocumentStatement{
 			{
@@ -165,4 +189,6 @@ func defaultCloudTrailPolicy(bucketARN string) iam.GetPolicyDocumentResult {
 			},
 		},
 	}
+
+	return iam.GetPolicyDocument(ctx, args)
 }

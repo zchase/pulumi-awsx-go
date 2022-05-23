@@ -157,7 +157,7 @@ type TaskDefinitionContainerDefinitionInputs struct {
 	WorkingDirectory       string                                    `pulumi:" workingDirectory"`
 }
 
-func computeContainerDefinitions(parent pulumi.Resource, containers map[string]TaskDefinitionContainerDefinitionInputs, logGroupID *LogGroupID) []TaskDefinitionContainerDefinitionInputs {
+func computeContainerDefinitions(parent pulumi.Resource, containers map[string]TaskDefinitionContainerDefinitionInputs, logGroupID *pulumi.AnyOutput) []TaskDefinitionContainerDefinitionInputs {
 	var result []TaskDefinitionContainerDefinitionInputs
 	for containerName, container := range containers {
 		result = append(result, computeContainerDefinition(parent, containerName, container, logGroupID))
@@ -165,7 +165,7 @@ func computeContainerDefinitions(parent pulumi.Resource, containers map[string]T
 	return result
 }
 
-func computeContainerDefinition(parent pulumi.Resource, containerName string, container TaskDefinitionContainerDefinitionInputs, logGroupID *LogGroupID) TaskDefinitionContainerDefinitionInputs {
+func computeContainerDefinition(parent pulumi.Resource, containerName string, container TaskDefinitionContainerDefinitionInputs, logGroupID *pulumi.AnyOutput) TaskDefinitionContainerDefinitionInputs {
 	var resolvedMappings []TaskDefinitionPortMappingInputs
 	for _, mappingInput := range container.PortMappings {
 		containerPort := pulumi.All(mappingInput.ContainerPort, mappingInput.TargetGroup.Port, mappingInput.HostPort).ApplyT(func(args []interface{}) *int {
@@ -209,8 +209,14 @@ func computeContainerDefinition(parent pulumi.Resource, containerName string, co
 		container.LogConfiguration = &TaskDefinitionLogConfigurationInputs{
 			LogDriver: "awsLogs",
 			Options: map[string]pulumi.StringInput{
-				"awslogs-group":         logGroupID.LogGroupName,
-				"awslogs-region":        logGroupID.LogGroupRegion,
+				"awslogs-group": logGroupID.ApplyT(func(x interface{}) pulumi.StringOutput {
+					l := x.(LogGroupID)
+					return l.LogGroupName
+				}).(pulumi.StringOutput),
+				"awslogs-region": logGroupID.ApplyT(func(x interface{}) pulumi.StringOutput {
+					l := x.(LogGroupID)
+					return l.LogGroupRegion
+				}).(pulumi.StringOutput),
 				"awslogs-stream-prefix": pulumi.String(containerName),
 			},
 		}
@@ -225,13 +231,13 @@ type mappedContainerDef struct {
 	TGPort        pulumi.IntPtrOutput
 }
 
-func computeLoadBalancers(containers map[string]TaskDefinitionContainerDefinitionInputs) ecs.ServiceLoadBalancerArrayOutput {
+func computeLoadBalancers(ctx *pulumi.Context, containers map[string]TaskDefinitionContainerDefinitionInputs) pulumi.AnyOutput {
 	var mappedContainers []mappedContainerDef
 	for containerName, containerDefinition := range containers {
 		portMappings := containerDefinition.PortMappings
 
 		if len(portMappings) == 0 {
-			return ecs.ServiceLoadBalancerArrayOutput{}
+			return pulumi.AnyOutput{}
 		}
 
 		for _, mapping := range portMappings {
@@ -243,8 +249,9 @@ func computeLoadBalancers(containers map[string]TaskDefinitionContainerDefinitio
 		}
 	}
 
-	result := ecs.ServiceLoadBalancerArrayOutput{}
-	return pulumi.All(result, mappedContainers).ApplyT(func(lbs []ecs.ServiceLoadBalancerOutput, mappedContainers []mappedContainerDef) []ecs.ServiceLoadBalancerOutput {
+	result, _, _ := ctx.NewOutput()
+	return result.ApplyT(func(x interface{}) []ecs.ServiceLoadBalancerOutput {
+		lbs := x.([]ecs.ServiceLoadBalancerOutput)
 		for _, containerGroup := range mappedContainers {
 			slb := pulumi.All(containerGroup.TGArn, containerGroup.TGPort).ApplyT(func(tgArn string, tgPort int) ecs.ServiceLoadBalancer {
 				return ecs.ServiceLoadBalancer{
@@ -258,5 +265,5 @@ func computeLoadBalancers(containers map[string]TaskDefinitionContainerDefinitio
 		}
 
 		return lbs
-	}).(ecs.ServiceLoadBalancerArrayOutput)
+	}).(pulumi.AnyOutput)
 }

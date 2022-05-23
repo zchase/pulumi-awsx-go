@@ -92,13 +92,43 @@ func requiredBucket(ctx *pulumi.Context, name string, inputs *RequiredBucketInpu
 	}
 
 	bucketArgs := inputs.Args
+	if bucketArgs == nil {
+		bucketArgs = &BucketArgs{}
+	}
+
+	var accelerationStatus pulumi.StringPtrInput
+	if bucketArgs.AccelerationStatus != "" {
+		accelerationStatus = pulumi.StringPtr(bucketArgs.AccelerationStatus)
+	}
+
+	var acl pulumi.StringPtrInput
+	if bucketArgs.ACL != "" {
+		acl = pulumi.StringPtr(bucketArgs.ACL)
+	}
+
+	var requestPayer pulumi.StringPtrInput
+	if bucketArgs.RequestPayer != "" {
+		requestPayer = pulumi.StringPtr(bucketArgs.RequestPayer)
+	}
+
+	var bucketName pulumi.StringPtrInput
+	var bucketNamePrefix pulumi.StringPtrInput
+	if bucketArgs.Bucket != "" {
+		bucketName = pulumi.StringPtr(bucketArgs.Bucket)
+	}
+
+	if bucketArgs.BucketPrefix != "" {
+		bucketName = nil
+		bucketNamePrefix = pulumi.StringPtr(bucketArgs.BucketPrefix)
+	}
+
 	bucket, err := s3.NewBucket(ctx, name, &s3.BucketArgs{
 		ForceDestroy:                      pulumi.Bool(true),
-		AccelerationStatus:                pulumi.StringPtr(bucketArgs.AccelerationStatus),
-		Acl:                               pulumi.StringPtr(bucketArgs.ACL),
+		AccelerationStatus:                accelerationStatus,
+		Acl:                               acl,
 		Arn:                               pulumi.StringPtr(bucketArgs.ARN),
-		Bucket:                            pulumi.StringPtr(bucketArgs.Bucket),
-		BucketPrefix:                      pulumi.StringPtr(bucketArgs.BucketPrefix),
+		Bucket:                            bucketName,
+		BucketPrefix:                      bucketNamePrefix,
 		CorsRules:                         bucketArgs.CORSRules,
 		Grants:                            bucketArgs.Grants,
 		HostedZoneId:                      pulumi.StringPtr(bucketArgs.HostedZoneID),
@@ -107,7 +137,7 @@ func requiredBucket(ctx *pulumi.Context, name string, inputs *RequiredBucketInpu
 		ObjectLockConfiguration:           bucketArgs.ObjectLockConfiguration,
 		Policy:                            pulumi.StringPtr(bucketArgs.Policy),
 		ReplicationConfiguration:          bucketArgs.ReplicationConfiguration,
-		RequestPayer:                      pulumi.StringPtr(bucketArgs.RequestPayer),
+		RequestPayer:                      requestPayer,
 		ServerSideEncryptionConfiguration: bucketArgs.ServerSideEncryptionConfiguration,
 		Tags:                              pulumi.ToStringMap(bucketArgs.Tags),
 		Versioning:                        bucketArgs.Versioning,

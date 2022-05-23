@@ -65,6 +65,10 @@ func NewFargateTaskDefinition(ctx *pulumi.Context, name string, args *FargateTas
 
 	taskRoleName := fmt.Sprintf("%s-task", name)
 
+	if args.TaskRole.Args == nil {
+		args.TaskRole.Args = &RoleWithPolicyInputs{}
+	}
+
 	if len(args.TaskRole.Args.PolicyARNs) == 0 {
 		args.TaskRole.Args.PolicyARNs = defaultExecutionRolePolicyARNs()
 	}
@@ -82,6 +86,10 @@ func NewFargateTaskDefinition(ctx *pulumi.Context, name string, args *FargateTas
 
 	executionRoleName := fmt.Sprintf("%s-execution", name)
 
+	if args.ExecutionRole.Args == nil {
+		args.ExecutionRole.Args = &RoleWithPolicyInputs{}
+	}
+
 	if len(args.ExecutionRole.Args.PolicyARNs) == 0 {
 		args.ExecutionRole.Args.PolicyARNs = defaultExecutionRolePolicyARNs()
 	}
@@ -94,7 +102,11 @@ func NewFargateTaskDefinition(ctx *pulumi.Context, name string, args *FargateTas
 
 	containerDefinitions := computeContainerDefinitions(component, args.Containers, &dLogGroup.LogGroupID)
 
-	component.LoadBalancers = computeLoadBalancers(args.Containers)
+	computeLoadBalancers(ctx, args.Containers).ApplyT(func(x interface{}) interface{} {
+		lbs := x.(ecs.ServiceLoadBalancerArrayOutput)
+		component.LoadBalancers = lbs
+		return nil
+	})
 
 	taskDefinitionArgs, err := buildFargateTaskDefinitionArgs(ctx, name, args, containerDefinitions, taskRole.RoleARN, executionRole.RoleARN)
 	if err != nil {
@@ -144,17 +156,15 @@ func buildFargateTaskDefinitionArgs(ctx *pulumi.Context, name string, args *Farg
 		args.Family = defaultFamily
 	}
 
-	return &ecs.TaskDefinitionArgs{
+	result := &ecs.TaskDefinitionArgs{
 		ContainerDefinitions:    pulumi.String(string(containerDefJSON)),
 		Cpu:                     pulumi.StringPtr(args.CPU),
 		EphemeralStorage:        args.EphemeralStorage,
 		ExecutionRoleArn:        executionRoleARN,
 		Family:                  pulumi.String(args.Family),
 		InferenceAccelerators:   args.InferenceAccelerators,
-		IpcMode:                 pulumi.StringPtr(args.IPCMode),
 		Memory:                  pulumi.StringPtr(args.Memory),
 		NetworkMode:             pulumi.String("awsvpc"),
-		PidMode:                 pulumi.StringPtr(args.PIDMode),
 		PlacementConstraints:    args.PlacementConstraints,
 		ProxyConfiguration:      args.ProxyConfiguration,
 		RequiresCompatibilities: pulumi.ToStringArray([]string{"FARGATE"}),
@@ -163,5 +173,15 @@ func buildFargateTaskDefinitionArgs(ctx *pulumi.Context, name string, args *Farg
 		Tags:                    pulumi.ToStringMap(args.Tags),
 		TaskRoleArn:             taskRoleARN,
 		Volumes:                 args.Volumes,
-	}, nil
+	}
+
+	if args.IPCMode != "" {
+		result.IpcMode = pulumi.StringPtr(args.IPCMode)
+	}
+
+	if args.PIDMode != "" {
+		result.PidMode = pulumi.StringPtr(args.PIDMode)
+	}
+
+	return result, nil
 }

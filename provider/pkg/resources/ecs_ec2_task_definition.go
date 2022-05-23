@@ -95,7 +95,11 @@ func NewEC2TaskDefinition(ctx *pulumi.Context, name string, args *EC2TaskDefinit
 
 	containerDefinitions := computeContainerDefinitions(component, args.Containers, &dLogGroup.LogGroupID)
 
-	component.LoadBalancers = computeLoadBalancers(args.Containers)
+	computeLoadBalancers(ctx, args.Containers).ApplyT(func(x interface{}) interface{} {
+		lbs := x.(ecs.ServiceLoadBalancerArrayOutput)
+		component.LoadBalancers = lbs
+		return nil
+	})
 
 	taskDefinitionArgs, err := buildTaskDefinitionArgs(ctx, name, args, containerDefinitions, taskRole.RoleARN, executionRole.RoleARN)
 	if err != nil {

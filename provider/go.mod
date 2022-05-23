@@ -5,7 +5,6 @@ go 1.18
 require (
 	github.com/ghodss/yaml v1.0.0
 	github.com/pkg/errors v0.9.1
-	github.com/pulumi/pulumi-aws/sdk/v4 v4.38.1
 	github.com/pulumi/pulumi-aws/sdk/v5 v5.4.0
 	github.com/pulumi/pulumi/pkg/v3 v3.33.1
 	github.com/pulumi/pulumi/sdk/v3 v3.33.1
