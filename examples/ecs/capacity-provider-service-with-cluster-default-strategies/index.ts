@@ -1,5 +1,5 @@
-import * as awsx from "@pulumi/awsx";
-import * as ecs from "@pulumi/awsx/ecs";
+import * as awsx from "@pulumi/awsx-go";
+import * as ecs from "@pulumi/awsx-go/ecs";
 import * as classic from "@pulumi/awsx/classic";
 
 const vpc = classic.ec2.Vpc.getDefault();

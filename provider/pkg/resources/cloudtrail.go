@@ -91,9 +91,7 @@ func NewTrail(ctx *pulumi.Context, name string, args *TrailArgs, opts ...pulumi.
 		cloudWatchLogsGroup = logGroup.LogGroupID.ApplyT(func(x interface{}) pulumi.StringPtrOutput {
 			logGroupID := x.(LogGroupID)
 			return logGroupID.ARN.ToStringPtrOutput().ApplyT(func(arn *string) *string {
-				fmt.Println("wow result cool")
 				result := fmt.Sprintf("%s:*", *arn)
-				fmt.Println(result)
 				return &result
 			}).(pulumi.StringPtrOutput)
 		}).(pulumi.StringPtrOutput)

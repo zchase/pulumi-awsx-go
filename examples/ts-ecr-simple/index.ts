@@ -14,11 +14,11 @@
 
 import * as pulumi from "@pulumi/pulumi";
 import * as aws from "@pulumi/aws";
-import * as awsx from "@pulumi/awsx";
+import * as awsx from "@pulumi/awsx-go";
 
 const repository = new awsx.ecr.Repository("repository", {});
 
 export const image = new awsx.ecr.Image("image", {
-    repositoryUrl: repository.repository.repositoryUrl,
+    repositoryUrl: repository.url,
     path: "./app",
 }).imageUri;

@@ -13,8 +13,8 @@
 // limitations under the License.
 
 import * as pulumi from "@pulumi/pulumi";
-import * as awsx from "@pulumi/awsx";
+import * as awsx from "@pulumi/awsx-go";
 
-const defaultVpc = new awsx.vpc.DefaultVpc("default-vpc");
+const defaultVpc = new awsx.ec2.DefaultVpc("default-vpc");
 
 export const { vpcId, publicSubnetIds } = defaultVpc;

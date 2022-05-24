@@ -59,8 +59,6 @@ func getDefaultVPC(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*DefaultVP
 		switch subs := subs.(type) {
 		case []ec2.LookupSubnetResult:
 			for _, s := range subs {
-				fmt.Println(s.Id)
-
 				if s.MapPublicIpOnLaunch {
 					publicSubnetIDs = append(publicSubnetIDs, pulumi.String(s.Id).ToStringOutput())
 					continue

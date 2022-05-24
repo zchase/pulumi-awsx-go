@@ -43,11 +43,21 @@ func NewRepository(ctx *pulumi.Context, name string, args *RepositoryArgs, opts 
 
 	lowercaseName := strings.ToLower(name)
 
+	var imageTagMutability pulumi.StringPtrInput
+	if args.ImageTagMutability != "" {
+		imageTagMutability = pulumi.StringPtr(args.ImageTagMutability)
+	}
+
+	var repositoryName pulumi.StringPtrInput
+	if args.Name != "" {
+		repositoryName = pulumi.StringPtr(args.Name)
+	}
+
 	repository, err := ecr.NewRepository(ctx, lowercaseName, &ecr.RepositoryArgs{
 		EncryptionConfigurations:   args.EncryptionConfigurations,
 		ImageScanningConfiguration: args.ImageScanningConfiguration,
-		ImageTagMutability:         pulumi.String(args.ImageTagMutability),
-		Name:                       pulumi.String(args.Name),
+		ImageTagMutability:         imageTagMutability,
+		Name:                       repositoryName,
 		Tags:                       pulumi.ToStringMap(args.Tags),
 	}, opts...)
 	if err != nil {
@@ -109,22 +119,22 @@ func (l lifecyclePolicyDocument) MarshalJSON() (string, error) {
 }
 
 type policyRule struct {
-	RulePriority pulumi.IntInput     `json:"rulePriority"`
-	Description  pulumi.StringInput  `json:"description"`
-	Selection    policyRuleSelection `json:"selection"`
-	Action       policyRuleAction    `json:"action"`
+	RulePriority pulumi.IntInput     `json:"rulePriority,omitempty"`
+	Description  pulumi.StringInput  `json:"description,omitempty"`
+	Selection    policyRuleSelection `json:"selection,omitempty"`
+	Action       policyRuleAction    `json:"action,omitempty"`
 }
 
 type policyRuleSelection struct {
-	TagStatus     pulumi.StringInput      `json:"tagStatus"`
-	TagPrefixList pulumi.StringArrayInput `json:"tagPrefixList"`
-	CountType     pulumi.StringInput      `json:"countType"`
-	CountUnit     pulumi.StringPtrInput   `json:"countUnit"`
-	CountNumber   pulumi.IntInput         `json:"countNumber"`
+	TagStatus     pulumi.StringInput      `json:"tagStatus,omitempty"`
+	TagPrefixList pulumi.StringArrayInput `json:"tagPrefixList,omitempty"`
+	CountType     pulumi.StringInput      `json:"countType,omitempty"`
+	CountUnit     pulumi.StringPtrInput   `json:"countUnit,omitempty"`
+	CountNumber   pulumi.IntInput         `json:"countNumber,omitempty"`
 }
 
 type policyRuleAction struct {
-	Type pulumi.StringInput `pulumi:"type"`
+	Type pulumi.StringInput `json:"type,omitempty"`
 }
 
 func buildLifecyclePolicy(policy lifecyclePolicy) (lifecyclePolicyDocument, error) {

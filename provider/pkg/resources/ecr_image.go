@@ -15,14 +15,14 @@ import (
 const ImageIdentifier = "awsx-go:ecr:Image"
 
 type ImageArgs struct {
-	Args          map[string]string `pulumi:"args"`
-	CacheFrom     []string          `pulumi:"cacheFrom"`
-	DockerFile    string            `pulumi:"dockerfile"`
-	Env           map[string]string `pulumi:"env"`
-	ExtraOptions  []string          `pulumi:"extraOptions"`
-	Path          string            `pulumi:"path"`
-	RepositoryURL string            `pulumi:"repositoryUrl"`
-	Target        string            `pulumi:"target"`
+	Args          map[string]string   `pulumi:"args"`
+	CacheFrom     []string            `pulumi:"cacheFrom"`
+	DockerFile    string              `pulumi:"dockerfile"`
+	Env           map[string]string   `pulumi:"env"`
+	ExtraOptions  []string            `pulumi:"extraOptions"`
+	Path          string              `pulumi:"path"`
+	RepositoryURL pulumi.StringOutput `pulumi:"repositoryUrl"`
+	Target        string              `pulumi:"target"`
 }
 
 type Image struct {
@@ -42,31 +42,29 @@ func NewImage(ctx *pulumi.Context, name string, args *ImageArgs, opts ...pulumi.
 		return nil, err
 	}
 
-	imageURI, err := computeImageFromAsset(ctx, name, args, component)
+	imageURI, err := computeImageFromAsset(ctx, name, args, args.RepositoryURL, component)
 	if err != nil {
 		return nil, err
 	}
 
 	component.ImageURI = imageURI
 
+	if err := ctx.RegisterResourceOutputs(component, pulumi.Map{
+		"imageUri": imageURI,
+	}); err != nil {
+		return nil, err
+	}
+
 	return component, nil
 }
 
 type imageRepositoryCreds struct {
-	pulumi.Output
-
 	Registry pulumi.StringOutput
 	Username pulumi.StringOutput
 	Password pulumi.StringOutput
 }
 
-func computeImageFromAsset(ctx *pulumi.Context, name string, args *ImageArgs, parent pulumi.Resource) (pulumi.StringOutput, error) {
-	repoURL, err := url.Parse(fmt.Sprintf("https://%s", args.RepositoryURL))
-	if err != nil {
-		return pulumi.StringOutput{}, err
-	}
-
-	repositoryID := strings.Split(repoURL.Hostname(), ",")[0]
+func computeImageFromAsset(ctx *pulumi.Context, name string, args *ImageArgs, repositoryURL pulumi.StringOutput, parent pulumi.Resource) (pulumi.StringOutput, error) {
 	imageName := getImageName(ctx, args)
 
 	dockerBuild := do.DockerBuildArgs{
@@ -84,17 +82,25 @@ func computeImageFromAsset(ctx *pulumi.Context, name string, args *ImageArgs, pa
 		})
 	}
 
-	//var imageRepoCreds imageRepositoryCreds
-	if repositoryID == "" {
-		return pulumi.StringOutput{}, fmt.Errorf("Expected registry ID to be defined during push")
-	}
+	repoCreds := repositoryURL.ApplyT(func(repoURL string) (ecr.GetCredentialsResultOutput, error) {
+		if repoURL == "" {
+			return ecr.GetCredentialsResultOutput{}, fmt.Errorf("RepositoryURL is empty")
+		}
 
-	credentials := ecr.GetCredentialsOutput(ctx, ecr.GetCredentialsOutputArgs{
-		RegistryId: pulumi.String(repositoryID),
-	}, pulumi.Parent(parent))
+		parsedURL, err := url.Parse(fmt.Sprintf("https://%s", repoURL))
+		if err != nil {
+			return ecr.GetCredentialsResultOutput{}, err
+		}
 
-	imageRepoCreds := credentials.AuthorizationToken().ApplyT(func(authorizationToken string) (imageRepositoryCreds, error) {
-		data, err := base64.StdEncoding.DecodeString(authorizationToken)
+		repoID := strings.Split(parsedURL.Hostname(), ".")[0]
+
+		return ecr.GetCredentialsOutput(ctx, ecr.GetCredentialsOutputArgs{
+			RegistryId: pulumi.String(repoID),
+		}, pulumi.Parent(parent)), nil
+	}).(ecr.GetCredentialsResultOutput)
+
+	imageRepoCreds := repoCreds.ApplyT(func(creds ecr.GetCredentialsResult) (imageRepositoryCreds, error) {
+		data, err := base64.StdEncoding.DecodeString(creds.AuthorizationToken)
 		if err != nil {
 			return imageRepositoryCreds{}, err
 		}
@@ -105,20 +111,30 @@ func computeImageFromAsset(ctx *pulumi.Context, name string, args *ImageArgs, pa
 		}
 
 		return imageRepositoryCreds{
-			Registry: credentials.ProxyEndpoint(),
+			Registry: pulumi.String(creds.ProxyEndpoint).ToStringOutput(),
 			Username: pulumi.String(parts[0]).ToStringOutput(),
 			Password: pulumi.String(parts[1]).ToStringOutput(),
 		}, nil
-	}).(imageRepositoryCreds)
+	}).(pulumi.AnyOutput)
 
 	uniqueImageName, err := do.NewImage(ctx, name, &do.ImageArgs{
-		ImageName: pulumi.String(imageName),
-		Build:     dockerBuild,
-		SkipPush:  pulumi.Bool(false),
+		ImageName:      repositoryURL,
+		LocalImageName: pulumi.String(imageName),
+		Build:          dockerBuild,
+		SkipPush:       pulumi.Bool(false),
 		Registry: do.ImageRegistryArgs{
-			Server:   imageRepoCreds.Registry,
-			Username: imageRepoCreds.Username,
-			Password: imageRepoCreds.Password,
+			Server: imageRepoCreds.ApplyT(func(x interface{}) pulumi.StringOutput {
+				c := x.(imageRepositoryCreds)
+				return c.Registry
+			}).(pulumi.StringOutput),
+			Username: imageRepoCreds.ApplyT(func(x interface{}) pulumi.StringOutput {
+				c := x.(imageRepositoryCreds)
+				return c.Username
+			}).(pulumi.StringOutput),
+			Password: imageRepoCreds.ApplyT(func(x interface{}) pulumi.StringOutput {
+				c := x.(imageRepositoryCreds)
+				return c.Password
+			}).(pulumi.StringOutput),
 		},
 	}, pulumi.Parent(parent))
 	if err != nil {
@@ -143,5 +159,5 @@ func getImageName(ctx *pulumi.Context, inputs *ImageArgs) string {
 	}
 
 	buildSig += ctx.Stack()
-	return fmt.Sprintf("%s-container", utils.SHA1Hash(buildSig))
+	return strings.ToLower(fmt.Sprintf("%s-container", utils.SHA1Hash(buildSig)))
 }
