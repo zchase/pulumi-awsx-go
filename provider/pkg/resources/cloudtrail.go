@@ -22,6 +22,7 @@ import (
 	"github.com/pulumi/pulumi-aws/sdk/v5/go/aws/iam"
 	"github.com/pulumi/pulumi-aws/sdk/v5/go/aws/s3"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/zchase/pulumi-awsx-go/pkg/utils"
 )
 
 const TrailIdentifier = "awsx-go:cloudtrail:Trail"
@@ -88,13 +89,12 @@ func NewTrail(ctx *pulumi.Context, name string, args *TrailArgs, opts ...pulumi.
 	if args.CloudWatchLogsRoleArn != "" {
 		cloudWatchLogsRoleArn = pulumi.String(args.CloudWatchLogsRoleArn)
 
-		cloudWatchLogsGroup = logGroup.LogGroupID.ApplyT(func(x interface{}) pulumi.StringPtrOutput {
-			logGroupID := x.(LogGroupID)
+		cloudWatchLogsGroup = utils.ApplyAny(logGroup.LogGroupID, func(logGroupID LogGroupID) pulumi.StringPtrOutput {
 			return logGroupID.ARN.ToStringPtrOutput().ApplyT(func(arn *string) *string {
 				result := fmt.Sprintf("%s:*", *arn)
 				return &result
 			}).(pulumi.StringPtrOutput)
-		}).(pulumi.StringPtrOutput)
+		})
 	}
 
 	var trailName pulumi.StringPtrInput

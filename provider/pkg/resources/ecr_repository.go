@@ -75,7 +75,8 @@ func NewRepository(ctx *pulumi.Context, name string, args *RepositoryArgs, opts 
 			return nil, err
 		}
 
-		lifecycle, err := ecr.NewLifecyclePolicy(ctx, lowercaseName, &ecr.LifecyclePolicyArgs{
+		lifecyclePolicyName := fmt.Sprintf("%s-lifecycle-policy", name)
+		lifecycle, err := ecr.NewLifecyclePolicy(ctx, lifecyclePolicyName, &ecr.LifecyclePolicyArgs{
 			Repository: repository.Name,
 			Policy:     pulumi.String(policyJSON),
 		}, opts...)
@@ -88,6 +89,14 @@ func NewRepository(ctx *pulumi.Context, name string, args *RepositoryArgs, opts 
 
 	component.Repository = repository
 	component.URL = repository.RepositoryUrl
+
+	if err := ctx.RegisterResourceOutputs(component, pulumi.Map{
+		"lifecyclePolicy": component.LifecyclePolicy,
+		"repository":      component.Repository,
+		"url":             component.URL,
+	}); err != nil {
+		return nil, err
+	}
 
 	return component, nil
 }

@@ -3143,7 +3143,7 @@ language:
     moduleToPackage:
       "awsx-go": "awsxgo"
     generateResourceContainerTypes: true
-    importBasePath: github.com/pulumi/pulumi-awsx-go/sdk/go/awsx-go
+    importBasePath: github.com/zchase/pulumi-awsx-go/sdk/go/awsx-go
     internalDependencies:
       - github.com/pulumi/pulumi-docker/sdk/v3/go/docker
     liftSingleValueMethodReturns: true

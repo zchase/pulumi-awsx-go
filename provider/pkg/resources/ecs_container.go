@@ -4,6 +4,7 @@ import (
 	"github.com/pulumi/pulumi-aws/sdk/v5/go/aws/ecs"
 	"github.com/pulumi/pulumi-aws/sdk/v5/go/aws/lb"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/zchase/pulumi-awsx-go/pkg/utils"
 )
 
 type TaskDefinitionContainerDependencyInputs struct {
@@ -209,14 +210,12 @@ func computeContainerDefinition(parent pulumi.Resource, containerName string, co
 		container.LogConfiguration = &TaskDefinitionLogConfigurationInputs{
 			LogDriver: "awsLogs",
 			Options: map[string]pulumi.StringInput{
-				"awslogs-group": logGroupID.ApplyT(func(x interface{}) pulumi.StringOutput {
-					l := x.(LogGroupID)
+				"awslogs-group": utils.ApplyAny(*logGroupID, func(l LogGroupID) pulumi.StringOutput {
 					return l.LogGroupName
-				}).(pulumi.StringOutput),
-				"awslogs-region": logGroupID.ApplyT(func(x interface{}) pulumi.StringOutput {
-					l := x.(LogGroupID)
+				}),
+				"awslogs-region": utils.ApplyAny(*logGroupID, func(l LogGroupID) pulumi.StringOutput {
 					return l.LogGroupRegion
-				}).(pulumi.StringOutput),
+				}),
 				"awslogs-stream-prefix": pulumi.String(containerName),
 			},
 		}

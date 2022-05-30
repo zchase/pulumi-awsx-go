@@ -7,8 +7,8 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-awsx-go/sdk/go/awsx-go"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/zchase/pulumi-awsx-go/sdk/go/awsx-go"
 )
 
 type module struct {

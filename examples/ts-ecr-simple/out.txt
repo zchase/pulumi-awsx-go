@@ -1,0 +1,837 @@
+I0524 16:25:26.905576    8914 backend.go:420] found username for access token
+I0524 16:25:26.906509    8914 api.go:239] Making Pulumi API call: https://api.pulumi.com/api/stacks/zchase/ecr/dev
+I0524 16:25:27.041467    8914 api.go:253] Pulumi API call response code (https://api.pulumi.com/api/stacks/zchase/ecr/dev): 200 OK
+I0524 16:25:27.064999    8914 api.go:239] Making Pulumi API call: https://api.pulumi.com/api/stacks/zchase/ecr/dev/export
+I0524 16:25:27.111478    8914 api.go:253] Pulumi API call response code (https://api.pulumi.com/api/stacks/zchase/ecr/dev/export): 200 OK
+I0524 16:25:27.113156    8914 api.go:239] Making Pulumi API call: https://api.pulumi.com/api/stacks/zchase/ecr/dev/batch-decrypt
+I0524 16:25:27.144759    8914 api.go:253] Pulumi API call response code (https://api.pulumi.com/api/stacks/zchase/ecr/dev/batch-decrypt): 200 OK
+I0524 16:25:27.146244    8914 backend.go:420] found username for access token
+I0524 16:25:27.146510    8914 api.go:239] Making Pulumi API call: https://api.pulumi.com/api/stacks/zchase/ecr/dev/update
+I0524 16:25:27.219638    8914 api.go:253] Pulumi API call response code (https://api.pulumi.com/api/stacks/zchase/ecr/dev/update): 200 OK
+I0524 16:25:27.222773    8914 api.go:239] Making Pulumi API call: https://api.pulumi.com/api/stacks/zchase/ecr/dev/update/2958826b-124d-4212-a0ae-a2e9f2eeaead
+I0524 16:25:27.274156    8914 api.go:253] Pulumi API call response code (https://api.pulumi.com/api/stacks/zchase/ecr/dev/update/2958826b-124d-4212-a0ae-a2e9f2eeaead): 200 OK
+I0524 16:25:27.275309    8914 backend.go:420] found username for access token
+I0524 16:25:27.274490    8914 backend.go:950] Stack dev being updated to version 98
+I0524 16:25:27.275555    8914 api.go:239] Making Pulumi API call: https://api.pulumi.com/api/stacks/zchase/ecr/dev/update/2958826b-124d-4212-a0ae-a2e9f2eeaead/renew_lease
+I0524 16:25:27.321241    8914 api.go:253] Pulumi API call response code (https://api.pulumi.com/api/stacks/zchase/ecr/dev/update/2958826b-124d-4212-a0ae-a2e9f2eeaead/renew_lease): 200 OK
+I0524 16:25:27.321616    8914 api.go:239] Making Pulumi API call: https://api.pulumi.com/api/stacks/zchase/ecr/dev/export
+I0524 16:25:27.375163    8914 api.go:253] Pulumi API call response code (https://api.pulumi.com/api/stacks/zchase/ecr/dev/export): 200 OK
+I0524 16:25:27.376257    8914 api.go:239] Making Pulumi API call: https://api.pulumi.com/api/stacks/zchase/ecr/dev/batch-decrypt
+I0524 16:25:27.401170    8914 api.go:253] Pulumi API call response code (https://api.pulumi.com/api/stacks/zchase/ecr/dev/batch-decrypt): 200 OK
+I0524 16:25:27.402270    8914 update.go:192] *** Starting Update(preview=true) ***
+I0524 16:25:27.402726    8914 plugins.go:76] gatherPluginsFromProgram(): gathering plugins from language host
+I0524 16:25:27.403091    8914 plugins.go:1057] GetPluginPath(language, nodejs, <nil>): found on $PATH /usr/local/bin/pulumi-language-nodejs
+I0524 16:25:27.403235    8914 plugin.go:184] Launching plugin 'nodejs' from '/usr/local/bin/pulumi-language-nodejs' with args: -root=/Users/zackchase/go/src/github.com/zchase/pulumi-awsx-go/examples/ts-ecr-simple,127.0.0.1:63895
+I0524 16:25:27.423198    8914 langruntime_plugin.go:207] langhost[nodejs].GetPluginInfo() executing
+I0524 16:25:27.423720    8914 langruntime_plugin.go:115] langhost[nodejs].GetRequiredPlugins(proj=ecr,pwd=/Users/zackchase/go/src/github.com/zchase/pulumi-awsx-go/examples/ts-ecr-simple,program=.) executing
+I0524 16:25:27.526533    8914 langruntime_plugin.go:157] langhost[nodejs].GetRequiredPlugins(proj=ecr,pwd=/Users/zackchase/go/src/github.com/zchase/pulumi-awsx-go/examples/ts-ecr-simple,program=.) success: #versions=2
+I0524 16:25:27.526575    8914 plugins.go:88] gatherPluginsFromProgram(): plugin nodejs <nil> () is required by language host
+I0524 16:25:27.526599    8914 plugins.go:88] gatherPluginsFromProgram(): plugin aws 4.38.1 () is required by language host
+I0524 16:25:27.526611    8914 plugins.go:88] gatherPluginsFromProgram(): plugin awsx-go 0.0.1-alpha.1653421201+348823ad.dirty () is required by language host
+I0524 16:25:27.526625    8914 plugins.go:100] gatherPluginsFromSnapshot(): gathering plugins from snapshot
+I0524 16:25:27.526651    8914 plugins.go:109] gatherPluginsFromSnapshot(): skipping "urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev", not a provider
+I0524 16:25:27.526672    8914 plugins.go:121] gatherPluginsFromSnapshot(): plugin awsx-go 0.0.1-alpha.1653421201+348823ad.dirty is required by first-class provider "urn:pulumi:dev::ecr::pulumi:providers:awsx-go::default_0_0_1_alpha_1653421201_348823ad_dirty"
+I0524 16:25:27.526688    8914 plugins.go:109] gatherPluginsFromSnapshot(): skipping "urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository", not a provider
+I0524 16:25:27.526703    8914 plugins.go:121] gatherPluginsFromSnapshot(): plugin aws 4.38.1 is required by first-class provider "urn:pulumi:dev::ecr::pulumi:providers:aws::default"
+I0524 16:25:27.526716    8914 plugins.go:109] gatherPluginsFromSnapshot(): skipping "urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository", not a provider
+I0524 16:25:27.526724    8914 plugins.go:109] gatherPluginsFromSnapshot(): skipping "urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy", not a provider
+I0524 16:25:27.526734    8914 plugins.go:137] ensurePluginsAreInstalled(): beginning
+I0524 16:25:27.526864    8914 plugins.go:1057] GetPluginPath(resource, awsx-go, 0.0.1-alpha.1653421201+348823ad.dirty): found on $PATH /Users/zackchase/go/src/github.com/zchase/pulumi-awsx-go/bin/pulumi-resource-awsx-go
+I0524 16:25:27.526875    8914 plugins.go:142] ensurePluginsAreInstalled(): plugin awsx-go 0.0.1-alpha.1653421201+348823ad.dirty already installed
+I0524 16:25:27.526925    8914 plugins.go:1057] GetPluginPath(language, nodejs, <nil>): found on $PATH /usr/local/bin/pulumi-language-nodejs
+I0524 16:25:27.526936    8914 plugins.go:142] ensurePluginsAreInstalled(): plugin nodejs <nil> already installed
+I0524 16:25:27.527240    8914 plugins.go:1098] GetPluginPath(resource, aws, 4.38.1): enabling new plugin behavior
+I0524 16:25:27.527261    8914 plugins.go:1184] SelectCompatiblePlugin(..., aws): beginning
+I0524 16:25:27.527273    8914 plugins.go:1217] SelectCompatiblePlugin(..., aws): skipping plugin aws-4.0.0: semver mismatch
+I0524 16:25:27.527281    8914 plugins.go:1213] SelectCompatiblePlugin(..., aws): best plugin aws-4.38.1: semver match
+I0524 16:25:27.527288    8914 plugins.go:1217] SelectCompatiblePlugin(..., aws): skipping plugin aws-5.1.0: semver mismatch
+I0524 16:25:27.527294    8914 plugins.go:1217] SelectCompatiblePlugin(..., aws): skipping plugin aws-5.1.2: semver mismatch
+I0524 16:25:27.527301    8914 plugins.go:1217] SelectCompatiblePlugin(..., aws): skipping plugin aws-5.4.0: semver mismatch
+I0524 16:25:27.527306    8914 plugins.go:1226] SelectCompatiblePlugin(..., aws): selecting plugin 'aws-4.38.1': best match 
+I0524 16:25:27.527321    8914 plugins.go:1145] GetPluginPath(resource, aws, 4.38.1): found in cache at /Users/zackchase/.pulumi/plugins/resource-aws-v4.38.1/pulumi-resource-aws
+I0524 16:25:27.527328    8914 plugins.go:142] ensurePluginsAreInstalled(): plugin aws 4.38.1 already installed
+I0524 16:25:27.527335    8914 plugins.go:157] ensurePluginsAreInstalled(): completed
+I0524 16:25:27.527348    8914 plugins.go:258] computeDefaultProviderPlugins(): considering nodejs
+I0524 16:25:27.527357    8914 plugins.go:261] computeDefaultProviderPlugins(): skipping nodejs, not a resource provider
+I0524 16:25:27.527364    8914 plugins.go:258] computeDefaultProviderPlugins(): considering awsx-go-0.0.1-alpha.1653421201+348823ad.dirty
+I0524 16:25:27.527375    8914 plugins.go:289] computeDefaultProviderPlugins(): plugin awsx-go-0.0.1-alpha.1653421201+348823ad.dirty selected for package awsx-go (first seen)
+I0524 16:25:27.527383    8914 plugins.go:258] computeDefaultProviderPlugins(): considering aws-4.38.1
+I0524 16:25:27.527391    8914 plugins.go:289] computeDefaultProviderPlugins(): plugin aws-4.38.1 selected for package aws (first seen)
+I0524 16:25:27.527398    8914 plugins.go:295] computeDefaultProviderPlugins(): summary of default plugins:
+I0524 16:25:27.527417    8914 plugins.go:297]   awsx-go         = 0.0.1-alpha.1653421201+348823ad.dirty
+I0524 16:25:27.527425    8914 plugins.go:297]   aws             = 4.38.1
+I0524 16:25:27.527478    8914 registry.go:127] provider(urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev): 
+I0524 16:25:27.527590    8914 plugins.go:1057] GetPluginPath(resource, awsx-go, 0.0.1-alpha.1653421201+348823ad.dirty): found on $PATH /Users/zackchase/go/src/github.com/zchase/pulumi-awsx-go/bin/pulumi-resource-awsx-go
+I0524 16:25:27.527608    8914 plugin.go:184] Launching plugin 'awsx-go (resource)' from '/Users/zackchase/go/src/github.com/zchase/pulumi-awsx-go/bin/pulumi-resource-awsx-go' with args: 127.0.0.1:63895
+I0524 16:25:27.550190    8914 provider_plugin.go:1474] Provider[awsx-go, 0xc0002503c0].GetPluginInfo() executing
+I0524 16:25:27.550530    8914 provider_plugin.go:494] Provider[awsx-go, 0xc0002503c0].Configure() executing (#vars=1)
+I0524 16:25:27.550555    8914 rpc.go:74] Marshaling property for RPC[Provider[awsx-go, 0xc0002503c0].Configure().inputs]: version={0.0.1-alpha.1653421201+348823ad.dirty}
+I0524 16:25:27.550589    8914 registry.go:162] loaded provider urn:pulumi:dev::ecr::pulumi:providers:awsx-go::default_0_0_1_alpha_1653421201_348823ad_dirty::b38f37e4-5a2d-43c7-a347-103e25c8e96f
+I0524 16:25:27.550605    8914 registry.go:127] provider(urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository): 
+I0524 16:25:27.550969    8914 plugins.go:1098] GetPluginPath(resource, aws, 4.38.1): enabling new plugin behavior
+I0524 16:25:27.550985    8914 plugins.go:1184] SelectCompatiblePlugin(..., aws): beginning
+I0524 16:25:27.550997    8914 plugins.go:1217] SelectCompatiblePlugin(..., aws): skipping plugin aws-4.0.0: semver mismatch
+I0524 16:25:27.551004    8914 plugins.go:1213] SelectCompatiblePlugin(..., aws): best plugin aws-4.38.1: semver match
+I0524 16:25:27.551011    8914 plugins.go:1217] SelectCompatiblePlugin(..., aws): skipping plugin aws-5.1.0: semver mismatch
+I0524 16:25:27.551017    8914 plugins.go:1217] SelectCompatiblePlugin(..., aws): skipping plugin aws-5.1.2: semver mismatch
+I0524 16:25:27.551025    8914 plugins.go:1217] SelectCompatiblePlugin(..., aws): skipping plugin aws-5.4.0: semver mismatch
+I0524 16:25:27.551031    8914 plugins.go:1226] SelectCompatiblePlugin(..., aws): selecting plugin 'aws-4.38.1': best match 
+I0524 16:25:27.551046    8914 plugins.go:1145] GetPluginPath(resource, aws, 4.38.1): found in cache at /Users/zackchase/.pulumi/plugins/resource-aws-v4.38.1/pulumi-resource-aws
+I0524 16:25:27.551057    8914 plugin.go:184] Launching plugin 'aws (resource)' from '/Users/zackchase/.pulumi/plugins/resource-aws-v4.38.1/pulumi-resource-aws' with args: 127.0.0.1:63895
+I0524 16:25:27.627272    8914 provider_plugin.go:1474] Provider[aws, 0xc0005c2600].GetPluginInfo() executing
+I0524 16:25:27.627649    8914 provider_plugin.go:494] Provider[aws, 0xc0005c2600].Configure() executing (#vars=2)
+I0524 16:25:27.627677    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc0005c2600].Configure().inputs]: region={us-west-2}
+I0524 16:25:27.627689    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc0005c2600].Configure().inputs]: version={4.38.1}
+I0524 16:25:27.627702    8914 registry.go:162] loaded provider urn:pulumi:dev::ecr::pulumi:providers:aws::default::4324f6e0-5c78-40b5-8e8c-e9afd444b1e2
+I0524 16:25:27.627713    8914 registry.go:127] provider(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository): urn:pulumi:dev::ecr::pulumi:providers:aws::default::4324f6e0-5c78-40b5-8e8c-e9afd444b1e2
+I0524 16:25:27.627723    8914 registry.go:127] provider(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy): urn:pulumi:dev::ecr::pulumi:providers:aws::default::4324f6e0-5c78-40b5-8e8c-e9afd444b1e2
+I0524 16:25:27.627933    8914 step_generator.go:1118] stepGenerator.GeneratePendingDeletes(): scanning previous snapshot for pending deletes
+I0524 16:25:27.627949    8914 deployment_executor.go:474] deploymentExecutor.retirePendingDeletes(...): no pending deletions
+I0524 16:25:27.627988    8914 deployment_executor.go:255] deploymentExecutor.Execute(...): waiting for incoming events
+I0524 16:25:27.627993    8914 langruntime_plugin.go:168] langhost[nodejs].Run(pwd=/Users/zackchase/go/src/github.com/zchase/pulumi-awsx-go/examples/ts-ecr-simple,program=.,#args=0,proj=ecr,stack=dev,#config=1,dryrun=true) executing
+I0524 16:25:27.628021    8914 step_executor.go:364] StepExecutor worker(-2): worker coming online
+I0524 16:25:27.628039    8914 step_executor.go:364] StepExecutor worker(-2): worker waiting for incoming chains
+I0524 16:25:27.628772    8914 eventsink.go:59] AWS Auth provider used: "StaticProvider"
+I0524 16:25:27.628788    8914 eventsink.go:62] eventSink::Debug(<{%reset%}>AWS Auth provider used: "StaticProvider"<{%reset%}>)
+I0524 16:25:27.740406    8914 eventsink.go:59] AWS Auth provider used: "EnvProvider"
+I0524 16:25:27.740439    8914 eventsink.go:62] eventSink::Debug(<{%reset%}>AWS Auth provider used: "EnvProvider"<{%reset%}>)
+I0524 16:25:27.741157    8914 eventsink.go:59] Trying to get account information via iam:GetUser
+I0524 16:25:27.741180    8914 eventsink.go:62] eventSink::Debug(<{%reset%}>Trying to get account information via iam:GetUser<{%reset%}>)
+I0524 16:25:28.191464    8914 eventsink.go:59] Registering resource: t=pulumi:pulumi:Stack, name=ecr-dev, custom=false, remote=false
+I0524 16:25:28.191530    8914 eventsink.go:62] eventSink::Debug(<{%reset%}>Registering resource: t=pulumi:pulumi:Stack, name=ecr-dev, custom=false, remote=false<{%reset%}>)
+I0524 16:25:28.200075    8914 eventsink.go:59] RegisterResource RPC prepared: t=pulumi:pulumi:Stack, name=ecr-dev
+I0524 16:25:28.200117    8914 eventsink.go:62] eventSink::Debug(<{%reset%}>RegisterResource RPC prepared: t=pulumi:pulumi:Stack, name=ecr-dev<{%reset%}>)
+I0524 16:25:28.202715    8914 source_eval.go:1072] ResourceMonitor.RegisterResource received: t=pulumi:pulumi:Stack, name=ecr-dev, custom=false, #props=0, parent=, protect=false, provider=, deps=[], deleteBeforeReplace=<nil>, ignoreChanges=[], aliases=[], customTimeouts={0 0 0}, providers=map[], replaceOnChanges=[], retainOnDelete=false
+I0524 16:25:28.202786    8914 source_eval.go:167] EvalSourceIterator produced a registration: t=pulumi:pulumi:Stack,name=ecr-dev,#props=0
+I0524 16:25:28.202800    8914 deployment_executor.go:259] deploymentExecutor.Execute(...): incoming event (nil? false, <nil>)
+I0524 16:25:28.202810    8914 deployment_executor.go:446] deploymentExecutor.handleSingleEvent(...): received RegisterResourceEvent
+I0524 16:25:28.204078    8914 step_generator.go:636] Planner decided not to update 'urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev' after diff (same) (inputs=map[])
+I0524 16:25:28.204468    8914 step_executor.go:364] StepExecutor worker(-2): worker received chain for execution
+I0524 16:25:28.204489    8914 step_executor.go:364] StepExecutor worker(-2): worker waiting for incoming chains
+I0524 16:25:28.204511    8914 step_executor.go:364] StepExecutor worker(0): launching oneshot worker
+I0524 16:25:28.204559    8914 step_executor.go:364] StepExecutor worker(0): applying step same on urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev (preview true)
+I0524 16:25:28.204593    8914 step_executor.go:364] StepExecutor worker(0): step same on urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev retired
+I0524 16:25:28.204615    8914 source_eval.go:1162] ResourceMonitor.RegisterResource operation finished: t=pulumi:pulumi:Stack, urn=urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev, #outs=0
+I0524 16:25:28.212311    8914 eventsink.go:59] RegisterResource RPC finished: resource:ecr-dev[pulumi:pulumi:Stack]; err: null, resp: urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev,,,,
+I0524 16:25:28.212360    8914 eventsink.go:62] eventSink::Debug(<{%reset%}>RegisterResource RPC finished: resource:ecr-dev[pulumi:pulumi:Stack]; err: null, resp: urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev,,,,<{%reset%}>)
+I0524 16:25:28.224653    8914 eventsink.go:59] Trying to get account information via sts:GetCallerIdentity
+I0524 16:25:28.224711    8914 eventsink.go:62] eventSink::Debug(<{%reset%}>Trying to get account information via sts:GetCallerIdentity<{%reset%}>)
+I0524 16:25:28.789885    8914 eventsink.go:59] Running program '/Users/zackchase/go/src/github.com/zchase/pulumi-awsx-go/examples/ts-ecr-simple' in pwd '/Users/zackchase/go/src/github.com/zchase/pulumi-awsx-go/examples/ts-ecr-simple' w/ args: 
+I0524 16:25:28.789945    8914 eventsink.go:62] eventSink::Debug(<{%reset%}>Running program '/Users/zackchase/go/src/github.com/zchase/pulumi-awsx-go/examples/ts-ecr-simple' in pwd '/Users/zackchase/go/src/github.com/zchase/pulumi-awsx-go/examples/ts-ecr-simple' w/ args: <{%reset%}>)
+I0524 16:25:28.791726    8914 eventsink.go:59] Registering resource: t=awsx-go:ecr:Repository, name=repository, custom=false, remote=true
+I0524 16:25:28.791741    8914 eventsink.go:62] eventSink::Debug(<{%reset%}>Registering resource: t=awsx-go:ecr:Repository, name=repository, custom=false, remote=true<{%reset%}>)
+I0524 16:25:28.798271    8914 eventsink.go:59] RegisterResource RPC prepared: t=awsx-go:ecr:Repository, name=repository
+I0524 16:25:28.798290    8914 eventsink.go:62] eventSink::Debug(<{%reset%}>RegisterResource RPC prepared: t=awsx-go:ecr:Repository, name=repository<{%reset%}>)
+I0524 16:25:28.801480    8914 source_eval.go:345] handling default provider request for package awsx-go-0.0.1-alpha.1653421201+348823ad.dirty
+I0524 16:25:28.801541    8914 source_eval.go:403] checking if awsx-go-0.0.1-alpha.1653421201+348823ad.dirty should be denied
+I0524 16:25:28.801550    8914 source_eval.go:437] Did not find a config for 'pulumi'
+I0524 16:25:28.801572    8914 source_eval.go:293] newRegisterDefaultProviderEvent(awsx-go-0.0.1-alpha.1653421201+348823ad.dirty): using version 0.0.1-alpha.1653421201+348823ad.dirty from request
+I0524 16:25:28.801597    8914 source_eval.go:312] newRegisterDefaultProviderEvent(awsx-go-0.0.1-alpha.1653421201+348823ad.dirty): no pluginDownloadURL specified, falling back to default pluginDownloadURL
+I0524 16:25:28.801607    8914 source_eval.go:320] newRegisterDefaultProviderEvent(awsx-go-0.0.1-alpha.1653421201+348823ad.dirty): default pluginDownloadURL miss, sending empty string to engine
+I0524 16:25:28.801628    8914 source_eval.go:378] waiting for default provider for package awsx-go-0.0.1-alpha.1653421201+348823ad.dirty
+I0524 16:25:28.801637    8914 source_eval.go:167] EvalSourceIterator produced a registration: t=pulumi:providers:awsx-go,name=default_0_0_1_alpha_1653421201_348823ad_dirty,#props=1
+I0524 16:25:28.801646    8914 deployment_executor.go:259] deploymentExecutor.Execute(...): incoming event (nil? false, <nil>)
+I0524 16:25:28.801651    8914 deployment_executor.go:446] deploymentExecutor.handleSingleEvent(...): received RegisterResourceEvent
+I0524 16:25:28.801668    8914 registry.go:260] ProviderRegistry.Check(urn:pulumi:dev::ecr::pulumi:providers:awsx-go::default_0_0_1_alpha_1653421201_348823ad_dirty) executing (#olds=1,#news=1)
+I0524 16:25:28.801786    8914 plugins.go:1057] GetPluginPath(resource, awsx-go, 0.0.1-alpha.1653421201+348823ad.dirty): found on $PATH /Users/zackchase/go/src/github.com/zchase/pulumi-awsx-go/bin/pulumi-resource-awsx-go
+I0524 16:25:28.801801    8914 plugin.go:184] Launching plugin 'awsx-go (resource)' from '/Users/zackchase/go/src/github.com/zchase/pulumi-awsx-go/bin/pulumi-resource-awsx-go' with args: 127.0.0.1:63895
+I0524 16:25:28.819370    8914 provider_plugin.go:1474] Provider[awsx-go, 0xc0013ad260].GetPluginInfo() executing
+I0524 16:25:28.819687    8914 provider_plugin.go:222] Provider[awsx-go, 0xc0013ad260].CheckConfig(urn:pulumi:dev::ecr::pulumi:providers:awsx-go::default_0_0_1_alpha_1653421201_348823ad_dirty) executing (#olds=1,#news=1)
+I0524 16:25:28.819706    8914 rpc.go:74] Marshaling property for RPC[Provider[awsx-go, 0xc0013ad260].CheckConfig(urn:pulumi:dev::ecr::pulumi:providers:awsx-go::default_0_0_1_alpha_1653421201_348823ad_dirty).olds]: version={0.0.1-alpha.1653421201+348823ad.dirty}
+I0524 16:25:28.819752    8914 rpc.go:74] Marshaling property for RPC[Provider[awsx-go, 0xc0013ad260].CheckConfig(urn:pulumi:dev::ecr::pulumi:providers:awsx-go::default_0_0_1_alpha_1653421201_348823ad_dirty).news]: version={0.0.1-alpha.1653421201+348823ad.dirty}
+I0524 16:25:28.820615    8914 provider_plugin.go:254] Provider[awsx-go, 0xc0013ad260].CheckConfig(urn:pulumi:dev::ecr::pulumi:providers:awsx-go::default_0_0_1_alpha_1653421201_348823ad_dirty) unimplemented rpc: returning news as is
+I0524 16:25:28.820637    8914 registry.go:184] setProvider(urn:pulumi:dev::ecr::pulumi:providers:awsx-go::default_0_0_1_alpha_1653421201_348823ad_dirty::04da6b54-80e4-46f7-96ec-b56ff0331ba9)
+I0524 16:25:28.820657    8914 registry.go:304] ProviderRegistry.Diff(urn:pulumi:dev::ecr::pulumi:providers:awsx-go::default_0_0_1_alpha_1653421201_348823ad_dirty,b38f37e4-5a2d-43c7-a347-103e25c8e96f): executing (#olds=1,#news=1)
+I0524 16:25:28.820665    8914 registry.go:174] GetProvider(urn:pulumi:dev::ecr::pulumi:providers:awsx-go::default_0_0_1_alpha_1653421201_348823ad_dirty::04da6b54-80e4-46f7-96ec-b56ff0331ba9)
+I0524 16:25:28.820676    8914 provider_plugin.go:327] Provider[awsx-go, 0xc0013ad260].DiffConfig(urn:pulumi:dev::ecr::pulumi:providers:awsx-go::default_0_0_1_alpha_1653421201_348823ad_dirty) executing (#olds=1,#news=1)
+I0524 16:25:28.820684    8914 rpc.go:74] Marshaling property for RPC[Provider[awsx-go, 0xc0013ad260].DiffConfig(urn:pulumi:dev::ecr::pulumi:providers:awsx-go::default_0_0_1_alpha_1653421201_348823ad_dirty).olds]: version={0.0.1-alpha.1653421201+348823ad.dirty}
+I0524 16:25:28.820692    8914 rpc.go:74] Marshaling property for RPC[Provider[awsx-go, 0xc0013ad260].DiffConfig(urn:pulumi:dev::ecr::pulumi:providers:awsx-go::default_0_0_1_alpha_1653421201_348823ad_dirty).news]: version={0.0.1-alpha.1653421201+348823ad.dirty}
+I0524 16:25:28.820952    8914 provider_plugin.go:358] Provider[awsx-go, 0xc0013ad260].DiffConfig(urn:pulumi:dev::ecr::pulumi:providers:awsx-go::default_0_0_1_alpha_1653421201_348823ad_dirty) unimplemented rpc: returning DiffUnknown with no replaces
+I0524 16:25:28.820977    8914 registry.go:342] ProviderRegistry.Diff(urn:pulumi:dev::ecr::pulumi:providers:awsx-go::default_0_0_1_alpha_1653421201_348823ad_dirty,b38f37e4-5a2d-43c7-a347-103e25c8e96f): executed (1, []resource.PropertyKey(nil))
+I0524 16:25:28.820997    8914 step_generator.go:636] Planner decided not to update 'urn:pulumi:dev::ecr::pulumi:providers:awsx-go::default_0_0_1_alpha_1653421201_348823ad_dirty' after diff (same) (inputs=map[version:{0.0.1-alpha.1653421201+348823ad.dirty}])
+I0524 16:25:28.821026    8914 step_executor.go:364] StepExecutor worker(-2): worker received chain for execution
+I0524 16:25:28.821041    8914 step_executor.go:364] StepExecutor worker(-2): worker waiting for incoming chains
+I0524 16:25:28.821070    8914 step_executor.go:364] StepExecutor worker(1): launching oneshot worker
+I0524 16:25:28.821097    8914 step_executor.go:364] StepExecutor worker(1): applying step same on urn:pulumi:dev::ecr::pulumi:providers:awsx-go::default_0_0_1_alpha_1653421201_348823ad_dirty (preview true)
+I0524 16:25:28.821108    8914 registry.go:353] Same(urn:pulumi:dev::ecr::pulumi:providers:awsx-go::default_0_0_1_alpha_1653421201_348823ad_dirty::b38f37e4-5a2d-43c7-a347-103e25c8e96f)
+I0524 16:25:28.821126    8914 step_executor.go:364] StepExecutor worker(1): step same on urn:pulumi:dev::ecr::pulumi:providers:awsx-go::default_0_0_1_alpha_1653421201_348823ad_dirty retired
+I0524 16:25:28.821142    8914 source_eval.go:387] registered default provider for package awsx-go-0.0.1-alpha.1653421201+348823ad.dirty: urn:pulumi:dev::ecr::pulumi:providers:awsx-go::default_0_0_1_alpha_1653421201_348823ad_dirty
+I0524 16:25:28.821170    8914 source_eval.go:1072] ResourceMonitor.RegisterResource received: t=awsx-go:ecr:Repository, name=repository, custom=false, #props=0, parent=urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev, protect=false, provider=urn:pulumi:dev::ecr::pulumi:providers:awsx-go::default_0_0_1_alpha_1653421201_348823ad_dirty::b38f37e4-5a2d-43c7-a347-103e25c8e96f, deps=[], deleteBeforeReplace=<nil>, ignoreChanges=[], aliases=[], customTimeouts={0 0 0}, providers=map[], replaceOnChanges=[], retainOnDelete=false
+I0524 16:25:28.821220    8914 registry.go:174] GetProvider(urn:pulumi:dev::ecr::pulumi:providers:awsx-go::default_0_0_1_alpha_1653421201_348823ad_dirty::b38f37e4-5a2d-43c7-a347-103e25c8e96f)
+I0524 16:25:28.821242    8914 provider_plugin.go:1127] Provider[awsx-go, 0xc0002503c0].Construct(awsx-go:ecr:Repository, repository, urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev) executing (#inputs=0)
+I0524 16:25:28.822196    8914 source_eval.go:629] ResourceMonitor.SupportsFeature(id: resourceReferences) = true
+I0524 16:25:28.822439    8914 source_eval.go:629] ResourceMonitor.SupportsFeature(id: outputValues) = true
+I0524 16:25:28.822858    8914 source_eval.go:1072] ResourceMonitor.RegisterResource received: t=awsx-go:ecr:Repository, name=repository, custom=false, #props=0, parent=urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev, protect=false, provider=, deps=[], deleteBeforeReplace=<nil>, ignoreChanges=[], aliases=[], customTimeouts={0 0 0}, providers=map[], replaceOnChanges=[], retainOnDelete=false
+I0524 16:25:28.822903    8914 source_eval.go:167] EvalSourceIterator produced a registration: t=awsx-go:ecr:Repository,name=repository,#props=0
+I0524 16:25:28.822914    8914 deployment_executor.go:259] deploymentExecutor.Execute(...): incoming event (nil? false, <nil>)
+I0524 16:25:28.822920    8914 deployment_executor.go:446] deploymentExecutor.handleSingleEvent(...): received RegisterResourceEvent
+I0524 16:25:28.822938    8914 step_generator.go:636] Planner decided not to update 'urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository' after diff (same) (inputs=map[])
+I0524 16:25:28.822950    8914 step_executor.go:364] StepExecutor worker(-2): worker received chain for execution
+I0524 16:25:28.822959    8914 step_executor.go:364] StepExecutor worker(-2): worker waiting for incoming chains
+I0524 16:25:28.822971    8914 step_executor.go:364] StepExecutor worker(2): launching oneshot worker
+I0524 16:25:28.823015    8914 step_executor.go:364] StepExecutor worker(2): applying step same on urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository (preview true)
+I0524 16:25:28.823042    8914 step_executor.go:364] StepExecutor worker(2): step same on urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository retired
+I0524 16:25:28.823069    8914 source_eval.go:1152] stripping unknowns from RegisterResource response for urn urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository
+I0524 16:25:28.823088    8914 source_eval.go:1162] ResourceMonitor.RegisterResource operation finished: t=awsx-go:ecr:Repository, urn=urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository, #outs=0
+I0524 16:25:28.823368    8914 source_eval.go:600] parseProviderRequest(aws): semver version is the empty string
+I0524 16:25:28.823403    8914 source_eval.go:345] handling default provider request for package aws
+I0524 16:25:28.823414    8914 source_eval.go:403] checking if aws should be denied
+I0524 16:25:28.823421    8914 source_eval.go:437] Did not find a config for 'pulumi'
+I0524 16:25:28.823429    8914 source_eval.go:296] newRegisterDefaultProviderEvent(aws): no version specified, falling back to default version
+I0524 16:25:28.823435    8914 source_eval.go:299] newRegisterDefaultProviderEvent(aws): default version hit on version 4.38.1
+I0524 16:25:28.823444    8914 source_eval.go:312] newRegisterDefaultProviderEvent(aws): no pluginDownloadURL specified, falling back to default pluginDownloadURL
+I0524 16:25:28.823453    8914 source_eval.go:320] newRegisterDefaultProviderEvent(aws): default pluginDownloadURL miss, sending empty string to engine
+I0524 16:25:28.823469    8914 source_eval.go:378] waiting for default provider for package aws
+I0524 16:25:28.823479    8914 source_eval.go:167] EvalSourceIterator produced a registration: t=pulumi:providers:aws,name=default,#props=2
+I0524 16:25:28.823497    8914 deployment_executor.go:259] deploymentExecutor.Execute(...): incoming event (nil? false, <nil>)
+I0524 16:25:28.823503    8914 deployment_executor.go:446] deploymentExecutor.handleSingleEvent(...): received RegisterResourceEvent
+I0524 16:25:28.823531    8914 registry.go:260] ProviderRegistry.Check(urn:pulumi:dev::ecr::pulumi:providers:aws::default) executing (#olds=2,#news=2)
+I0524 16:25:28.823873    8914 plugins.go:1098] GetPluginPath(resource, aws, 4.38.1): enabling new plugin behavior
+I0524 16:25:28.823887    8914 plugins.go:1184] SelectCompatiblePlugin(..., aws): beginning
+I0524 16:25:28.823898    8914 plugins.go:1217] SelectCompatiblePlugin(..., aws): skipping plugin aws-4.0.0: semver mismatch
+I0524 16:25:28.823905    8914 plugins.go:1213] SelectCompatiblePlugin(..., aws): best plugin aws-4.38.1: semver match
+I0524 16:25:28.823911    8914 plugins.go:1217] SelectCompatiblePlugin(..., aws): skipping plugin aws-5.1.0: semver mismatch
+I0524 16:25:28.823918    8914 plugins.go:1217] SelectCompatiblePlugin(..., aws): skipping plugin aws-5.1.2: semver mismatch
+I0524 16:25:28.823924    8914 plugins.go:1217] SelectCompatiblePlugin(..., aws): skipping plugin aws-5.4.0: semver mismatch
+I0524 16:25:28.823932    8914 plugins.go:1226] SelectCompatiblePlugin(..., aws): selecting plugin 'aws-4.38.1': best match 
+I0524 16:25:28.823944    8914 plugins.go:1145] GetPluginPath(resource, aws, 4.38.1): found in cache at /Users/zackchase/.pulumi/plugins/resource-aws-v4.38.1/pulumi-resource-aws
+I0524 16:25:28.823954    8914 plugin.go:184] Launching plugin 'aws (resource)' from '/Users/zackchase/.pulumi/plugins/resource-aws-v4.38.1/pulumi-resource-aws' with args: 127.0.0.1:63895
+I0524 16:25:28.891143    8914 provider_plugin.go:1474] Provider[aws, 0xc0010252c0].GetPluginInfo() executing
+I0524 16:25:28.891490    8914 provider_plugin.go:222] Provider[aws, 0xc0010252c0].CheckConfig(urn:pulumi:dev::ecr::pulumi:providers:aws::default) executing (#olds=2,#news=2)
+I0524 16:25:28.891511    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc0010252c0].CheckConfig(urn:pulumi:dev::ecr::pulumi:providers:aws::default).olds]: region={us-west-2}
+I0524 16:25:28.891520    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc0010252c0].CheckConfig(urn:pulumi:dev::ecr::pulumi:providers:aws::default).olds]: version={4.38.1}
+I0524 16:25:28.891530    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc0010252c0].CheckConfig(urn:pulumi:dev::ecr::pulumi:providers:aws::default).news]: region={us-west-2}
+I0524 16:25:28.891536    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc0010252c0].CheckConfig(urn:pulumi:dev::ecr::pulumi:providers:aws::default).news]: version={4.38.1}
+I0524 16:25:28.892061    8914 provider_plugin.go:254] Provider[aws, 0xc0010252c0].CheckConfig(urn:pulumi:dev::ecr::pulumi:providers:aws::default) unimplemented rpc: returning news as is
+I0524 16:25:28.892079    8914 registry.go:184] setProvider(urn:pulumi:dev::ecr::pulumi:providers:aws::default::04da6b54-80e4-46f7-96ec-b56ff0331ba9)
+I0524 16:25:28.892097    8914 registry.go:304] ProviderRegistry.Diff(urn:pulumi:dev::ecr::pulumi:providers:aws::default,4324f6e0-5c78-40b5-8e8c-e9afd444b1e2): executing (#olds=2,#news=2)
+I0524 16:25:28.892105    8914 registry.go:174] GetProvider(urn:pulumi:dev::ecr::pulumi:providers:aws::default::04da6b54-80e4-46f7-96ec-b56ff0331ba9)
+I0524 16:25:28.892113    8914 provider_plugin.go:327] Provider[aws, 0xc0010252c0].DiffConfig(urn:pulumi:dev::ecr::pulumi:providers:aws::default) executing (#olds=2,#news=2)
+I0524 16:25:28.892121    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc0010252c0].DiffConfig(urn:pulumi:dev::ecr::pulumi:providers:aws::default).olds]: region={us-west-2}
+I0524 16:25:28.892129    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc0010252c0].DiffConfig(urn:pulumi:dev::ecr::pulumi:providers:aws::default).olds]: version={4.38.1}
+I0524 16:25:28.892135    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc0010252c0].DiffConfig(urn:pulumi:dev::ecr::pulumi:providers:aws::default).news]: region={us-west-2}
+I0524 16:25:28.892141    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc0010252c0].DiffConfig(urn:pulumi:dev::ecr::pulumi:providers:aws::default).news]: version={4.38.1}
+I0524 16:25:28.892996    8914 provider_plugin.go:358] Provider[aws, 0xc0010252c0].DiffConfig(urn:pulumi:dev::ecr::pulumi:providers:aws::default) unimplemented rpc: returning DiffUnknown with no replaces
+I0524 16:25:28.893015    8914 registry.go:342] ProviderRegistry.Diff(urn:pulumi:dev::ecr::pulumi:providers:aws::default,4324f6e0-5c78-40b5-8e8c-e9afd444b1e2): executed (1, []resource.PropertyKey(nil))
+I0524 16:25:28.893031    8914 step_generator.go:636] Planner decided not to update 'urn:pulumi:dev::ecr::pulumi:providers:aws::default' after diff (same) (inputs=map[region:{us-west-2} version:{4.38.1}])
+I0524 16:25:28.893056    8914 step_executor.go:364] StepExecutor worker(-2): worker received chain for execution
+I0524 16:25:28.893065    8914 step_executor.go:364] StepExecutor worker(-2): worker waiting for incoming chains
+I0524 16:25:28.893077    8914 step_executor.go:364] StepExecutor worker(3): launching oneshot worker
+I0524 16:25:28.893089    8914 step_executor.go:364] StepExecutor worker(3): applying step same on urn:pulumi:dev::ecr::pulumi:providers:aws::default (preview true)
+I0524 16:25:28.893095    8914 registry.go:353] Same(urn:pulumi:dev::ecr::pulumi:providers:aws::default::4324f6e0-5c78-40b5-8e8c-e9afd444b1e2)
+I0524 16:25:28.893110    8914 step_executor.go:364] StepExecutor worker(3): step same on urn:pulumi:dev::ecr::pulumi:providers:aws::default retired
+I0524 16:25:28.893124    8914 source_eval.go:387] registered default provider for package aws: urn:pulumi:dev::ecr::pulumi:providers:aws::default
+I0524 16:25:28.893144    8914 rpc.go:274] Unmarshaling property for RPC[ResourceMonitor.RegisterResource(aws:ecr/repository:Repository,repository)]: tags={map[]}
+I0524 16:25:28.893174    8914 source_eval.go:1072] ResourceMonitor.RegisterResource received: t=aws:ecr/repository:Repository, name=repository, custom=true, #props=1, parent=urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository, protect=false, provider=urn:pulumi:dev::ecr::pulumi:providers:aws::default::4324f6e0-5c78-40b5-8e8c-e9afd444b1e2, deps=[], deleteBeforeReplace=<nil>, ignoreChanges=[], aliases=[], customTimeouts={0 0 0}, providers=map[], replaceOnChanges=[], retainOnDelete=false
+I0524 16:25:28.893197    8914 source_eval.go:167] EvalSourceIterator produced a registration: t=aws:ecr/repository:Repository,name=repository,#props=1
+I0524 16:25:28.893209    8914 deployment_executor.go:259] deploymentExecutor.Execute(...): incoming event (nil? false, <nil>)
+I0524 16:25:28.893215    8914 deployment_executor.go:446] deploymentExecutor.handleSingleEvent(...): received RegisterResourceEvent
+I0524 16:25:28.893227    8914 registry.go:174] GetProvider(urn:pulumi:dev::ecr::pulumi:providers:aws::default::4324f6e0-5c78-40b5-8e8c-e9afd444b1e2)
+I0524 16:25:28.893237    8914 provider_plugin.go:570] Provider[aws, 0xc0005c2600].Check(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository) executing (#olds=4,#news=1
+I0524 16:25:28.893244    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc0005c2600].Check(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository).olds]: __defaults={[{imageTagMutability} {name}]}
+I0524 16:25:28.893259    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc0005c2600].Check(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository).olds]: imageTagMutability={MUTABLE}
+I0524 16:25:28.893267    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc0005c2600].Check(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository).olds]: name={repository-186a9a3}
+I0524 16:25:28.893274    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc0005c2600].Check(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository).olds]: tags={map[__defaults:{[]}]}
+I0524 16:25:28.893282    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc0005c2600].Check(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository).olds]: __defaults={[]}
+I0524 16:25:28.893297    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc0005c2600].Check(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository).news]: tags={map[]}
+I0524 16:25:28.893903    8914 rpc.go:274] Unmarshaling property for RPC[Provider[aws, 0xc0005c2600].Check(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository).inputs]: __defaults={[{imageTagMutability} {name}]}
+I0524 16:25:28.893920    8914 rpc.go:274] Unmarshaling property for RPC[Provider[aws, 0xc0005c2600].Check(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository).inputs]: imageTagMutability={MUTABLE}
+I0524 16:25:28.893927    8914 rpc.go:274] Unmarshaling property for RPC[Provider[aws, 0xc0005c2600].Check(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository).inputs]: name={repository-186a9a3}
+I0524 16:25:28.893933    8914 rpc.go:274] Unmarshaling property for RPC[Provider[aws, 0xc0005c2600].Check(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository).inputs]: __defaults={[]}
+I0524 16:25:28.893940    8914 rpc.go:274] Unmarshaling property for RPC[Provider[aws, 0xc0005c2600].Check(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository).inputs]: tags={map[__defaults:{[]}]}
+I0524 16:25:28.893949    8914 provider_plugin.go:643] Provider[aws, 0xc0005c2600].Check(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository) success: inputs=#4 failures=#0
+I0524 16:25:28.893958    8914 provider_plugin.go:658] Provider[aws, 0xc0005c2600].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository,repository-186a9a3): executing (#olds=11,#news=4)
+I0524 16:25:28.893967    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc0005c2600].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository,repository-186a9a3).olds]: __meta={{"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0":{"delete":1200000000000}}}
+I0524 16:25:28.893975    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc0005c2600].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository,repository-186a9a3).olds]: arn={arn:aws:ecr:us-west-2:616138583583:repository/repository-186a9a3}
+I0524 16:25:28.893987    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc0005c2600].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository,repository-186a9a3).olds]: encryptionConfigurations={[{map[encryptionType:{AES256} kmsKey:{}]}]}
+I0524 16:25:28.894001    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc0005c2600].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository,repository-186a9a3).olds]: encryptionType={AES256}
+I0524 16:25:28.894011    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc0005c2600].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository,repository-186a9a3).olds]: kmsKey={}
+I0524 16:25:28.894017    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc0005c2600].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository,repository-186a9a3).olds]: id={repository-186a9a3}
+I0524 16:25:28.894023    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc0005c2600].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository,repository-186a9a3).olds]: imageScanningConfiguration={map[scanOnPush:{false}]}
+I0524 16:25:28.894030    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc0005c2600].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository,repository-186a9a3).olds]: scanOnPush={false}
+I0524 16:25:28.894038    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc0005c2600].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository,repository-186a9a3).olds]: imageTagMutability={MUTABLE}
+I0524 16:25:28.894057    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc0005c2600].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository,repository-186a9a3).olds]: name={repository-186a9a3}
+I0524 16:25:28.894063    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc0005c2600].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository,repository-186a9a3).olds]: registryId={616138583583}
+I0524 16:25:28.894068    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc0005c2600].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository,repository-186a9a3).olds]: repositoryUrl={616138583583.dkr.ecr.us-west-2.amazonaws.com/repository-186a9a3}
+I0524 16:25:28.894076    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc0005c2600].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository,repository-186a9a3).olds]: tags={map[]}
+I0524 16:25:28.894091    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc0005c2600].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository,repository-186a9a3).olds]: tagsAll={map[]}
+I0524 16:25:28.894098    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc0005c2600].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository,repository-186a9a3).news]: __defaults={[{imageTagMutability} {name}]}
+I0524 16:25:28.894105    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc0005c2600].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository,repository-186a9a3).news]: imageTagMutability={MUTABLE}
+I0524 16:25:28.894116    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc0005c2600].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository,repository-186a9a3).news]: name={repository-186a9a3}
+I0524 16:25:28.894121    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc0005c2600].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository,repository-186a9a3).news]: tags={map[__defaults:{[]}]}
+I0524 16:25:28.894128    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc0005c2600].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository,repository-186a9a3).news]: __defaults={[]}
+I0524 16:25:28.900765    8914 provider_plugin.go:724] Provider[aws, 0xc0005c2600].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository,repository-186a9a3) success: changes=1 #replaces=[] #stables=[encryptionConfigurations name] delbefrepl=false, diffs=#[], detaileddiff=map[]
+I0524 16:25:28.900793    8914 step_generator.go:636] Planner decided not to update 'urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository' after diff (same) (inputs=map[__defaults:{[{imageTagMutability} {name}]} imageTagMutability:{MUTABLE} name:{repository-186a9a3} tags:{map[__defaults:{[]}]}])
+I0524 16:25:28.900821    8914 step_executor.go:364] StepExecutor worker(-2): worker received chain for execution
+I0524 16:25:28.900833    8914 step_executor.go:364] StepExecutor worker(-2): worker waiting for incoming chains
+I0524 16:25:28.900844    8914 step_executor.go:364] StepExecutor worker(4): launching oneshot worker
+I0524 16:25:28.900890    8914 step_executor.go:364] StepExecutor worker(4): applying step same on urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository (preview true)
+I0524 16:25:28.900924    8914 step_executor.go:364] StepExecutor worker(4): step same on urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository retired
+I0524 16:25:28.900944    8914 source_eval.go:1152] stripping unknowns from RegisterResource response for urn urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository
+I0524 16:25:28.900963    8914 source_eval.go:1162] ResourceMonitor.RegisterResource operation finished: t=aws:ecr/repository:Repository, urn=urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository, #outs=11
+I0524 16:25:28.900987    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(aws:ecr/repository:Repository,repository)]: __meta={{"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0":{"delete":1200000000000}}}
+I0524 16:25:28.900994    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(aws:ecr/repository:Repository,repository)]: arn={arn:aws:ecr:us-west-2:616138583583:repository/repository-186a9a3}
+I0524 16:25:28.901005    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(aws:ecr/repository:Repository,repository)]: encryptionConfigurations={[{map[encryptionType:{AES256} kmsKey:{}]}]}
+I0524 16:25:28.901018    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(aws:ecr/repository:Repository,repository)]: encryptionType={AES256}
+I0524 16:25:28.901024    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(aws:ecr/repository:Repository,repository)]: kmsKey={}
+I0524 16:25:28.901030    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(aws:ecr/repository:Repository,repository)]: id={repository-186a9a3}
+I0524 16:25:28.901035    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(aws:ecr/repository:Repository,repository)]: imageScanningConfiguration={map[scanOnPush:{false}]}
+I0524 16:25:28.901042    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(aws:ecr/repository:Repository,repository)]: scanOnPush={false}
+I0524 16:25:28.901048    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(aws:ecr/repository:Repository,repository)]: imageTagMutability={MUTABLE}
+I0524 16:25:28.901054    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(aws:ecr/repository:Repository,repository)]: name={repository-186a9a3}
+I0524 16:25:28.901059    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(aws:ecr/repository:Repository,repository)]: registryId={616138583583}
+I0524 16:25:28.901065    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(aws:ecr/repository:Repository,repository)]: repositoryUrl={616138583583.dkr.ecr.us-west-2.amazonaws.com/repository-186a9a3}
+I0524 16:25:28.901071    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(aws:ecr/repository:Repository,repository)]: tags={map[]}
+I0524 16:25:28.901079    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(aws:ecr/repository:Repository,repository)]: tagsAll={map[]}
+I0524 16:25:28.901650    8914 source_eval.go:600] parseProviderRequest(aws): semver version is the empty string
+I0524 16:25:28.901689    8914 source_eval.go:345] handling default provider request for package aws
+I0524 16:25:28.901696    8914 source_eval.go:403] checking if aws should be denied
+I0524 16:25:28.901706    8914 source_eval.go:437] Did not find a config for 'pulumi'
+I0524 16:25:28.901718    8914 rpc.go:274] Unmarshaling property for RPC[ResourceMonitor.RegisterResource(aws:ecr/lifecyclePolicy:LifecyclePolicy,repository-lifecycle-policy)]: policy={{"rules":[{"rulePriority":1,"description":"remove untagged images","selection":{"tagStatus":"untagged","countType":"imageCountMoreThan","countNumber":1},"action":{"type":"expire"}}]}}
+I0524 16:25:28.901732    8914 rpc.go:274] Unmarshaling property for RPC[ResourceMonitor.RegisterResource(aws:ecr/lifecyclePolicy:LifecyclePolicy,repository-lifecycle-policy)]: repository={repository-186a9a3}
+I0524 16:25:28.901749    8914 source_eval.go:1072] ResourceMonitor.RegisterResource received: t=aws:ecr/lifecyclePolicy:LifecyclePolicy, name=repository-lifecycle-policy, custom=true, #props=2, parent=urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository, protect=false, provider=urn:pulumi:dev::ecr::pulumi:providers:aws::default::4324f6e0-5c78-40b5-8e8c-e9afd444b1e2, deps=[urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository], deleteBeforeReplace=<nil>, ignoreChanges=[], aliases=[], customTimeouts={0 0 0}, providers=map[], replaceOnChanges=[], retainOnDelete=false
+I0524 16:25:28.901786    8914 source_eval.go:167] EvalSourceIterator produced a registration: t=aws:ecr/lifecyclePolicy:LifecyclePolicy,name=repository-lifecycle-policy,#props=2
+I0524 16:25:28.901800    8914 deployment_executor.go:259] deploymentExecutor.Execute(...): incoming event (nil? false, <nil>)
+I0524 16:25:28.901806    8914 deployment_executor.go:446] deploymentExecutor.handleSingleEvent(...): received RegisterResourceEvent
+I0524 16:25:28.901820    8914 registry.go:174] GetProvider(urn:pulumi:dev::ecr::pulumi:providers:aws::default::4324f6e0-5c78-40b5-8e8c-e9afd444b1e2)
+I0524 16:25:28.901831    8914 provider_plugin.go:570] Provider[aws, 0xc0005c2600].Check(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy) executing (#olds=3,#news=2
+I0524 16:25:28.901838    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc0005c2600].Check(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy).olds]: __defaults={[]}
+I0524 16:25:28.901849    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc0005c2600].Check(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy).olds]: policy={{"rules":[{"rulePriority":1,"description":"remove untagged images","selection":{"tagStatus":"untagged","countType":"imageCountMoreThan","countNumber":1},"action":{"type":"expire"}}]}}
+I0524 16:25:28.901855    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc0005c2600].Check(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy).olds]: repository={repository-186a9a3}
+I0524 16:25:28.902150    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc0005c2600].Check(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy).news]: policy={{"rules":[{"rulePriority":1,"description":"remove untagged images","selection":{"tagStatus":"untagged","countType":"imageCountMoreThan","countNumber":1},"action":{"type":"expire"}}]}}
+I0524 16:25:28.902161    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc0005c2600].Check(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy).news]: repository={repository-186a9a3}
+I0524 16:25:28.902547    8914 rpc.go:274] Unmarshaling property for RPC[Provider[aws, 0xc0005c2600].Check(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy).inputs]: __defaults={[]}
+I0524 16:25:28.902568    8914 rpc.go:274] Unmarshaling property for RPC[Provider[aws, 0xc0005c2600].Check(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy).inputs]: policy={{"rules":[{"rulePriority":1,"description":"remove untagged images","selection":{"tagStatus":"untagged","countType":"imageCountMoreThan","countNumber":1},"action":{"type":"expire"}}]}}
+I0524 16:25:28.902580    8914 rpc.go:274] Unmarshaling property for RPC[Provider[aws, 0xc0005c2600].Check(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy).inputs]: repository={repository-186a9a3}
+I0524 16:25:28.902590    8914 provider_plugin.go:643] Provider[aws, 0xc0005c2600].Check(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy) success: inputs=#3 failures=#0
+I0524 16:25:28.902601    8914 provider_plugin.go:658] Provider[aws, 0xc0005c2600].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy,repository-186a9a3): executing (#olds=4,#news=3)
+I0524 16:25:28.902610    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc0005c2600].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy,repository-186a9a3).olds]: id={repository-186a9a3}
+I0524 16:25:28.902631    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc0005c2600].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy,repository-186a9a3).olds]: policy={{"rules":[{"action":{"type":"expire"},"description":"remove untagged images","rulePriority":1,"selection":{"countNumber":1,"countType":"imageCountMoreThan","tagStatus":"untagged"}}]}}
+I0524 16:25:28.902643    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc0005c2600].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy,repository-186a9a3).olds]: registryId={616138583583}
+I0524 16:25:28.902651    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc0005c2600].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy,repository-186a9a3).olds]: repository={repository-186a9a3}
+I0524 16:25:28.902658    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc0005c2600].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy,repository-186a9a3).news]: __defaults={[]}
+I0524 16:25:28.902664    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc0005c2600].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy,repository-186a9a3).news]: policy={{"rules":[{"rulePriority":1,"description":"remove untagged images","selection":{"tagStatus":"untagged","countType":"imageCountMoreThan","countNumber":1},"action":{"type":"expire"}}]}}
+I0524 16:25:28.902670    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc0005c2600].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy,repository-186a9a3).news]: repository={repository-186a9a3}
+I0524 16:25:28.905217    8914 provider_plugin.go:724] Provider[aws, 0xc0005c2600].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy,repository-186a9a3) success: changes=1 #replaces=[] #stables=[repository policy] delbefrepl=false, diffs=#[], detaileddiff=map[]
+I0524 16:25:28.905247    8914 step_generator.go:636] Planner decided not to update 'urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy' after diff (same) (inputs=map[__defaults:{[]} policy:{{"rules":[{"rulePriority":1,"description":"remove untagged images","selection":{"tagStatus":"untagged","countType":"imageCountMoreThan","countNumber":1},"action":{"type":"expire"}}]}} repository:{repository-186a9a3}])
+I0524 16:25:28.905265    8914 step_executor.go:364] StepExecutor worker(-2): worker received chain for execution
+I0524 16:25:28.905275    8914 step_executor.go:364] StepExecutor worker(-2): worker waiting for incoming chains
+I0524 16:25:28.905288    8914 step_executor.go:364] StepExecutor worker(5): launching oneshot worker
+I0524 16:25:28.905315    8914 step_executor.go:364] StepExecutor worker(5): applying step same on urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy (preview true)
+I0524 16:25:28.905339    8914 step_executor.go:364] StepExecutor worker(5): step same on urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy retired
+I0524 16:25:28.905359    8914 source_eval.go:1152] stripping unknowns from RegisterResource response for urn urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy
+I0524 16:25:28.905376    8914 source_eval.go:1162] ResourceMonitor.RegisterResource operation finished: t=aws:ecr/lifecyclePolicy:LifecyclePolicy, urn=urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy, #outs=4
+I0524 16:25:28.905397    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(aws:ecr/lifecyclePolicy:LifecyclePolicy,repository-lifecycle-policy)]: id={repository-186a9a3}
+I0524 16:25:28.905406    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(aws:ecr/lifecyclePolicy:LifecyclePolicy,repository-lifecycle-policy)]: policy={{"rules":[{"action":{"type":"expire"},"description":"remove untagged images","rulePriority":1,"selection":{"countNumber":1,"countType":"imageCountMoreThan","tagStatus":"untagged"}}]}}
+I0524 16:25:28.905420    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(aws:ecr/lifecyclePolicy:LifecyclePolicy,repository-lifecycle-policy)]: registryId={616138583583}
+I0524 16:25:28.905426    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(aws:ecr/lifecyclePolicy:LifecyclePolicy,repository-lifecycle-policy)]: repository={repository-186a9a3}
+I0524 16:25:28.905739    8914 rpc.go:274] Unmarshaling property for RPC[ResourceMonitor.RegisterResourceOutputs(urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository)]: 4dabf18193072939515e22adb298388d={5cf8f73096256a8f31e491e813e4eb8e}
+I0524 16:25:28.905757    8914 rpc.go:274] Unmarshaling property for RPC[ResourceMonitor.RegisterResourceOutputs(urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository)]: id={repository-186a9a3}
+I0524 16:25:28.905764    8914 rpc.go:274] Unmarshaling property for RPC[ResourceMonitor.RegisterResourceOutputs(urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository)]: urn={urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy}
+I0524 16:25:28.905773    8914 rpc.go:274] Unmarshaling property for RPC[ResourceMonitor.RegisterResourceOutputs(urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository)]: lifecyclePolicy={{urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy {repository-186a9a3} }}
+I0524 16:25:28.905811    8914 rpc.go:274] Unmarshaling property for RPC[ResourceMonitor.RegisterResourceOutputs(urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository)]: 4dabf18193072939515e22adb298388d={5cf8f73096256a8f31e491e813e4eb8e}
+I0524 16:25:28.905817    8914 rpc.go:274] Unmarshaling property for RPC[ResourceMonitor.RegisterResourceOutputs(urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository)]: id={repository-186a9a3}
+I0524 16:25:28.905823    8914 rpc.go:274] Unmarshaling property for RPC[ResourceMonitor.RegisterResourceOutputs(urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository)]: urn={urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository}
+I0524 16:25:28.905830    8914 rpc.go:274] Unmarshaling property for RPC[ResourceMonitor.RegisterResourceOutputs(urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository)]: repository={{urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository {repository-186a9a3} }}
+I0524 16:25:28.905837    8914 rpc.go:274] Unmarshaling property for RPC[ResourceMonitor.RegisterResourceOutputs(urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository)]: url={616138583583.dkr.ecr.us-west-2.amazonaws.com/repository-186a9a3}
+I0524 16:25:28.905846    8914 source_eval.go:1207] ResourceMonitor.RegisterResourceOutputs received: urn=urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository, #outs=3
+I0524 16:25:28.905858    8914 source_eval.go:172] EvalSourceIterator produced a completion: urn=urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository,#outs=3
+I0524 16:25:28.905869    8914 deployment_executor.go:259] deploymentExecutor.Execute(...): incoming event (nil? false, <nil>)
+I0524 16:25:28.905877    8914 deployment_executor.go:452] deploymentExecutor.handleSingleEvent(...): received register resource outputs
+I0524 16:25:28.905886    8914 step_executor.go:364] StepExecutor worker(-1): registered resource outputs urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository: old=#3, new=#3
+I0524 16:25:28.905913    8914 source_eval.go:1231] ResourceMonitor.RegisterResourceOutputs operation finished: urn=urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository, #outs=3
+I0524 16:25:28.906277    8914 rpc.go:274] Unmarshaling property for RPC[Provider[awsx-go, 0xc0002503c0].Construct(awsx-go:ecr:Repository, repository, urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev).outputs]: 4dabf18193072939515e22adb298388d={5cf8f73096256a8f31e491e813e4eb8e}
+I0524 16:25:28.906290    8914 rpc.go:274] Unmarshaling property for RPC[Provider[awsx-go, 0xc0002503c0].Construct(awsx-go:ecr:Repository, repository, urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev).outputs]: id={repository-186a9a3}
+I0524 16:25:28.906297    8914 rpc.go:274] Unmarshaling property for RPC[Provider[awsx-go, 0xc0002503c0].Construct(awsx-go:ecr:Repository, repository, urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev).outputs]: urn={urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy}
+I0524 16:25:28.906306    8914 rpc.go:274] Unmarshaling property for RPC[Provider[awsx-go, 0xc0002503c0].Construct(awsx-go:ecr:Repository, repository, urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev).outputs]: lifecyclePolicy={{urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy {repository-186a9a3} }}
+I0524 16:25:28.906319    8914 rpc.go:274] Unmarshaling property for RPC[Provider[awsx-go, 0xc0002503c0].Construct(awsx-go:ecr:Repository, repository, urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev).outputs]: 4dabf18193072939515e22adb298388d={5cf8f73096256a8f31e491e813e4eb8e}
+I0524 16:25:28.906325    8914 rpc.go:274] Unmarshaling property for RPC[Provider[awsx-go, 0xc0002503c0].Construct(awsx-go:ecr:Repository, repository, urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev).outputs]: id={repository-186a9a3}
+I0524 16:25:28.906330    8914 rpc.go:274] Unmarshaling property for RPC[Provider[awsx-go, 0xc0002503c0].Construct(awsx-go:ecr:Repository, repository, urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev).outputs]: urn={urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository}
+I0524 16:25:28.906340    8914 rpc.go:274] Unmarshaling property for RPC[Provider[awsx-go, 0xc0002503c0].Construct(awsx-go:ecr:Repository, repository, urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev).outputs]: repository={{urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository {repository-186a9a3} }}
+I0524 16:25:28.906349    8914 rpc.go:274] Unmarshaling property for RPC[Provider[awsx-go, 0xc0002503c0].Construct(awsx-go:ecr:Repository, repository, urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev).outputs]: url={616138583583.dkr.ecr.us-west-2.amazonaws.com/repository-186a9a3}
+I0524 16:25:28.906364    8914 provider_plugin.go:1229] Provider[awsx-go, 0xc0002503c0].Construct(awsx-go:ecr:Repository, repository, urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev) success: #outputs=3
+I0524 16:25:28.906384    8914 source_eval.go:1162] ResourceMonitor.RegisterResource operation finished: t=, urn=urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository, #outs=3
+I0524 16:25:28.906391    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(awsx-go:ecr:Repository,repository)]: lifecyclePolicy={{urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy {repository-186a9a3} }}
+I0524 16:25:28.906403    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(awsx-go:ecr:Repository,repository)]: 4dabf18193072939515e22adb298388d={5cf8f73096256a8f31e491e813e4eb8e}
+I0524 16:25:28.906409    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(awsx-go:ecr:Repository,repository)]: id={repository-186a9a3}
+I0524 16:25:28.906415    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(awsx-go:ecr:Repository,repository)]: urn={urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy}
+I0524 16:25:28.906433    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(awsx-go:ecr:Repository,repository)]: repository={{urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository {repository-186a9a3} }}
+I0524 16:25:28.906441    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(awsx-go:ecr:Repository,repository)]: 4dabf18193072939515e22adb298388d={5cf8f73096256a8f31e491e813e4eb8e}
+I0524 16:25:28.906447    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(awsx-go:ecr:Repository,repository)]: id={repository-186a9a3}
+I0524 16:25:28.906452    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(awsx-go:ecr:Repository,repository)]: urn={urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository}
+I0524 16:25:28.906458    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(awsx-go:ecr:Repository,repository)]: url={616138583583.dkr.ecr.us-west-2.amazonaws.com/repository-186a9a3}
+I0524 16:25:28.939980    8914 eventsink.go:59] RegisterResource RPC finished: resource:repository[awsx-go:ecr:Repository]; err: null, resp: urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository,,lifecyclePolicy,,,,,4dabf18193072939515e22adb298388d,,,5cf8f73096256a8f31e491e813e4eb8e,id,,,repository-186a9a3,urn,,,urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy,repository,,,,,4dabf18193072939515e22adb298388d,,,5cf8f73096256a8f31e491e813e4eb8e,id,,,repository-186a9a3,urn,,,urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository,url,,,616138583583.dkr.ecr.us-west-2.amazonaws.com/repository-186a9a3,,,lifecyclePolicy,urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy,repository,urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository,url,urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository
+I0524 16:25:28.940014    8914 eventsink.go:62] eventSink::Debug(<{%reset%}>RegisterResource RPC finished: resource:repository[awsx-go:ecr:Repository]; err: null, resp: urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository,,lifecyclePolicy,,,,,4dabf18193072939515e22adb298388d,,,5cf8f73096256a8f31e491e813e4eb8e,id,,,repository-186a9a3,urn,,,urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy,repository,,,,,4dabf18193072939515e22adb298388d,,,5cf8f73096256a8f31e491e813e4eb8e,id,,,repository-186a9a3,urn,,,urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository,url,,,616138583583.dkr.ecr.us-west-2.amazonaws.com/repository-186a9a3,,,lifecyclePolicy,urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy,repository,urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository,url,urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository<{%reset%}>)
+I0524 16:25:28.939989    8914 eventsink.go:59] RegisterResourceOutputs RPC prepared: urn=urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev
+I0524 16:25:28.940072    8914 eventsink.go:62] eventSink::Debug(<{%reset%}>RegisterResourceOutputs RPC prepared: urn=urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev<{%reset%}>)
+I0524 16:25:28.940143    8914 rpc.go:274] Unmarshaling property for RPC[ResourceMonitor.RegisterResourceOutputs(urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev)]: @isPulumiResource={true}
+I0524 16:25:28.940162    8914 rpc.go:274] Unmarshaling property for RPC[ResourceMonitor.RegisterResourceOutputs(urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev)]: encryptionConfigurations=output<string>{}
+I0524 16:25:28.940187    8914 rpc.go:274] Unmarshaling property for RPC[ResourceMonitor.RegisterResourceOutputs(urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev)]: imageScanningConfiguration=output<string>{}
+I0524 16:25:28.940193    8914 rpc.go:274] Unmarshaling property for RPC[ResourceMonitor.RegisterResourceOutputs(urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev)]: imageTagMutability=output<string>{}
+I0524 16:25:28.940216    8914 rpc.go:274] Unmarshaling property for RPC[ResourceMonitor.RegisterResourceOutputs(urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev)]: lifecyclePolicy={repository-186a9a3}
+I0524 16:25:28.940223    8914 rpc.go:274] Unmarshaling property for RPC[ResourceMonitor.RegisterResourceOutputs(urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev)]: name=output<string>{}
+I0524 16:25:28.940229    8914 rpc.go:274] Unmarshaling property for RPC[ResourceMonitor.RegisterResourceOutputs(urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev)]: repository={repository-186a9a3}
+I0524 16:25:28.940235    8914 rpc.go:274] Unmarshaling property for RPC[ResourceMonitor.RegisterResourceOutputs(urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev)]: tags=output<string>{}
+I0524 16:25:28.940241    8914 rpc.go:274] Unmarshaling property for RPC[ResourceMonitor.RegisterResourceOutputs(urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev)]: url={616138583583.dkr.ecr.us-west-2.amazonaws.com/repository-186a9a3}
+I0524 16:25:28.940249    8914 rpc.go:274] Unmarshaling property for RPC[ResourceMonitor.RegisterResourceOutputs(urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev)]: urn={urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository}
+I0524 16:25:28.940260    8914 rpc.go:274] Unmarshaling property for RPC[ResourceMonitor.RegisterResourceOutputs(urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev)]: repository={map[@isPulumiResource:{true} encryptionConfigurations:output<string>{} imageScanningConfiguration:output<string>{} imageTagMutability:output<string>{} lifecyclePolicy:{repository-186a9a3} name:output<string>{} repository:{repository-186a9a3} tags:output<string>{} url:{616138583583.dkr.ecr.us-west-2.amazonaws.com/repository-186a9a3} urn:{urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository}]}
+I0524 16:25:28.940345    8914 source_eval.go:1207] ResourceMonitor.RegisterResourceOutputs received: urn=urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev, #outs=1
+I0524 16:25:28.940362    8914 source_eval.go:172] EvalSourceIterator produced a completion: urn=urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev,#outs=1
+I0524 16:25:28.940372    8914 deployment_executor.go:259] deploymentExecutor.Execute(...): incoming event (nil? false, <nil>)
+I0524 16:25:28.940379    8914 deployment_executor.go:452] deploymentExecutor.handleSingleEvent(...): received register resource outputs
+I0524 16:25:28.940388    8914 step_executor.go:364] StepExecutor worker(-1): registered resource outputs urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev: old=#1, new=#1
+I0524 16:25:28.940413    8914 source_eval.go:1231] ResourceMonitor.RegisterResourceOutputs operation finished: urn=urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev, #outs=1
+I0524 16:25:28.947147    8914 eventsink.go:59] RegisterResourceOutputs RPC finished: urn=urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev; err: null, resp: 
+I0524 16:25:28.947169    8914 eventsink.go:62] eventSink::Debug(<{%reset%}>RegisterResourceOutputs RPC finished: urn=urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev; err: null, resp: <{%reset%}>)
+I0524 16:25:28.947909    8914 eventsink.go:59] RegisterResourceOutputs RPC finished: urn=urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev; err: null, resp: 
+I0524 16:25:28.947926    8914 eventsink.go:62] eventSink::Debug(<{%reset%}>RegisterResourceOutputs RPC finished: urn=urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev; err: null, resp: <{%reset%}>)
+I0524 16:25:28.963804    8914 langruntime_plugin.go:200] langhost[nodejs].RunPlan(pwd=/Users/zackchase/go/src/github.com/zchase/pulumi-awsx-go/examples/ts-ecr-simple,program=.,...,dryrun=true) success: progerr=
+I0524 16:25:28.965272    8914 deployment_executor.go:259] deploymentExecutor.Execute(...): incoming event (nil? true, <nil>)
+I0524 16:25:28.965745    8914 deployment_executor.go:389] performDeletes(...): beginning
+I0524 16:25:28.966080    8914 step_generator.go:1172] Planner trusts dependency graph, scheduling deletions in parallel
+I0524 16:25:28.966105    8914 step_executor.go:364] StepExecutor worker(-1): StepExecutor.waitForCompletion(): waiting for worker threads to exit
+I0524 16:25:28.966122    8914 step_executor.go:364] StepExecutor worker(-2): worker received nil chain, exiting
+I0524 16:25:28.966144    8914 step_executor.go:364] StepExecutor worker(-1): StepExecutor.waitForCompletion(): worker threads all exited
+I0524 16:25:28.966156    8914 deployment_executor.go:303] deploymentExecutor.Execute(...): step executor has completed
+I0524 16:25:28.966202    8914 deployment_executor.go:161] deploymentExecutor.Execute(...): exiting provider canceller
+I0524 16:25:28.977501    8914 ignore.go:44] Explicitly ignoring and discarding error: rpc error: code = Canceled desc = grpc: the client connection is closing
+I0524 16:25:28.977551    8914 host.go:417] Error closing 'nodejs' language plugin during shutdown; ignoring: 1 error occurred:
+	* operation not permitted
+
+I0524 16:25:28.977597    8914 update.go:195] *** Update(preview=true) complete ***
+I0524 16:25:28.979862    8914 api.go:239] Making Pulumi API call: https://api.pulumi.com/api/stacks/zchase/ecr/dev/update/2958826b-124d-4212-a0ae-a2e9f2eeaead/events/batch
+I0524 16:25:29.057531    8914 api.go:253] Pulumi API call response code (https://api.pulumi.com/api/stacks/zchase/ecr/dev/update/2958826b-124d-4212-a0ae-a2e9f2eeaead/events/batch): 200 OK
+I0524 16:25:29.058757    8914 api.go:239] Making Pulumi API call: https://api.pulumi.com/api/stacks/zchase/ecr/dev/update/2958826b-124d-4212-a0ae-a2e9f2eeaead/complete
+I0524 16:25:29.129661    8914 api.go:253] Pulumi API call response code (https://api.pulumi.com/api/stacks/zchase/ecr/dev/update/2958826b-124d-4212-a0ae-a2e9f2eeaead/complete): 204 No Content
+I0524 16:25:30.707078    8914 backend.go:420] found username for access token
+I0524 16:25:30.707254    8914 api.go:239] Making Pulumi API call: https://api.pulumi.com/api/stacks/zchase/ecr/dev/update
+I0524 16:25:30.789415    8914 api.go:253] Pulumi API call response code (https://api.pulumi.com/api/stacks/zchase/ecr/dev/update): 200 OK
+I0524 16:25:30.792178    8914 api.go:239] Making Pulumi API call: https://api.pulumi.com/api/stacks/zchase/ecr/dev/update/c826b24c-5f86-414e-af2c-883a15db9130
+I0524 16:25:30.899509    8914 api.go:253] Pulumi API call response code (https://api.pulumi.com/api/stacks/zchase/ecr/dev/update/c826b24c-5f86-414e-af2c-883a15db9130): 200 OK
+I0524 16:25:30.903970    8914 backend.go:420] found username for access token
+I0524 16:25:30.900551    8914 backend.go:950] Stack dev being updated to version 98
+I0524 16:25:30.904203    8914 api.go:239] Making Pulumi API call: https://api.pulumi.com/api/stacks/zchase/ecr/dev/update/c826b24c-5f86-414e-af2c-883a15db9130/renew_lease
+I0524 16:25:30.952048    8914 api.go:253] Pulumi API call response code (https://api.pulumi.com/api/stacks/zchase/ecr/dev/update/c826b24c-5f86-414e-af2c-883a15db9130/renew_lease): 200 OK
+I0524 16:25:30.952632    8914 api.go:239] Making Pulumi API call: https://api.pulumi.com/api/stacks/zchase/ecr/dev/export
+I0524 16:25:30.994913    8914 api.go:253] Pulumi API call response code (https://api.pulumi.com/api/stacks/zchase/ecr/dev/export): 200 OK
+I0524 16:25:30.999044    8914 api.go:239] Making Pulumi API call: https://api.pulumi.com/api/stacks/zchase/ecr/dev/batch-decrypt
+I0524 16:25:31.024187    8914 api.go:253] Pulumi API call response code (https://api.pulumi.com/api/stacks/zchase/ecr/dev/batch-decrypt): 200 OK
+I0524 16:25:31.024881    8914 update.go:192] *** Starting Update(preview=false) ***
+I0524 16:25:31.025094    8914 plugins.go:76] gatherPluginsFromProgram(): gathering plugins from language host
+I0524 16:25:31.025323    8914 plugins.go:1057] GetPluginPath(language, nodejs, <nil>): found on $PATH /usr/local/bin/pulumi-language-nodejs
+I0524 16:25:31.025395    8914 plugin.go:184] Launching plugin 'nodejs' from '/usr/local/bin/pulumi-language-nodejs' with args: -root=/Users/zackchase/go/src/github.com/zchase/pulumi-awsx-go/examples/ts-ecr-simple,127.0.0.1:63920
+I0524 16:25:31.042755    8914 langruntime_plugin.go:207] langhost[nodejs].GetPluginInfo() executing
+I0524 16:25:31.043281    8914 langruntime_plugin.go:115] langhost[nodejs].GetRequiredPlugins(proj=ecr,pwd=/Users/zackchase/go/src/github.com/zchase/pulumi-awsx-go/examples/ts-ecr-simple,program=.) executing
+I0524 16:25:31.146136    8914 langruntime_plugin.go:157] langhost[nodejs].GetRequiredPlugins(proj=ecr,pwd=/Users/zackchase/go/src/github.com/zchase/pulumi-awsx-go/examples/ts-ecr-simple,program=.) success: #versions=2
+I0524 16:25:31.146167    8914 plugins.go:88] gatherPluginsFromProgram(): plugin nodejs <nil> () is required by language host
+I0524 16:25:31.146185    8914 plugins.go:88] gatherPluginsFromProgram(): plugin aws 4.38.1 () is required by language host
+I0524 16:25:31.146195    8914 plugins.go:88] gatherPluginsFromProgram(): plugin awsx-go 0.0.1-alpha.1653421201+348823ad.dirty () is required by language host
+I0524 16:25:31.146208    8914 plugins.go:100] gatherPluginsFromSnapshot(): gathering plugins from snapshot
+I0524 16:25:31.146217    8914 plugins.go:109] gatherPluginsFromSnapshot(): skipping "urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev", not a provider
+I0524 16:25:31.146230    8914 plugins.go:121] gatherPluginsFromSnapshot(): plugin awsx-go 0.0.1-alpha.1653421201+348823ad.dirty is required by first-class provider "urn:pulumi:dev::ecr::pulumi:providers:awsx-go::default_0_0_1_alpha_1653421201_348823ad_dirty"
+I0524 16:25:31.146248    8914 plugins.go:109] gatherPluginsFromSnapshot(): skipping "urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository", not a provider
+I0524 16:25:31.146261    8914 plugins.go:121] gatherPluginsFromSnapshot(): plugin aws 4.38.1 is required by first-class provider "urn:pulumi:dev::ecr::pulumi:providers:aws::default"
+I0524 16:25:31.146272    8914 plugins.go:109] gatherPluginsFromSnapshot(): skipping "urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository", not a provider
+I0524 16:25:31.146279    8914 plugins.go:109] gatherPluginsFromSnapshot(): skipping "urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy", not a provider
+I0524 16:25:31.146289    8914 plugins.go:137] ensurePluginsAreInstalled(): beginning
+I0524 16:25:31.146372    8914 plugins.go:1057] GetPluginPath(language, nodejs, <nil>): found on $PATH /usr/local/bin/pulumi-language-nodejs
+I0524 16:25:31.146384    8914 plugins.go:142] ensurePluginsAreInstalled(): plugin nodejs <nil> already installed
+I0524 16:25:31.146707    8914 plugins.go:1098] GetPluginPath(resource, aws, 4.38.1): enabling new plugin behavior
+I0524 16:25:31.146721    8914 plugins.go:1184] SelectCompatiblePlugin(..., aws): beginning
+I0524 16:25:31.146731    8914 plugins.go:1217] SelectCompatiblePlugin(..., aws): skipping plugin aws-4.0.0: semver mismatch
+I0524 16:25:31.146738    8914 plugins.go:1213] SelectCompatiblePlugin(..., aws): best plugin aws-4.38.1: semver match
+I0524 16:25:31.146745    8914 plugins.go:1217] SelectCompatiblePlugin(..., aws): skipping plugin aws-5.1.0: semver mismatch
+I0524 16:25:31.146751    8914 plugins.go:1217] SelectCompatiblePlugin(..., aws): skipping plugin aws-5.1.2: semver mismatch
+I0524 16:25:31.146757    8914 plugins.go:1217] SelectCompatiblePlugin(..., aws): skipping plugin aws-5.4.0: semver mismatch
+I0524 16:25:31.146763    8914 plugins.go:1226] SelectCompatiblePlugin(..., aws): selecting plugin 'aws-4.38.1': best match 
+I0524 16:25:31.146775    8914 plugins.go:1145] GetPluginPath(resource, aws, 4.38.1): found in cache at /Users/zackchase/.pulumi/plugins/resource-aws-v4.38.1/pulumi-resource-aws
+I0524 16:25:31.146781    8914 plugins.go:142] ensurePluginsAreInstalled(): plugin aws 4.38.1 already installed
+I0524 16:25:31.146866    8914 plugins.go:1057] GetPluginPath(resource, awsx-go, 0.0.1-alpha.1653421201+348823ad.dirty): found on $PATH /Users/zackchase/go/src/github.com/zchase/pulumi-awsx-go/bin/pulumi-resource-awsx-go
+I0524 16:25:31.146875    8914 plugins.go:142] ensurePluginsAreInstalled(): plugin awsx-go 0.0.1-alpha.1653421201+348823ad.dirty already installed
+I0524 16:25:31.146883    8914 plugins.go:157] ensurePluginsAreInstalled(): completed
+I0524 16:25:31.146894    8914 plugins.go:258] computeDefaultProviderPlugins(): considering nodejs
+I0524 16:25:31.146901    8914 plugins.go:261] computeDefaultProviderPlugins(): skipping nodejs, not a resource provider
+I0524 16:25:31.146908    8914 plugins.go:258] computeDefaultProviderPlugins(): considering awsx-go-0.0.1-alpha.1653421201+348823ad.dirty
+I0524 16:25:31.146918    8914 plugins.go:289] computeDefaultProviderPlugins(): plugin awsx-go-0.0.1-alpha.1653421201+348823ad.dirty selected for package awsx-go (first seen)
+I0524 16:25:31.146925    8914 plugins.go:258] computeDefaultProviderPlugins(): considering aws-4.38.1
+I0524 16:25:31.146933    8914 plugins.go:289] computeDefaultProviderPlugins(): plugin aws-4.38.1 selected for package aws (first seen)
+I0524 16:25:31.146940    8914 plugins.go:295] computeDefaultProviderPlugins(): summary of default plugins:
+I0524 16:25:31.146946    8914 plugins.go:297]   awsx-go         = 0.0.1-alpha.1653421201+348823ad.dirty
+I0524 16:25:31.146953    8914 plugins.go:297]   aws             = 4.38.1
+I0524 16:25:31.146988    8914 registry.go:127] provider(urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev): 
+I0524 16:25:31.147084    8914 plugins.go:1057] GetPluginPath(resource, awsx-go, 0.0.1-alpha.1653421201+348823ad.dirty): found on $PATH /Users/zackchase/go/src/github.com/zchase/pulumi-awsx-go/bin/pulumi-resource-awsx-go
+I0524 16:25:31.147100    8914 plugin.go:184] Launching plugin 'awsx-go (resource)' from '/Users/zackchase/go/src/github.com/zchase/pulumi-awsx-go/bin/pulumi-resource-awsx-go' with args: 127.0.0.1:63920
+I0524 16:25:31.168672    8914 provider_plugin.go:1474] Provider[awsx-go, 0xc001882780].GetPluginInfo() executing
+I0524 16:25:31.169010    8914 provider_plugin.go:494] Provider[awsx-go, 0xc001882780].Configure() executing (#vars=1)
+I0524 16:25:31.169037    8914 rpc.go:74] Marshaling property for RPC[Provider[awsx-go, 0xc001882780].Configure().inputs]: version={0.0.1-alpha.1653421201+348823ad.dirty}
+I0524 16:25:31.169066    8914 registry.go:162] loaded provider urn:pulumi:dev::ecr::pulumi:providers:awsx-go::default_0_0_1_alpha_1653421201_348823ad_dirty::b38f37e4-5a2d-43c7-a347-103e25c8e96f
+I0524 16:25:31.169081    8914 registry.go:127] provider(urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository): 
+I0524 16:25:31.169443    8914 plugins.go:1098] GetPluginPath(resource, aws, 4.38.1): enabling new plugin behavior
+I0524 16:25:31.169458    8914 plugins.go:1184] SelectCompatiblePlugin(..., aws): beginning
+I0524 16:25:31.169469    8914 plugins.go:1217] SelectCompatiblePlugin(..., aws): skipping plugin aws-4.0.0: semver mismatch
+I0524 16:25:31.169476    8914 plugins.go:1213] SelectCompatiblePlugin(..., aws): best plugin aws-4.38.1: semver match
+I0524 16:25:31.169483    8914 plugins.go:1217] SelectCompatiblePlugin(..., aws): skipping plugin aws-5.1.0: semver mismatch
+I0524 16:25:31.169489    8914 plugins.go:1217] SelectCompatiblePlugin(..., aws): skipping plugin aws-5.1.2: semver mismatch
+I0524 16:25:31.169496    8914 plugins.go:1217] SelectCompatiblePlugin(..., aws): skipping plugin aws-5.4.0: semver mismatch
+I0524 16:25:31.169501    8914 plugins.go:1226] SelectCompatiblePlugin(..., aws): selecting plugin 'aws-4.38.1': best match 
+I0524 16:25:31.169520    8914 plugins.go:1145] GetPluginPath(resource, aws, 4.38.1): found in cache at /Users/zackchase/.pulumi/plugins/resource-aws-v4.38.1/pulumi-resource-aws
+I0524 16:25:31.169535    8914 plugin.go:184] Launching plugin 'aws (resource)' from '/Users/zackchase/.pulumi/plugins/resource-aws-v4.38.1/pulumi-resource-aws' with args: 127.0.0.1:63920
+I0524 16:25:31.239067    8914 provider_plugin.go:1474] Provider[aws, 0xc000d368a0].GetPluginInfo() executing
+I0524 16:25:31.239456    8914 provider_plugin.go:494] Provider[aws, 0xc000d368a0].Configure() executing (#vars=2)
+I0524 16:25:31.239482    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc000d368a0].Configure().inputs]: region={us-west-2}
+I0524 16:25:31.239499    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc000d368a0].Configure().inputs]: version={4.38.1}
+I0524 16:25:31.239513    8914 registry.go:162] loaded provider urn:pulumi:dev::ecr::pulumi:providers:aws::default::4324f6e0-5c78-40b5-8e8c-e9afd444b1e2
+I0524 16:25:31.239524    8914 registry.go:127] provider(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository): urn:pulumi:dev::ecr::pulumi:providers:aws::default::4324f6e0-5c78-40b5-8e8c-e9afd444b1e2
+I0524 16:25:31.239531    8914 registry.go:127] provider(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy): urn:pulumi:dev::ecr::pulumi:providers:aws::default::4324f6e0-5c78-40b5-8e8c-e9afd444b1e2
+I0524 16:25:31.239725    8914 step_generator.go:1118] stepGenerator.GeneratePendingDeletes(): scanning previous snapshot for pending deletes
+I0524 16:25:31.239753    8914 deployment_executor.go:474] deploymentExecutor.retirePendingDeletes(...): no pending deletions
+I0524 16:25:31.239771    8914 deployment_executor.go:255] deploymentExecutor.Execute(...): waiting for incoming events
+I0524 16:25:31.239788    8914 langruntime_plugin.go:168] langhost[nodejs].Run(pwd=/Users/zackchase/go/src/github.com/zchase/pulumi-awsx-go/examples/ts-ecr-simple,program=.,#args=0,proj=ecr,stack=dev,#config=1,dryrun=false) executing
+I0524 16:25:31.239809    8914 step_executor.go:364] StepExecutor worker(-2): worker coming online
+I0524 16:25:31.239844    8914 step_executor.go:364] StepExecutor worker(-2): worker waiting for incoming chains
+I0524 16:25:31.240570    8914 eventsink.go:59] AWS Auth provider used: "StaticProvider"
+I0524 16:25:31.240596    8914 eventsink.go:62] eventSink::Debug(<{%reset%}>AWS Auth provider used: "StaticProvider"<{%reset%}>)
+I0524 16:25:31.351051    8914 eventsink.go:59] AWS Auth provider used: "EnvProvider"
+I0524 16:25:31.351080    8914 eventsink.go:62] eventSink::Debug(<{%reset%}>AWS Auth provider used: "EnvProvider"<{%reset%}>)
+I0524 16:25:31.351721    8914 eventsink.go:59] Trying to get account information via iam:GetUser
+I0524 16:25:31.351742    8914 eventsink.go:62] eventSink::Debug(<{%reset%}>Trying to get account information via iam:GetUser<{%reset%}>)
+I0524 16:25:31.805727    8914 eventsink.go:59] Registering resource: t=pulumi:pulumi:Stack, name=ecr-dev, custom=false, remote=false
+I0524 16:25:31.805752    8914 eventsink.go:62] eventSink::Debug(<{%reset%}>Registering resource: t=pulumi:pulumi:Stack, name=ecr-dev, custom=false, remote=false<{%reset%}>)
+I0524 16:25:31.813797    8914 eventsink.go:59] RegisterResource RPC prepared: t=pulumi:pulumi:Stack, name=ecr-dev
+I0524 16:25:31.813816    8914 eventsink.go:62] eventSink::Debug(<{%reset%}>RegisterResource RPC prepared: t=pulumi:pulumi:Stack, name=ecr-dev<{%reset%}>)
+I0524 16:25:31.815656    8914 source_eval.go:1072] ResourceMonitor.RegisterResource received: t=pulumi:pulumi:Stack, name=ecr-dev, custom=false, #props=0, parent=, protect=false, provider=, deps=[], deleteBeforeReplace=<nil>, ignoreChanges=[], aliases=[], customTimeouts={0 0 0}, providers=map[], replaceOnChanges=[], retainOnDelete=false
+I0524 16:25:31.815774    8914 source_eval.go:167] EvalSourceIterator produced a registration: t=pulumi:pulumi:Stack,name=ecr-dev,#props=0
+I0524 16:25:31.815795    8914 deployment_executor.go:259] deploymentExecutor.Execute(...): incoming event (nil? false, <nil>)
+I0524 16:25:31.815800    8914 deployment_executor.go:446] deploymentExecutor.handleSingleEvent(...): received RegisterResourceEvent
+I0524 16:25:31.815834    8914 step_generator.go:636] Planner decided not to update 'urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev' after diff (same) (inputs=map[])
+I0524 16:25:31.815846    8914 step_executor.go:364] StepExecutor worker(-2): worker received chain for execution
+I0524 16:25:31.815853    8914 step_executor.go:364] StepExecutor worker(-2): worker waiting for incoming chains
+I0524 16:25:31.815862    8914 step_executor.go:364] StepExecutor worker(0): launching oneshot worker
+I0524 16:25:31.815895    8914 snapshot.go:130] SnapshotManager: Beginning mutation for step `same` on resource `urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev`
+I0524 16:25:31.815904    8914 step_executor.go:364] StepExecutor worker(0): applying step same on urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev (preview false)
+I0524 16:25:31.815913    8914 snapshot.go:272] SnapshotManager: sameSnapshotMutation.End(..., true)
+I0524 16:25:31.815930    8914 snapshot.go:524] Marked old state snapshot as done: urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev
+I0524 16:25:31.815949    8914 snapshot.go:533] Appended new state snapshot to be written: urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev
+I0524 16:25:31.816005    8914 snapshot.go:264] SnapshotManager: mustWrite() false
+I0524 16:25:31.816010    8914 snapshot.go:294] SnapshotManager: sameSnapshotMutation.End() eliding write
+I0524 16:25:31.816019    8914 step_executor.go:364] StepExecutor worker(0): step same on urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev retired
+I0524 16:25:31.816036    8914 source_eval.go:1162] ResourceMonitor.RegisterResource operation finished: t=pulumi:pulumi:Stack, urn=urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev, #outs=0
+I0524 16:25:31.823345    8914 eventsink.go:59] RegisterResource RPC finished: resource:ecr-dev[pulumi:pulumi:Stack]; err: null, resp: urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev,,,,
+I0524 16:25:31.823384    8914 eventsink.go:62] eventSink::Debug(<{%reset%}>RegisterResource RPC finished: resource:ecr-dev[pulumi:pulumi:Stack]; err: null, resp: urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev,,,,<{%reset%}>)
+I0524 16:25:31.825330    8914 eventsink.go:59] Trying to get account information via sts:GetCallerIdentity
+I0524 16:25:31.825369    8914 eventsink.go:62] eventSink::Debug(<{%reset%}>Trying to get account information via sts:GetCallerIdentity<{%reset%}>)
+I0524 16:25:32.360597    8914 eventsink.go:59] Running program '/Users/zackchase/go/src/github.com/zchase/pulumi-awsx-go/examples/ts-ecr-simple' in pwd '/Users/zackchase/go/src/github.com/zchase/pulumi-awsx-go/examples/ts-ecr-simple' w/ args: 
+I0524 16:25:32.360649    8914 eventsink.go:62] eventSink::Debug(<{%reset%}>Running program '/Users/zackchase/go/src/github.com/zchase/pulumi-awsx-go/examples/ts-ecr-simple' in pwd '/Users/zackchase/go/src/github.com/zchase/pulumi-awsx-go/examples/ts-ecr-simple' w/ args: <{%reset%}>)
+I0524 16:25:32.362507    8914 eventsink.go:59] Registering resource: t=awsx-go:ecr:Repository, name=repository, custom=false, remote=true
+I0524 16:25:32.362541    8914 eventsink.go:62] eventSink::Debug(<{%reset%}>Registering resource: t=awsx-go:ecr:Repository, name=repository, custom=false, remote=true<{%reset%}>)
+I0524 16:25:32.369058    8914 eventsink.go:59] RegisterResource RPC prepared: t=awsx-go:ecr:Repository, name=repository
+I0524 16:25:32.369073    8914 eventsink.go:62] eventSink::Debug(<{%reset%}>RegisterResource RPC prepared: t=awsx-go:ecr:Repository, name=repository<{%reset%}>)
+I0524 16:25:32.370742    8914 source_eval.go:345] handling default provider request for package awsx-go-0.0.1-alpha.1653421201+348823ad.dirty
+I0524 16:25:32.370787    8914 source_eval.go:403] checking if awsx-go-0.0.1-alpha.1653421201+348823ad.dirty should be denied
+I0524 16:25:32.370808    8914 source_eval.go:437] Did not find a config for 'pulumi'
+I0524 16:25:32.370814    8914 source_eval.go:293] newRegisterDefaultProviderEvent(awsx-go-0.0.1-alpha.1653421201+348823ad.dirty): using version 0.0.1-alpha.1653421201+348823ad.dirty from request
+I0524 16:25:32.370871    8914 source_eval.go:312] newRegisterDefaultProviderEvent(awsx-go-0.0.1-alpha.1653421201+348823ad.dirty): no pluginDownloadURL specified, falling back to default pluginDownloadURL
+I0524 16:25:32.370879    8914 source_eval.go:320] newRegisterDefaultProviderEvent(awsx-go-0.0.1-alpha.1653421201+348823ad.dirty): default pluginDownloadURL miss, sending empty string to engine
+I0524 16:25:32.370900    8914 source_eval.go:378] waiting for default provider for package awsx-go-0.0.1-alpha.1653421201+348823ad.dirty
+I0524 16:25:32.370909    8914 source_eval.go:167] EvalSourceIterator produced a registration: t=pulumi:providers:awsx-go,name=default_0_0_1_alpha_1653421201_348823ad_dirty,#props=1
+I0524 16:25:32.370920    8914 deployment_executor.go:259] deploymentExecutor.Execute(...): incoming event (nil? false, <nil>)
+I0524 16:25:32.370925    8914 deployment_executor.go:446] deploymentExecutor.handleSingleEvent(...): received RegisterResourceEvent
+I0524 16:25:32.370941    8914 registry.go:260] ProviderRegistry.Check(urn:pulumi:dev::ecr::pulumi:providers:awsx-go::default_0_0_1_alpha_1653421201_348823ad_dirty) executing (#olds=1,#news=1)
+I0524 16:25:32.371065    8914 plugins.go:1057] GetPluginPath(resource, awsx-go, 0.0.1-alpha.1653421201+348823ad.dirty): found on $PATH /Users/zackchase/go/src/github.com/zchase/pulumi-awsx-go/bin/pulumi-resource-awsx-go
+I0524 16:25:32.371079    8914 plugin.go:184] Launching plugin 'awsx-go (resource)' from '/Users/zackchase/go/src/github.com/zchase/pulumi-awsx-go/bin/pulumi-resource-awsx-go' with args: 127.0.0.1:63920
+I0524 16:25:32.388249    8914 provider_plugin.go:1474] Provider[awsx-go, 0xc001069140].GetPluginInfo() executing
+I0524 16:25:32.388568    8914 provider_plugin.go:222] Provider[awsx-go, 0xc001069140].CheckConfig(urn:pulumi:dev::ecr::pulumi:providers:awsx-go::default_0_0_1_alpha_1653421201_348823ad_dirty) executing (#olds=1,#news=1)
+I0524 16:25:32.388588    8914 rpc.go:74] Marshaling property for RPC[Provider[awsx-go, 0xc001069140].CheckConfig(urn:pulumi:dev::ecr::pulumi:providers:awsx-go::default_0_0_1_alpha_1653421201_348823ad_dirty).olds]: version={0.0.1-alpha.1653421201+348823ad.dirty}
+I0524 16:25:32.388632    8914 rpc.go:74] Marshaling property for RPC[Provider[awsx-go, 0xc001069140].CheckConfig(urn:pulumi:dev::ecr::pulumi:providers:awsx-go::default_0_0_1_alpha_1653421201_348823ad_dirty).news]: version={0.0.1-alpha.1653421201+348823ad.dirty}
+I0524 16:25:32.389076    8914 provider_plugin.go:254] Provider[awsx-go, 0xc001069140].CheckConfig(urn:pulumi:dev::ecr::pulumi:providers:awsx-go::default_0_0_1_alpha_1653421201_348823ad_dirty) unimplemented rpc: returning news as is
+I0524 16:25:32.389100    8914 registry.go:184] setProvider(urn:pulumi:dev::ecr::pulumi:providers:awsx-go::default_0_0_1_alpha_1653421201_348823ad_dirty::04da6b54-80e4-46f7-96ec-b56ff0331ba9)
+I0524 16:25:32.389117    8914 registry.go:304] ProviderRegistry.Diff(urn:pulumi:dev::ecr::pulumi:providers:awsx-go::default_0_0_1_alpha_1653421201_348823ad_dirty,b38f37e4-5a2d-43c7-a347-103e25c8e96f): executing (#olds=1,#news=1)
+I0524 16:25:32.389124    8914 registry.go:174] GetProvider(urn:pulumi:dev::ecr::pulumi:providers:awsx-go::default_0_0_1_alpha_1653421201_348823ad_dirty::04da6b54-80e4-46f7-96ec-b56ff0331ba9)
+I0524 16:25:32.389131    8914 provider_plugin.go:327] Provider[awsx-go, 0xc001069140].DiffConfig(urn:pulumi:dev::ecr::pulumi:providers:awsx-go::default_0_0_1_alpha_1653421201_348823ad_dirty) executing (#olds=1,#news=1)
+I0524 16:25:32.389139    8914 rpc.go:74] Marshaling property for RPC[Provider[awsx-go, 0xc001069140].DiffConfig(urn:pulumi:dev::ecr::pulumi:providers:awsx-go::default_0_0_1_alpha_1653421201_348823ad_dirty).olds]: version={0.0.1-alpha.1653421201+348823ad.dirty}
+I0524 16:25:32.389146    8914 rpc.go:74] Marshaling property for RPC[Provider[awsx-go, 0xc001069140].DiffConfig(urn:pulumi:dev::ecr::pulumi:providers:awsx-go::default_0_0_1_alpha_1653421201_348823ad_dirty).news]: version={0.0.1-alpha.1653421201+348823ad.dirty}
+I0524 16:25:32.389392    8914 provider_plugin.go:358] Provider[awsx-go, 0xc001069140].DiffConfig(urn:pulumi:dev::ecr::pulumi:providers:awsx-go::default_0_0_1_alpha_1653421201_348823ad_dirty) unimplemented rpc: returning DiffUnknown with no replaces
+I0524 16:25:32.389414    8914 registry.go:342] ProviderRegistry.Diff(urn:pulumi:dev::ecr::pulumi:providers:awsx-go::default_0_0_1_alpha_1653421201_348823ad_dirty,b38f37e4-5a2d-43c7-a347-103e25c8e96f): executed (1, []resource.PropertyKey(nil))
+I0524 16:25:32.389430    8914 step_generator.go:636] Planner decided not to update 'urn:pulumi:dev::ecr::pulumi:providers:awsx-go::default_0_0_1_alpha_1653421201_348823ad_dirty' after diff (same) (inputs=map[version:{0.0.1-alpha.1653421201+348823ad.dirty}])
+I0524 16:25:32.389455    8914 step_executor.go:364] StepExecutor worker(-2): worker received chain for execution
+I0524 16:25:32.389466    8914 step_executor.go:364] StepExecutor worker(-2): worker waiting for incoming chains
+I0524 16:25:32.389481    8914 step_executor.go:364] StepExecutor worker(1): launching oneshot worker
+I0524 16:25:32.389499    8914 snapshot.go:130] SnapshotManager: Beginning mutation for step `same` on resource `urn:pulumi:dev::ecr::pulumi:providers:awsx-go::default_0_0_1_alpha_1653421201_348823ad_dirty`
+I0524 16:25:32.389520    8914 step_executor.go:364] StepExecutor worker(1): applying step same on urn:pulumi:dev::ecr::pulumi:providers:awsx-go::default_0_0_1_alpha_1653421201_348823ad_dirty (preview false)
+I0524 16:25:32.389529    8914 registry.go:353] Same(urn:pulumi:dev::ecr::pulumi:providers:awsx-go::default_0_0_1_alpha_1653421201_348823ad_dirty::b38f37e4-5a2d-43c7-a347-103e25c8e96f)
+I0524 16:25:32.389543    8914 snapshot.go:272] SnapshotManager: sameSnapshotMutation.End(..., true)
+I0524 16:25:32.389558    8914 snapshot.go:524] Marked old state snapshot as done: urn:pulumi:dev::ecr::pulumi:providers:awsx-go::default_0_0_1_alpha_1653421201_348823ad_dirty
+I0524 16:25:32.389565    8914 snapshot.go:533] Appended new state snapshot to be written: urn:pulumi:dev::ecr::pulumi:providers:awsx-go::default_0_0_1_alpha_1653421201_348823ad_dirty
+I0524 16:25:32.389574    8914 snapshot.go:264] SnapshotManager: mustWrite() false
+I0524 16:25:32.389600    8914 snapshot.go:294] SnapshotManager: sameSnapshotMutation.End() eliding write
+I0524 16:25:32.389610    8914 step_executor.go:364] StepExecutor worker(1): step same on urn:pulumi:dev::ecr::pulumi:providers:awsx-go::default_0_0_1_alpha_1653421201_348823ad_dirty retired
+I0524 16:25:32.389625    8914 source_eval.go:387] registered default provider for package awsx-go-0.0.1-alpha.1653421201+348823ad.dirty: urn:pulumi:dev::ecr::pulumi:providers:awsx-go::default_0_0_1_alpha_1653421201_348823ad_dirty
+I0524 16:25:32.389653    8914 source_eval.go:1072] ResourceMonitor.RegisterResource received: t=awsx-go:ecr:Repository, name=repository, custom=false, #props=0, parent=urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev, protect=false, provider=urn:pulumi:dev::ecr::pulumi:providers:awsx-go::default_0_0_1_alpha_1653421201_348823ad_dirty::b38f37e4-5a2d-43c7-a347-103e25c8e96f, deps=[], deleteBeforeReplace=<nil>, ignoreChanges=[], aliases=[], customTimeouts={0 0 0}, providers=map[], replaceOnChanges=[], retainOnDelete=false
+I0524 16:25:32.389692    8914 registry.go:174] GetProvider(urn:pulumi:dev::ecr::pulumi:providers:awsx-go::default_0_0_1_alpha_1653421201_348823ad_dirty::b38f37e4-5a2d-43c7-a347-103e25c8e96f)
+I0524 16:25:32.389705    8914 provider_plugin.go:1127] Provider[awsx-go, 0xc001882780].Construct(awsx-go:ecr:Repository, repository, urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev) executing (#inputs=0)
+I0524 16:25:32.390597    8914 source_eval.go:629] ResourceMonitor.SupportsFeature(id: resourceReferences) = true
+I0524 16:25:32.390788    8914 source_eval.go:629] ResourceMonitor.SupportsFeature(id: outputValues) = true
+I0524 16:25:32.391206    8914 source_eval.go:1072] ResourceMonitor.RegisterResource received: t=awsx-go:ecr:Repository, name=repository, custom=false, #props=0, parent=urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev, protect=false, provider=, deps=[], deleteBeforeReplace=<nil>, ignoreChanges=[], aliases=[], customTimeouts={0 0 0}, providers=map[], replaceOnChanges=[], retainOnDelete=false
+I0524 16:25:32.391256    8914 source_eval.go:167] EvalSourceIterator produced a registration: t=awsx-go:ecr:Repository,name=repository,#props=0
+I0524 16:25:32.391271    8914 deployment_executor.go:259] deploymentExecutor.Execute(...): incoming event (nil? false, <nil>)
+I0524 16:25:32.391277    8914 deployment_executor.go:446] deploymentExecutor.handleSingleEvent(...): received RegisterResourceEvent
+I0524 16:25:32.391298    8914 step_generator.go:636] Planner decided not to update 'urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository' after diff (same) (inputs=map[])
+I0524 16:25:32.391312    8914 step_executor.go:364] StepExecutor worker(-2): worker received chain for execution
+I0524 16:25:32.391320    8914 step_executor.go:364] StepExecutor worker(-2): worker waiting for incoming chains
+I0524 16:25:32.391332    8914 step_executor.go:364] StepExecutor worker(2): launching oneshot worker
+I0524 16:25:32.391370    8914 snapshot.go:130] SnapshotManager: Beginning mutation for step `same` on resource `urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository`
+I0524 16:25:32.391379    8914 step_executor.go:364] StepExecutor worker(2): applying step same on urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository (preview false)
+I0524 16:25:32.391389    8914 snapshot.go:272] SnapshotManager: sameSnapshotMutation.End(..., true)
+I0524 16:25:32.391399    8914 snapshot.go:524] Marked old state snapshot as done: urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository
+I0524 16:25:32.391405    8914 snapshot.go:533] Appended new state snapshot to be written: urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository
+I0524 16:25:32.391416    8914 snapshot.go:264] SnapshotManager: mustWrite() false
+I0524 16:25:32.391421    8914 snapshot.go:294] SnapshotManager: sameSnapshotMutation.End() eliding write
+I0524 16:25:32.391430    8914 step_executor.go:364] StepExecutor worker(2): step same on urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository retired
+I0524 16:25:32.391449    8914 source_eval.go:1152] stripping unknowns from RegisterResource response for urn urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository
+I0524 16:25:32.391465    8914 source_eval.go:1162] ResourceMonitor.RegisterResource operation finished: t=awsx-go:ecr:Repository, urn=urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository, #outs=0
+I0524 16:25:32.391711    8914 source_eval.go:600] parseProviderRequest(aws): semver version is the empty string
+I0524 16:25:32.391737    8914 source_eval.go:345] handling default provider request for package aws
+I0524 16:25:32.391745    8914 source_eval.go:403] checking if aws should be denied
+I0524 16:25:32.391752    8914 source_eval.go:437] Did not find a config for 'pulumi'
+I0524 16:25:32.391763    8914 source_eval.go:296] newRegisterDefaultProviderEvent(aws): no version specified, falling back to default version
+I0524 16:25:32.391770    8914 source_eval.go:299] newRegisterDefaultProviderEvent(aws): default version hit on version 4.38.1
+I0524 16:25:32.391779    8914 source_eval.go:312] newRegisterDefaultProviderEvent(aws): no pluginDownloadURL specified, falling back to default pluginDownloadURL
+I0524 16:25:32.391787    8914 source_eval.go:320] newRegisterDefaultProviderEvent(aws): default pluginDownloadURL miss, sending empty string to engine
+I0524 16:25:32.391826    8914 source_eval.go:378] waiting for default provider for package aws
+I0524 16:25:32.391835    8914 source_eval.go:167] EvalSourceIterator produced a registration: t=pulumi:providers:aws,name=default,#props=2
+I0524 16:25:32.391856    8914 deployment_executor.go:259] deploymentExecutor.Execute(...): incoming event (nil? false, <nil>)
+I0524 16:25:32.391863    8914 deployment_executor.go:446] deploymentExecutor.handleSingleEvent(...): received RegisterResourceEvent
+I0524 16:25:32.391878    8914 registry.go:260] ProviderRegistry.Check(urn:pulumi:dev::ecr::pulumi:providers:aws::default) executing (#olds=2,#news=2)
+I0524 16:25:32.392215    8914 plugins.go:1098] GetPluginPath(resource, aws, 4.38.1): enabling new plugin behavior
+I0524 16:25:32.392230    8914 plugins.go:1184] SelectCompatiblePlugin(..., aws): beginning
+I0524 16:25:32.392240    8914 plugins.go:1217] SelectCompatiblePlugin(..., aws): skipping plugin aws-4.0.0: semver mismatch
+I0524 16:25:32.392247    8914 plugins.go:1213] SelectCompatiblePlugin(..., aws): best plugin aws-4.38.1: semver match
+I0524 16:25:32.392253    8914 plugins.go:1217] SelectCompatiblePlugin(..., aws): skipping plugin aws-5.1.0: semver mismatch
+I0524 16:25:32.392264    8914 plugins.go:1217] SelectCompatiblePlugin(..., aws): skipping plugin aws-5.1.2: semver mismatch
+I0524 16:25:32.392272    8914 plugins.go:1217] SelectCompatiblePlugin(..., aws): skipping plugin aws-5.4.0: semver mismatch
+I0524 16:25:32.392278    8914 plugins.go:1226] SelectCompatiblePlugin(..., aws): selecting plugin 'aws-4.38.1': best match 
+I0524 16:25:32.392291    8914 plugins.go:1145] GetPluginPath(resource, aws, 4.38.1): found in cache at /Users/zackchase/.pulumi/plugins/resource-aws-v4.38.1/pulumi-resource-aws
+I0524 16:25:32.392300    8914 plugin.go:184] Launching plugin 'aws (resource)' from '/Users/zackchase/.pulumi/plugins/resource-aws-v4.38.1/pulumi-resource-aws' with args: 127.0.0.1:63920
+I0524 16:25:32.459853    8914 provider_plugin.go:1474] Provider[aws, 0xc000d1f800].GetPluginInfo() executing
+I0524 16:25:32.460244    8914 provider_plugin.go:222] Provider[aws, 0xc000d1f800].CheckConfig(urn:pulumi:dev::ecr::pulumi:providers:aws::default) executing (#olds=2,#news=2)
+I0524 16:25:32.460267    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc000d1f800].CheckConfig(urn:pulumi:dev::ecr::pulumi:providers:aws::default).olds]: region={us-west-2}
+I0524 16:25:32.460280    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc000d1f800].CheckConfig(urn:pulumi:dev::ecr::pulumi:providers:aws::default).olds]: version={4.38.1}
+I0524 16:25:32.460288    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc000d1f800].CheckConfig(urn:pulumi:dev::ecr::pulumi:providers:aws::default).news]: region={us-west-2}
+I0524 16:25:32.460301    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc000d1f800].CheckConfig(urn:pulumi:dev::ecr::pulumi:providers:aws::default).news]: version={4.38.1}
+I0524 16:25:32.460884    8914 provider_plugin.go:254] Provider[aws, 0xc000d1f800].CheckConfig(urn:pulumi:dev::ecr::pulumi:providers:aws::default) unimplemented rpc: returning news as is
+I0524 16:25:32.460904    8914 registry.go:184] setProvider(urn:pulumi:dev::ecr::pulumi:providers:aws::default::04da6b54-80e4-46f7-96ec-b56ff0331ba9)
+I0524 16:25:32.460921    8914 registry.go:304] ProviderRegistry.Diff(urn:pulumi:dev::ecr::pulumi:providers:aws::default,4324f6e0-5c78-40b5-8e8c-e9afd444b1e2): executing (#olds=2,#news=2)
+I0524 16:25:32.460928    8914 registry.go:174] GetProvider(urn:pulumi:dev::ecr::pulumi:providers:aws::default::04da6b54-80e4-46f7-96ec-b56ff0331ba9)
+I0524 16:25:32.460937    8914 provider_plugin.go:327] Provider[aws, 0xc000d1f800].DiffConfig(urn:pulumi:dev::ecr::pulumi:providers:aws::default) executing (#olds=2,#news=2)
+I0524 16:25:32.460946    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc000d1f800].DiffConfig(urn:pulumi:dev::ecr::pulumi:providers:aws::default).olds]: region={us-west-2}
+I0524 16:25:32.460953    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc000d1f800].DiffConfig(urn:pulumi:dev::ecr::pulumi:providers:aws::default).olds]: version={4.38.1}
+I0524 16:25:32.460961    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc000d1f800].DiffConfig(urn:pulumi:dev::ecr::pulumi:providers:aws::default).news]: region={us-west-2}
+I0524 16:25:32.460967    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc000d1f800].DiffConfig(urn:pulumi:dev::ecr::pulumi:providers:aws::default).news]: version={4.38.1}
+I0524 16:25:32.461241    8914 provider_plugin.go:358] Provider[aws, 0xc000d1f800].DiffConfig(urn:pulumi:dev::ecr::pulumi:providers:aws::default) unimplemented rpc: returning DiffUnknown with no replaces
+I0524 16:25:32.461259    8914 registry.go:342] ProviderRegistry.Diff(urn:pulumi:dev::ecr::pulumi:providers:aws::default,4324f6e0-5c78-40b5-8e8c-e9afd444b1e2): executed (1, []resource.PropertyKey(nil))
+I0524 16:25:32.461274    8914 step_generator.go:636] Planner decided not to update 'urn:pulumi:dev::ecr::pulumi:providers:aws::default' after diff (same) (inputs=map[region:{us-west-2} version:{4.38.1}])
+I0524 16:25:32.461300    8914 step_executor.go:364] StepExecutor worker(-2): worker received chain for execution
+I0524 16:25:32.461312    8914 step_executor.go:364] StepExecutor worker(-2): worker waiting for incoming chains
+I0524 16:25:32.461329    8914 step_executor.go:364] StepExecutor worker(3): launching oneshot worker
+I0524 16:25:32.461353    8914 snapshot.go:130] SnapshotManager: Beginning mutation for step `same` on resource `urn:pulumi:dev::ecr::pulumi:providers:aws::default`
+I0524 16:25:32.461365    8914 step_executor.go:364] StepExecutor worker(3): applying step same on urn:pulumi:dev::ecr::pulumi:providers:aws::default (preview false)
+I0524 16:25:32.461372    8914 registry.go:353] Same(urn:pulumi:dev::ecr::pulumi:providers:aws::default::4324f6e0-5c78-40b5-8e8c-e9afd444b1e2)
+I0524 16:25:32.461389    8914 snapshot.go:272] SnapshotManager: sameSnapshotMutation.End(..., true)
+I0524 16:25:32.461405    8914 snapshot.go:524] Marked old state snapshot as done: urn:pulumi:dev::ecr::pulumi:providers:aws::default
+I0524 16:25:32.461412    8914 snapshot.go:533] Appended new state snapshot to be written: urn:pulumi:dev::ecr::pulumi:providers:aws::default
+I0524 16:25:32.461424    8914 snapshot.go:264] SnapshotManager: mustWrite() false
+I0524 16:25:32.461430    8914 snapshot.go:294] SnapshotManager: sameSnapshotMutation.End() eliding write
+I0524 16:25:32.461440    8914 step_executor.go:364] StepExecutor worker(3): step same on urn:pulumi:dev::ecr::pulumi:providers:aws::default retired
+I0524 16:25:32.461456    8914 source_eval.go:387] registered default provider for package aws: urn:pulumi:dev::ecr::pulumi:providers:aws::default
+I0524 16:25:32.461476    8914 rpc.go:274] Unmarshaling property for RPC[ResourceMonitor.RegisterResource(aws:ecr/repository:Repository,repository)]: tags={map[]}
+I0524 16:25:32.461505    8914 source_eval.go:1072] ResourceMonitor.RegisterResource received: t=aws:ecr/repository:Repository, name=repository, custom=true, #props=1, parent=urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository, protect=false, provider=urn:pulumi:dev::ecr::pulumi:providers:aws::default::4324f6e0-5c78-40b5-8e8c-e9afd444b1e2, deps=[], deleteBeforeReplace=<nil>, ignoreChanges=[], aliases=[], customTimeouts={0 0 0}, providers=map[], replaceOnChanges=[], retainOnDelete=false
+I0524 16:25:32.461531    8914 source_eval.go:167] EvalSourceIterator produced a registration: t=aws:ecr/repository:Repository,name=repository,#props=1
+I0524 16:25:32.461548    8914 deployment_executor.go:259] deploymentExecutor.Execute(...): incoming event (nil? false, <nil>)
+I0524 16:25:32.461554    8914 deployment_executor.go:446] deploymentExecutor.handleSingleEvent(...): received RegisterResourceEvent
+I0524 16:25:32.461569    8914 registry.go:174] GetProvider(urn:pulumi:dev::ecr::pulumi:providers:aws::default::4324f6e0-5c78-40b5-8e8c-e9afd444b1e2)
+I0524 16:25:32.461580    8914 provider_plugin.go:570] Provider[aws, 0xc000d368a0].Check(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository) executing (#olds=4,#news=1
+I0524 16:25:32.461588    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc000d368a0].Check(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository).olds]: __defaults={[{imageTagMutability} {name}]}
+I0524 16:25:32.461610    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc000d368a0].Check(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository).olds]: imageTagMutability={MUTABLE}
+I0524 16:25:32.461616    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc000d368a0].Check(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository).olds]: name={repository-186a9a3}
+I0524 16:25:32.461621    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc000d368a0].Check(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository).olds]: tags={map[__defaults:{[]}]}
+I0524 16:25:32.461629    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc000d368a0].Check(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository).olds]: __defaults={[]}
+I0524 16:25:32.461636    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc000d368a0].Check(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository).news]: tags={map[]}
+I0524 16:25:32.462146    8914 rpc.go:274] Unmarshaling property for RPC[Provider[aws, 0xc000d368a0].Check(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository).inputs]: __defaults={[{imageTagMutability} {name}]}
+I0524 16:25:32.462171    8914 rpc.go:274] Unmarshaling property for RPC[Provider[aws, 0xc000d368a0].Check(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository).inputs]: imageTagMutability={MUTABLE}
+I0524 16:25:32.462179    8914 rpc.go:274] Unmarshaling property for RPC[Provider[aws, 0xc000d368a0].Check(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository).inputs]: name={repository-186a9a3}
+I0524 16:25:32.462186    8914 rpc.go:274] Unmarshaling property for RPC[Provider[aws, 0xc000d368a0].Check(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository).inputs]: __defaults={[]}
+I0524 16:25:32.462193    8914 rpc.go:274] Unmarshaling property for RPC[Provider[aws, 0xc000d368a0].Check(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository).inputs]: tags={map[__defaults:{[]}]}
+I0524 16:25:32.462204    8914 provider_plugin.go:643] Provider[aws, 0xc000d368a0].Check(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository) success: inputs=#4 failures=#0
+I0524 16:25:32.462213    8914 provider_plugin.go:658] Provider[aws, 0xc000d368a0].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository,repository-186a9a3): executing (#olds=11,#news=4)
+I0524 16:25:32.462222    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc000d368a0].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository,repository-186a9a3).olds]: __meta={{"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0":{"delete":1200000000000}}}
+I0524 16:25:32.462229    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc000d368a0].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository,repository-186a9a3).olds]: arn={arn:aws:ecr:us-west-2:616138583583:repository/repository-186a9a3}
+I0524 16:25:32.462238    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc000d368a0].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository,repository-186a9a3).olds]: encryptionConfigurations={[{map[encryptionType:{AES256} kmsKey:{}]}]}
+I0524 16:25:32.462253    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc000d368a0].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository,repository-186a9a3).olds]: encryptionType={AES256}
+I0524 16:25:32.462262    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc000d368a0].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository,repository-186a9a3).olds]: kmsKey={}
+I0524 16:25:32.462268    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc000d368a0].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository,repository-186a9a3).olds]: id={repository-186a9a3}
+I0524 16:25:32.462273    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc000d368a0].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository,repository-186a9a3).olds]: imageScanningConfiguration={map[scanOnPush:{false}]}
+I0524 16:25:32.462280    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc000d368a0].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository,repository-186a9a3).olds]: scanOnPush={false}
+I0524 16:25:32.462287    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc000d368a0].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository,repository-186a9a3).olds]: imageTagMutability={MUTABLE}
+I0524 16:25:32.462292    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc000d368a0].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository,repository-186a9a3).olds]: name={repository-186a9a3}
+I0524 16:25:32.462300    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc000d368a0].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository,repository-186a9a3).olds]: registryId={616138583583}
+I0524 16:25:32.462305    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc000d368a0].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository,repository-186a9a3).olds]: repositoryUrl={616138583583.dkr.ecr.us-west-2.amazonaws.com/repository-186a9a3}
+I0524 16:25:32.462313    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc000d368a0].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository,repository-186a9a3).olds]: tags={map[]}
+I0524 16:25:32.462321    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc000d368a0].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository,repository-186a9a3).olds]: tagsAll={map[]}
+I0524 16:25:32.462342    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc000d368a0].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository,repository-186a9a3).news]: __defaults={[{imageTagMutability} {name}]}
+I0524 16:25:32.462350    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc000d368a0].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository,repository-186a9a3).news]: imageTagMutability={MUTABLE}
+I0524 16:25:32.462358    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc000d368a0].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository,repository-186a9a3).news]: name={repository-186a9a3}
+I0524 16:25:32.462363    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc000d368a0].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository,repository-186a9a3).news]: tags={map[__defaults:{[]}]}
+I0524 16:25:32.462370    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc000d368a0].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository,repository-186a9a3).news]: __defaults={[]}
+I0524 16:25:32.466174    8914 provider_plugin.go:724] Provider[aws, 0xc000d368a0].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository,repository-186a9a3) success: changes=1 #replaces=[] #stables=[name encryptionConfigurations] delbefrepl=false, diffs=#[], detaileddiff=map[]
+I0524 16:25:32.466214    8914 step_generator.go:636] Planner decided not to update 'urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository' after diff (same) (inputs=map[__defaults:{[{imageTagMutability} {name}]} imageTagMutability:{MUTABLE} name:{repository-186a9a3} tags:{map[__defaults:{[]}]}])
+I0524 16:25:32.466242    8914 step_executor.go:364] StepExecutor worker(-2): worker received chain for execution
+I0524 16:25:32.466255    8914 step_executor.go:364] StepExecutor worker(-2): worker waiting for incoming chains
+I0524 16:25:32.466267    8914 step_executor.go:364] StepExecutor worker(4): launching oneshot worker
+I0524 16:25:32.466311    8914 snapshot.go:130] SnapshotManager: Beginning mutation for step `same` on resource `urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository`
+I0524 16:25:32.466326    8914 step_executor.go:364] StepExecutor worker(4): applying step same on urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository (preview false)
+I0524 16:25:32.466367    8914 snapshot.go:272] SnapshotManager: sameSnapshotMutation.End(..., true)
+I0524 16:25:32.466377    8914 snapshot.go:524] Marked old state snapshot as done: urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository
+I0524 16:25:32.466384    8914 snapshot.go:533] Appended new state snapshot to be written: urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository
+I0524 16:25:32.466410    8914 snapshot.go:264] SnapshotManager: mustWrite() false
+I0524 16:25:32.466416    8914 snapshot.go:294] SnapshotManager: sameSnapshotMutation.End() eliding write
+I0524 16:25:32.466425    8914 step_executor.go:364] StepExecutor worker(4): step same on urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository retired
+I0524 16:25:32.466446    8914 source_eval.go:1152] stripping unknowns from RegisterResource response for urn urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository
+I0524 16:25:32.466467    8914 source_eval.go:1162] ResourceMonitor.RegisterResource operation finished: t=aws:ecr/repository:Repository, urn=urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository, #outs=11
+I0524 16:25:32.466476    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(aws:ecr/repository:Repository,repository)]: __meta={{"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0":{"delete":1200000000000}}}
+I0524 16:25:32.466483    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(aws:ecr/repository:Repository,repository)]: arn={arn:aws:ecr:us-west-2:616138583583:repository/repository-186a9a3}
+I0524 16:25:32.466489    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(aws:ecr/repository:Repository,repository)]: encryptionConfigurations={[{map[encryptionType:{AES256} kmsKey:{}]}]}
+I0524 16:25:32.466504    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(aws:ecr/repository:Repository,repository)]: encryptionType={AES256}
+I0524 16:25:32.466510    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(aws:ecr/repository:Repository,repository)]: kmsKey={}
+I0524 16:25:32.466517    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(aws:ecr/repository:Repository,repository)]: id={repository-186a9a3}
+I0524 16:25:32.466522    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(aws:ecr/repository:Repository,repository)]: imageScanningConfiguration={map[scanOnPush:{false}]}
+I0524 16:25:32.466529    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(aws:ecr/repository:Repository,repository)]: scanOnPush={false}
+I0524 16:25:32.466535    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(aws:ecr/repository:Repository,repository)]: imageTagMutability={MUTABLE}
+I0524 16:25:32.466541    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(aws:ecr/repository:Repository,repository)]: name={repository-186a9a3}
+I0524 16:25:32.466546    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(aws:ecr/repository:Repository,repository)]: registryId={616138583583}
+I0524 16:25:32.466551    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(aws:ecr/repository:Repository,repository)]: repositoryUrl={616138583583.dkr.ecr.us-west-2.amazonaws.com/repository-186a9a3}
+I0524 16:25:32.466558    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(aws:ecr/repository:Repository,repository)]: tags={map[]}
+I0524 16:25:32.466565    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(aws:ecr/repository:Repository,repository)]: tagsAll={map[]}
+I0524 16:25:32.467114    8914 source_eval.go:600] parseProviderRequest(aws): semver version is the empty string
+I0524 16:25:32.467150    8914 source_eval.go:345] handling default provider request for package aws
+I0524 16:25:32.467158    8914 source_eval.go:403] checking if aws should be denied
+I0524 16:25:32.467164    8914 source_eval.go:437] Did not find a config for 'pulumi'
+I0524 16:25:32.467181    8914 rpc.go:274] Unmarshaling property for RPC[ResourceMonitor.RegisterResource(aws:ecr/lifecyclePolicy:LifecyclePolicy,repository-lifecycle-policy)]: policy={{"rules":[{"rulePriority":1,"description":"remove untagged images","selection":{"tagStatus":"untagged","countType":"imageCountMoreThan","countNumber":1},"action":{"type":"expire"}}]}}
+I0524 16:25:32.467193    8914 rpc.go:274] Unmarshaling property for RPC[ResourceMonitor.RegisterResource(aws:ecr/lifecyclePolicy:LifecyclePolicy,repository-lifecycle-policy)]: repository={repository-186a9a3}
+I0524 16:25:32.467212    8914 source_eval.go:1072] ResourceMonitor.RegisterResource received: t=aws:ecr/lifecyclePolicy:LifecyclePolicy, name=repository-lifecycle-policy, custom=true, #props=2, parent=urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository, protect=false, provider=urn:pulumi:dev::ecr::pulumi:providers:aws::default::4324f6e0-5c78-40b5-8e8c-e9afd444b1e2, deps=[urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository], deleteBeforeReplace=<nil>, ignoreChanges=[], aliases=[], customTimeouts={0 0 0}, providers=map[], replaceOnChanges=[], retainOnDelete=false
+I0524 16:25:32.467232    8914 source_eval.go:167] EvalSourceIterator produced a registration: t=aws:ecr/lifecyclePolicy:LifecyclePolicy,name=repository-lifecycle-policy,#props=2
+I0524 16:25:32.467245    8914 deployment_executor.go:259] deploymentExecutor.Execute(...): incoming event (nil? false, <nil>)
+I0524 16:25:32.467251    8914 deployment_executor.go:446] deploymentExecutor.handleSingleEvent(...): received RegisterResourceEvent
+I0524 16:25:32.467263    8914 registry.go:174] GetProvider(urn:pulumi:dev::ecr::pulumi:providers:aws::default::4324f6e0-5c78-40b5-8e8c-e9afd444b1e2)
+I0524 16:25:32.467272    8914 provider_plugin.go:570] Provider[aws, 0xc000d368a0].Check(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy) executing (#olds=3,#news=2
+I0524 16:25:32.467282    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc000d368a0].Check(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy).olds]: __defaults={[]}
+I0524 16:25:32.467290    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc000d368a0].Check(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy).olds]: policy={{"rules":[{"rulePriority":1,"description":"remove untagged images","selection":{"tagStatus":"untagged","countType":"imageCountMoreThan","countNumber":1},"action":{"type":"expire"}}]}}
+I0524 16:25:32.467296    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc000d368a0].Check(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy).olds]: repository={repository-186a9a3}
+I0524 16:25:32.467307    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc000d368a0].Check(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy).news]: policy={{"rules":[{"rulePriority":1,"description":"remove untagged images","selection":{"tagStatus":"untagged","countType":"imageCountMoreThan","countNumber":1},"action":{"type":"expire"}}]}}
+I0524 16:25:32.467316    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc000d368a0].Check(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy).news]: repository={repository-186a9a3}
+I0524 16:25:32.467770    8914 rpc.go:274] Unmarshaling property for RPC[Provider[aws, 0xc000d368a0].Check(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy).inputs]: __defaults={[]}
+I0524 16:25:32.467789    8914 rpc.go:274] Unmarshaling property for RPC[Provider[aws, 0xc000d368a0].Check(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy).inputs]: policy={{"rules":[{"rulePriority":1,"description":"remove untagged images","selection":{"tagStatus":"untagged","countType":"imageCountMoreThan","countNumber":1},"action":{"type":"expire"}}]}}
+I0524 16:25:32.467800    8914 rpc.go:274] Unmarshaling property for RPC[Provider[aws, 0xc000d368a0].Check(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy).inputs]: repository={repository-186a9a3}
+I0524 16:25:32.467810    8914 provider_plugin.go:643] Provider[aws, 0xc000d368a0].Check(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy) success: inputs=#3 failures=#0
+I0524 16:25:32.467824    8914 provider_plugin.go:658] Provider[aws, 0xc000d368a0].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy,repository-186a9a3): executing (#olds=4,#news=3)
+I0524 16:25:32.467832    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc000d368a0].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy,repository-186a9a3).olds]: id={repository-186a9a3}
+I0524 16:25:32.467839    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc000d368a0].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy,repository-186a9a3).olds]: policy={{"rules":[{"action":{"type":"expire"},"description":"remove untagged images","rulePriority":1,"selection":{"countNumber":1,"countType":"imageCountMoreThan","tagStatus":"untagged"}}]}}
+I0524 16:25:32.467847    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc000d368a0].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy,repository-186a9a3).olds]: registryId={616138583583}
+I0524 16:25:32.467858    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc000d368a0].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy,repository-186a9a3).olds]: repository={repository-186a9a3}
+I0524 16:25:32.467865    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc000d368a0].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy,repository-186a9a3).news]: __defaults={[]}
+I0524 16:25:32.467873    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc000d368a0].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy,repository-186a9a3).news]: policy={{"rules":[{"rulePriority":1,"description":"remove untagged images","selection":{"tagStatus":"untagged","countType":"imageCountMoreThan","countNumber":1},"action":{"type":"expire"}}]}}
+I0524 16:25:32.467878    8914 rpc.go:74] Marshaling property for RPC[Provider[aws, 0xc000d368a0].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy,repository-186a9a3).news]: repository={repository-186a9a3}
+I0524 16:25:32.468303    8914 provider_plugin.go:724] Provider[aws, 0xc000d368a0].Diff(urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy,repository-186a9a3) success: changes=1 #replaces=[] #stables=[repository policy] delbefrepl=false, diffs=#[], detaileddiff=map[]
+I0524 16:25:32.468329    8914 step_generator.go:636] Planner decided not to update 'urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy' after diff (same) (inputs=map[__defaults:{[]} policy:{{"rules":[{"rulePriority":1,"description":"remove untagged images","selection":{"tagStatus":"untagged","countType":"imageCountMoreThan","countNumber":1},"action":{"type":"expire"}}]}} repository:{repository-186a9a3}])
+I0524 16:25:32.468344    8914 step_executor.go:364] StepExecutor worker(-2): worker received chain for execution
+I0524 16:25:32.468354    8914 step_executor.go:364] StepExecutor worker(-2): worker waiting for incoming chains
+I0524 16:25:32.468365    8914 step_executor.go:364] StepExecutor worker(5): launching oneshot worker
+I0524 16:25:32.468398    8914 snapshot.go:130] SnapshotManager: Beginning mutation for step `same` on resource `urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy`
+I0524 16:25:32.468425    8914 step_executor.go:364] StepExecutor worker(5): applying step same on urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy (preview false)
+I0524 16:25:32.468449    8914 snapshot.go:272] SnapshotManager: sameSnapshotMutation.End(..., true)
+I0524 16:25:32.468457    8914 snapshot.go:524] Marked old state snapshot as done: urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy
+I0524 16:25:32.468463    8914 snapshot.go:533] Appended new state snapshot to be written: urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy
+I0524 16:25:32.468800    8914 snapshot.go:264] SnapshotManager: mustWrite() false
+I0524 16:25:32.468817    8914 snapshot.go:294] SnapshotManager: sameSnapshotMutation.End() eliding write
+I0524 16:25:32.468830    8914 step_executor.go:364] StepExecutor worker(5): step same on urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy retired
+I0524 16:25:32.468850    8914 source_eval.go:1152] stripping unknowns from RegisterResource response for urn urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy
+I0524 16:25:32.468867    8914 source_eval.go:1162] ResourceMonitor.RegisterResource operation finished: t=aws:ecr/lifecyclePolicy:LifecyclePolicy, urn=urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy, #outs=4
+I0524 16:25:32.468875    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(aws:ecr/lifecyclePolicy:LifecyclePolicy,repository-lifecycle-policy)]: id={repository-186a9a3}
+I0524 16:25:32.468883    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(aws:ecr/lifecyclePolicy:LifecyclePolicy,repository-lifecycle-policy)]: policy={{"rules":[{"action":{"type":"expire"},"description":"remove untagged images","rulePriority":1,"selection":{"countNumber":1,"countType":"imageCountMoreThan","tagStatus":"untagged"}}]}}
+I0524 16:25:32.468889    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(aws:ecr/lifecyclePolicy:LifecyclePolicy,repository-lifecycle-policy)]: registryId={616138583583}
+I0524 16:25:32.468894    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(aws:ecr/lifecyclePolicy:LifecyclePolicy,repository-lifecycle-policy)]: repository={repository-186a9a3}
+I0524 16:25:32.469184    8914 rpc.go:274] Unmarshaling property for RPC[ResourceMonitor.RegisterResourceOutputs(urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository)]: 4dabf18193072939515e22adb298388d={5cf8f73096256a8f31e491e813e4eb8e}
+I0524 16:25:32.469202    8914 rpc.go:274] Unmarshaling property for RPC[ResourceMonitor.RegisterResourceOutputs(urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository)]: id={repository-186a9a3}
+I0524 16:25:32.469210    8914 rpc.go:274] Unmarshaling property for RPC[ResourceMonitor.RegisterResourceOutputs(urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository)]: urn={urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy}
+I0524 16:25:32.469219    8914 rpc.go:274] Unmarshaling property for RPC[ResourceMonitor.RegisterResourceOutputs(urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository)]: lifecyclePolicy={{urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy {repository-186a9a3} }}
+I0524 16:25:32.469244    8914 rpc.go:274] Unmarshaling property for RPC[ResourceMonitor.RegisterResourceOutputs(urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository)]: 4dabf18193072939515e22adb298388d={5cf8f73096256a8f31e491e813e4eb8e}
+I0524 16:25:32.469251    8914 rpc.go:274] Unmarshaling property for RPC[ResourceMonitor.RegisterResourceOutputs(urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository)]: id={repository-186a9a3}
+I0524 16:25:32.469259    8914 rpc.go:274] Unmarshaling property for RPC[ResourceMonitor.RegisterResourceOutputs(urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository)]: urn={urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository}
+I0524 16:25:32.469266    8914 rpc.go:274] Unmarshaling property for RPC[ResourceMonitor.RegisterResourceOutputs(urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository)]: repository={{urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository {repository-186a9a3} }}
+I0524 16:25:32.469273    8914 rpc.go:274] Unmarshaling property for RPC[ResourceMonitor.RegisterResourceOutputs(urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository)]: url={616138583583.dkr.ecr.us-west-2.amazonaws.com/repository-186a9a3}
+I0524 16:25:32.469279    8914 source_eval.go:1207] ResourceMonitor.RegisterResourceOutputs received: urn=urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository, #outs=3
+I0524 16:25:32.469291    8914 source_eval.go:172] EvalSourceIterator produced a completion: urn=urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository,#outs=3
+I0524 16:25:32.469301    8914 deployment_executor.go:259] deploymentExecutor.Execute(...): incoming event (nil? false, <nil>)
+I0524 16:25:32.469307    8914 deployment_executor.go:452] deploymentExecutor.handleSingleEvent(...): received register resource outputs
+I0524 16:25:32.469316    8914 step_executor.go:364] StepExecutor worker(-1): registered resource outputs urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository: old=#3, new=#3
+I0524 16:25:32.469987    8914 api.go:239] Making Pulumi API call: https://api.pulumi.com/api/stacks/zchase/ecr/dev/update/c826b24c-5f86-414e-af2c-883a15db9130/checkpoint
+I0524 16:25:32.540089    8914 api.go:253] Pulumi API call response code (https://api.pulumi.com/api/stacks/zchase/ecr/dev/update/c826b24c-5f86-414e-af2c-883a15db9130/checkpoint): 204 No Content
+I0524 16:25:32.540215    8914 source_eval.go:1231] ResourceMonitor.RegisterResourceOutputs operation finished: urn=urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository, #outs=3
+I0524 16:25:32.541069    8914 rpc.go:274] Unmarshaling property for RPC[Provider[awsx-go, 0xc001882780].Construct(awsx-go:ecr:Repository, repository, urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev).outputs]: 4dabf18193072939515e22adb298388d={5cf8f73096256a8f31e491e813e4eb8e}
+I0524 16:25:32.541110    8914 rpc.go:274] Unmarshaling property for RPC[Provider[awsx-go, 0xc001882780].Construct(awsx-go:ecr:Repository, repository, urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev).outputs]: id={repository-186a9a3}
+I0524 16:25:32.541124    8914 rpc.go:274] Unmarshaling property for RPC[Provider[awsx-go, 0xc001882780].Construct(awsx-go:ecr:Repository, repository, urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev).outputs]: urn={urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy}
+I0524 16:25:32.541144    8914 rpc.go:274] Unmarshaling property for RPC[Provider[awsx-go, 0xc001882780].Construct(awsx-go:ecr:Repository, repository, urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev).outputs]: lifecyclePolicy={{urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy {repository-186a9a3} }}
+I0524 16:25:32.541166    8914 rpc.go:274] Unmarshaling property for RPC[Provider[awsx-go, 0xc001882780].Construct(awsx-go:ecr:Repository, repository, urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev).outputs]: 4dabf18193072939515e22adb298388d={5cf8f73096256a8f31e491e813e4eb8e}
+I0524 16:25:32.541180    8914 rpc.go:274] Unmarshaling property for RPC[Provider[awsx-go, 0xc001882780].Construct(awsx-go:ecr:Repository, repository, urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev).outputs]: id={repository-186a9a3}
+I0524 16:25:32.541195    8914 rpc.go:274] Unmarshaling property for RPC[Provider[awsx-go, 0xc001882780].Construct(awsx-go:ecr:Repository, repository, urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev).outputs]: urn={urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository}
+I0524 16:25:32.541212    8914 rpc.go:274] Unmarshaling property for RPC[Provider[awsx-go, 0xc001882780].Construct(awsx-go:ecr:Repository, repository, urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev).outputs]: repository={{urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository {repository-186a9a3} }}
+I0524 16:25:32.541235    8914 rpc.go:274] Unmarshaling property for RPC[Provider[awsx-go, 0xc001882780].Construct(awsx-go:ecr:Repository, repository, urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev).outputs]: url={616138583583.dkr.ecr.us-west-2.amazonaws.com/repository-186a9a3}
+I0524 16:25:32.541251    8914 provider_plugin.go:1229] Provider[awsx-go, 0xc001882780].Construct(awsx-go:ecr:Repository, repository, urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev) success: #outputs=3
+I0524 16:25:32.541291    8914 source_eval.go:1162] ResourceMonitor.RegisterResource operation finished: t=, urn=urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository, #outs=3
+I0524 16:25:32.541306    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(awsx-go:ecr:Repository,repository)]: lifecyclePolicy={{urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy {repository-186a9a3} }}
+I0524 16:25:32.541321    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(awsx-go:ecr:Repository,repository)]: 4dabf18193072939515e22adb298388d={5cf8f73096256a8f31e491e813e4eb8e}
+I0524 16:25:32.541332    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(awsx-go:ecr:Repository,repository)]: id={repository-186a9a3}
+I0524 16:25:32.541341    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(awsx-go:ecr:Repository,repository)]: urn={urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy}
+I0524 16:25:32.541351    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(awsx-go:ecr:Repository,repository)]: repository={{urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository {repository-186a9a3} }}
+I0524 16:25:32.541364    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(awsx-go:ecr:Repository,repository)]: 4dabf18193072939515e22adb298388d={5cf8f73096256a8f31e491e813e4eb8e}
+I0524 16:25:32.541374    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(awsx-go:ecr:Repository,repository)]: id={repository-186a9a3}
+I0524 16:25:32.541384    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(awsx-go:ecr:Repository,repository)]: urn={urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository}
+I0524 16:25:32.541393    8914 rpc.go:74] Marshaling property for RPC[ResourceMonitor.RegisterResource(awsx-go:ecr:Repository,repository)]: url={616138583583.dkr.ecr.us-west-2.amazonaws.com/repository-186a9a3}
+I0524 16:25:32.579563    8914 eventsink.go:59] RegisterResource RPC finished: resource:repository[awsx-go:ecr:Repository]; err: null, resp: urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository,,lifecyclePolicy,,,,,4dabf18193072939515e22adb298388d,,,5cf8f73096256a8f31e491e813e4eb8e,id,,,repository-186a9a3,urn,,,urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy,repository,,,,,4dabf18193072939515e22adb298388d,,,5cf8f73096256a8f31e491e813e4eb8e,id,,,repository-186a9a3,urn,,,urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository,url,,,616138583583.dkr.ecr.us-west-2.amazonaws.com/repository-186a9a3,,,lifecyclePolicy,urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy,repository,urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository,url,urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository
+I0524 16:25:32.579606    8914 eventsink.go:62] eventSink::Debug(<{%reset%}>RegisterResource RPC finished: resource:repository[awsx-go:ecr:Repository]; err: null, resp: urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository,,lifecyclePolicy,,,,,4dabf18193072939515e22adb298388d,,,5cf8f73096256a8f31e491e813e4eb8e,id,,,repository-186a9a3,urn,,,urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy,repository,,,,,4dabf18193072939515e22adb298388d,,,5cf8f73096256a8f31e491e813e4eb8e,id,,,repository-186a9a3,urn,,,urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository,url,,,616138583583.dkr.ecr.us-west-2.amazonaws.com/repository-186a9a3,,,lifecyclePolicy,urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/lifecyclePolicy:LifecyclePolicy::repository-lifecycle-policy,repository,urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository,url,urn:pulumi:dev::ecr::awsx-go:ecr:Repository$aws:ecr/repository:Repository::repository<{%reset%}>)
+I0524 16:25:32.579582    8914 eventsink.go:59] RegisterResourceOutputs RPC prepared: urn=urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev
+I0524 16:25:32.579646    8914 eventsink.go:62] eventSink::Debug(<{%reset%}>RegisterResourceOutputs RPC prepared: urn=urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev<{%reset%}>)
+I0524 16:25:32.579760    8914 rpc.go:274] Unmarshaling property for RPC[ResourceMonitor.RegisterResourceOutputs(urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev)]: lifecyclePolicy={repository-186a9a3}
+I0524 16:25:32.579781    8914 rpc.go:274] Unmarshaling property for RPC[ResourceMonitor.RegisterResourceOutputs(urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev)]: repository={repository-186a9a3}
+I0524 16:25:32.579788    8914 rpc.go:274] Unmarshaling property for RPC[ResourceMonitor.RegisterResourceOutputs(urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev)]: url={616138583583.dkr.ecr.us-west-2.amazonaws.com/repository-186a9a3}
+I0524 16:25:32.579798    8914 rpc.go:274] Unmarshaling property for RPC[ResourceMonitor.RegisterResourceOutputs(urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev)]: urn={urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository}
+I0524 16:25:32.579812    8914 rpc.go:274] Unmarshaling property for RPC[ResourceMonitor.RegisterResourceOutputs(urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev)]: repository={map[lifecyclePolicy:{repository-186a9a3} repository:{repository-186a9a3} url:{616138583583.dkr.ecr.us-west-2.amazonaws.com/repository-186a9a3} urn:{urn:pulumi:dev::ecr::awsx-go:ecr:Repository::repository}]}
+I0524 16:25:32.579853    8914 source_eval.go:1207] ResourceMonitor.RegisterResourceOutputs received: urn=urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev, #outs=1
+I0524 16:25:32.579869    8914 source_eval.go:172] EvalSourceIterator produced a completion: urn=urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev,#outs=1
+I0524 16:25:32.579881    8914 deployment_executor.go:259] deploymentExecutor.Execute(...): incoming event (nil? false, <nil>)
+I0524 16:25:32.579889    8914 deployment_executor.go:452] deploymentExecutor.handleSingleEvent(...): received register resource outputs
+I0524 16:25:32.579898    8914 step_executor.go:364] StepExecutor worker(-1): registered resource outputs urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev: old=#1, new=#1
+I0524 16:25:32.580598    8914 api.go:239] Making Pulumi API call: https://api.pulumi.com/api/stacks/zchase/ecr/dev/update/c826b24c-5f86-414e-af2c-883a15db9130/checkpoint
+I0524 16:25:32.693104    8914 api.go:253] Pulumi API call response code (https://api.pulumi.com/api/stacks/zchase/ecr/dev/update/c826b24c-5f86-414e-af2c-883a15db9130/checkpoint): 204 No Content
+I0524 16:25:32.693239    8914 source_eval.go:1231] ResourceMonitor.RegisterResourceOutputs operation finished: urn=urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev, #outs=1
+I0524 16:25:32.702901    8914 eventsink.go:59] RegisterResourceOutputs RPC finished: urn=urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev; err: null, resp: 
+I0524 16:25:32.702930    8914 eventsink.go:62] eventSink::Debug(<{%reset%}>RegisterResourceOutputs RPC finished: urn=urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev; err: null, resp: <{%reset%}>)
+I0524 16:25:32.703864    8914 eventsink.go:59] RegisterResourceOutputs RPC finished: urn=urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev; err: null, resp: 
+I0524 16:25:32.703888    8914 eventsink.go:62] eventSink::Debug(<{%reset%}>RegisterResourceOutputs RPC finished: urn=urn:pulumi:dev::ecr::pulumi:pulumi:Stack::ecr-dev; err: null, resp: <{%reset%}>)
+I0524 16:25:32.722502    8914 langruntime_plugin.go:200] langhost[nodejs].RunPlan(pwd=/Users/zackchase/go/src/github.com/zchase/pulumi-awsx-go/examples/ts-ecr-simple,program=.,...,dryrun=false) success: progerr=
+I0524 16:25:32.723873    8914 deployment_executor.go:259] deploymentExecutor.Execute(...): incoming event (nil? true, <nil>)
+I0524 16:25:32.723912    8914 deployment_executor.go:389] performDeletes(...): beginning
+I0524 16:25:32.723933    8914 step_generator.go:1172] Planner trusts dependency graph, scheduling deletions in parallel
+I0524 16:25:32.723946    8914 step_executor.go:364] StepExecutor worker(-1): StepExecutor.waitForCompletion(): waiting for worker threads to exit
+I0524 16:25:32.723956    8914 step_executor.go:364] StepExecutor worker(-2): worker received nil chain, exiting
+I0524 16:25:32.723966    8914 step_executor.go:364] StepExecutor worker(-1): StepExecutor.waitForCompletion(): worker threads all exited
+I0524 16:25:32.723975    8914 deployment_executor.go:303] deploymentExecutor.Execute(...): step executor has completed
+I0524 16:25:32.724033    8914 deployment_executor.go:161] deploymentExecutor.Execute(...): exiting provider canceller
+I0524 16:25:32.735562    8914 ignore.go:44] Explicitly ignoring and discarding error: rpc error: code = Canceled desc = grpc: the client connection is closing
+I0524 16:25:32.735632    8914 host.go:417] Error closing 'nodejs' language plugin during shutdown; ignoring: 1 error occurred:
+	* operation not permitted
+
+I0524 16:25:32.735690    8914 update.go:195] *** Update(preview=false) complete ***
+I0524 16:25:32.737121    8914 api.go:239] Making Pulumi API call: https://api.pulumi.com/api/stacks/zchase/ecr/dev/update/c826b24c-5f86-414e-af2c-883a15db9130/events/batch
+I0524 16:25:32.818195    8914 api.go:253] Pulumi API call response code (https://api.pulumi.com/api/stacks/zchase/ecr/dev/update/c826b24c-5f86-414e-af2c-883a15db9130/events/batch): 200 OK
+I0524 16:25:32.819225    8914 api.go:239] Making Pulumi API call: https://api.pulumi.com/api/stacks/zchase/ecr/dev/update/c826b24c-5f86-414e-af2c-883a15db9130/complete
+I0524 16:25:32.946764    8914 api.go:253] Pulumi API call response code (https://api.pulumi.com/api/stacks/zchase/ecr/dev/update/c826b24c-5f86-414e-af2c-883a15db9130/complete): 204 No Content

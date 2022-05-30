@@ -9,8 +9,8 @@ import (
 
 	"github.com/pulumi/pulumi-aws/sdk/v5/go/aws/ecs"
 	"github.com/pulumi/pulumi-aws/sdk/v5/go/aws/lb"
-	"github.com/pulumi/pulumi-awsx-go/sdk/go/awsx-go"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/zchase/pulumi-awsx-go/sdk/go/awsx-go"
 )
 
 // Create a TaskDefinition resource with the given unique name, arguments, and options.

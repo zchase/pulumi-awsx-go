@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-awsx-go/sdk
+module github.com/zchase/pulumi-awsx-go/sdk
 
 go 1.17
 

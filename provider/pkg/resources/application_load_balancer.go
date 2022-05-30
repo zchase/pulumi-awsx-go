@@ -84,11 +84,11 @@ type ApplicationLoadBalancerArgs struct {
 type ApplicationLoadBalancer struct {
 	pulumi.ResourceState
 
-	DefaultSecurityGroup *ec2.SecurityGroup  `pulumi:"defaultSecurityGroup"`
-	DefaultTargetGroup   *lb.TargetGroup     `pulumi:"defaultTargetGroup"`
-	Listeners            []*lb.Listener      `pulumi:"listeners"`
-	LoadBalancer         *lb.LoadBalancer    `pulumi:"loadBalancer"`
-	VpcID                pulumi.StringOutput `pulumi:"vpcId"`
+	DefaultSecurityGroup *ec2.SecurityGroup   `pulumi:"defaultSecurityGroup"`
+	DefaultTargetGroup   lb.TargetGroupOutput `pulumi:"defaultTargetGroup" pschema:"out"`
+	Listeners            []*lb.Listener       `pulumi:"listeners"`
+	LoadBalancer         *lb.LoadBalancer     `pulumi:"loadBalancer"`
+	VpcID                pulumi.StringOutput  `pulumi:"vpcId"`
 }
 
 func NewApplicationLoadBalancer(ctx *pulumi.Context, name string, args *ApplicationLoadBalancerArgs, opts ...pulumi.ResourceOption) (*ApplicationLoadBalancer, error) {
@@ -320,7 +320,7 @@ func NewApplicationLoadBalancer(ctx *pulumi.Context, name string, args *Applicat
 	if err != nil {
 		return nil, err
 	}
-	component.DefaultTargetGroup = targetGroup
+	component.DefaultTargetGroup = targetGroup.ToTargetGroupOutput()
 
 	listenersToCreate := args.Listeners
 	if args.Listener != nil {
@@ -345,7 +345,7 @@ func NewApplicationLoadBalancer(ctx *pulumi.Context, name string, args *Applicat
 			DefaultActions: lb.ListenerDefaultActionArray{
 				&lb.ListenerDefaultActionArgs{
 					Type:           pulumi.String("forward"),
-					TargetGroupArn: component.DefaultTargetGroup.Arn,
+					TargetGroupArn: targetGroup.Arn,
 				},
 			},
 			Port:           pulumi.IntPtr(port),
@@ -368,7 +368,7 @@ func NewApplicationLoadBalancer(ctx *pulumi.Context, name string, args *Applicat
 			DefaultActions: lb.ListenerDefaultActionArray{
 				&lb.ListenerDefaultActionArgs{
 					Type:           pulumi.String("forward"),
-					TargetGroupArn: component.DefaultTargetGroup.Arn,
+					TargetGroupArn: targetGroup.Arn,
 				},
 			},
 			Port:     pulumi.IntPtr(defaultProtocol.Port),
@@ -379,6 +379,12 @@ func NewApplicationLoadBalancer(ctx *pulumi.Context, name string, args *Applicat
 		}
 
 		component.Listeners = append(component.Listeners, listenerResource)
+	}
+
+	if err := ctx.RegisterResourceOutputs(component, pulumi.Map{
+		"defaultTargetGroup": component.DefaultTargetGroup,
+	}); err != nil {
+		return nil, err
 	}
 
 	return component, nil

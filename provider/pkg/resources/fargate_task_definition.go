@@ -102,10 +102,9 @@ func NewFargateTaskDefinition(ctx *pulumi.Context, name string, args *FargateTas
 
 	containerDefinitions := computeContainerDefinitions(component, args.Containers, &dLogGroup.LogGroupID)
 
-	component.LoadBalancers = computeLoadBalancers(ctx, args.Containers).ApplyT(func(x interface{}) ecs.ServiceLoadBalancerArrayOutput {
-		lbs := x.(ecs.ServiceLoadBalancerArrayOutput)
+	component.LoadBalancers = utils.ApplyAny(computeLoadBalancers(ctx, args.Containers), func(lbs ecs.ServiceLoadBalancerArrayOutput) ecs.ServiceLoadBalancerArrayOutput {
 		return lbs
-	}).(ecs.ServiceLoadBalancerArrayOutput)
+	})
 
 	taskDefinitionArgs, err := buildFargateTaskDefinitionArgs(ctx, name, args, containerDefinitions, taskRole.RoleARN, executionRole.RoleARN)
 	if err != nil {

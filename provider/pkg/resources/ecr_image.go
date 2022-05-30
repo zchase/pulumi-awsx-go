@@ -123,18 +123,15 @@ func computeImageFromAsset(ctx *pulumi.Context, name string, args *ImageArgs, re
 		Build:          dockerBuild,
 		SkipPush:       pulumi.Bool(false),
 		Registry: do.ImageRegistryArgs{
-			Server: imageRepoCreds.ApplyT(func(x interface{}) pulumi.StringOutput {
-				c := x.(imageRepositoryCreds)
+			Server: utils.ApplyAny(imageRepoCreds, func(c imageRepositoryCreds) pulumi.StringOutput {
 				return c.Registry
-			}).(pulumi.StringOutput),
-			Username: imageRepoCreds.ApplyT(func(x interface{}) pulumi.StringOutput {
-				c := x.(imageRepositoryCreds)
+			}),
+			Username: utils.ApplyAny(imageRepoCreds, func(c imageRepositoryCreds) pulumi.StringOutput {
 				return c.Username
-			}).(pulumi.StringOutput),
-			Password: imageRepoCreds.ApplyT(func(x interface{}) pulumi.StringOutput {
-				c := x.(imageRepositoryCreds)
+			}),
+			Password: utils.ApplyAny(imageRepoCreds, func(c imageRepositoryCreds) pulumi.StringOutput {
 				return c.Password
-			}).(pulumi.StringOutput),
+			}),
 		},
 	}, pulumi.Parent(parent))
 	if err != nil {

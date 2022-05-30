@@ -12,12 +12,12 @@ import (
 const TargetGroupAttachmentIdentifier = "awsx-go:lb:TargetGroupAttachment"
 
 type TargetGroupAttachmentArgs struct {
-	Instance       *ec2.Instance    `pulumi:"instance"`
-	InstanceID     string           `pulumi:"instanceId"`
-	Lambda         *lambda.Function `pulumi:"lambda"`
-	LambdaARN      string           `pulumi:"lambdaArn"`
-	TargetGroup    *lb.TargetGroup  `pulumi:"targetGroup"`
-	TargetGroupARN string           `pulumi:"targetGroupARN"`
+	Instance       *ec2.InstanceOutput    `pulumi:"instance"`
+	InstanceID     string                 `pulumi:"instanceId"`
+	Lambda         *lambda.FunctionOutput `pulumi:"lambda"`
+	LambdaARN      string                 `pulumi:"lambdaArn"`
+	TargetGroup    *lb.TargetGroupOutput  `pulumi:"targetGroup"`
+	TargetGroupARN string                 `pulumi:"targetGroupARN"`
 }
 
 type TargetGroupAttachment struct {
@@ -59,8 +59,8 @@ func NewTargetGroupAttachment(ctx *pulumi.Context, name string, args *TargetGrou
 	var targetGroupARN pulumi.StringOutput
 	var targetType pulumi.StringPtrOutput
 	if args.TargetGroup != nil {
-		targetGroupARN = args.TargetGroup.Arn
-		targetType = args.TargetGroup.TargetType
+		targetGroupARN = args.TargetGroup.Arn()
+		targetType = args.TargetGroup.TargetType()
 	} else {
 		if args.TargetGroupARN == "" {
 			return nil, fmt.Errorf("Unreachable")
@@ -75,17 +75,28 @@ func NewTargetGroupAttachment(ctx *pulumi.Context, name string, args *TargetGrou
 		targetType = pulumi.String(targetGroup.TargetType).ToStringPtrOutput()
 	}
 
+	targetGroupID := targetGroupARN.ApplyT(func(arn string) (string, error) {
+		tg, err := lb.LookupTargetGroup(ctx, &lb.LookupTargetGroupArgs{
+			Arn: &arn,
+		})
+		if err != nil {
+			return "", err
+		}
+
+		return tg.Id, nil
+	}).(pulumi.StringOutput)
+
 	var targetID pulumi.StringOutput
 	var availabilityZone pulumi.StringOutput
 	if args.Instance != nil {
-		targetID = pulumi.All(targetType, args.Instance.ID().ToStringOutput(), args.Instance.PrivateIp).ApplyT(func(t *string, instanceId, privateIP string) string {
+		targetID = pulumi.All(targetType, targetGroupID, args.Instance.PrivateIp).ApplyT(func(t *string, instanceId, privateIP string) string {
 			if *t == "instance" {
 				return instanceId
 			}
 
 			return privateIP
 		}).(pulumi.StringOutput)
-		availabilityZone = args.Instance.AvailabilityZone
+		availabilityZone = args.Instance.AvailabilityZone()
 	} else if args.InstanceID != "" {
 		instanceOutputs := ec2.LookupInstanceOutput(ctx, ec2.LookupInstanceOutputArgs{
 			InstanceId: pulumi.StringPtr(args.InstanceID),
@@ -100,7 +111,7 @@ func NewTargetGroupAttachment(ctx *pulumi.Context, name string, args *TargetGrou
 		}).(pulumi.StringOutput)
 		availabilityZone = instanceOutputs.AvailabilityZone()
 	} else if args.Lambda != nil {
-		targetID = args.Lambda.Arn
+		targetID = args.Lambda.Arn()
 	} else if args.LambdaARN != "" {
 		targetID = pulumi.String(args.LambdaARN).ToStringOutput()
 	} else {

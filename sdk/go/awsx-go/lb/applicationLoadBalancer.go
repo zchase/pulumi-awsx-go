@@ -9,8 +9,8 @@ import (
 
 	"github.com/pulumi/pulumi-aws/sdk/v5/go/aws/ec2"
 	"github.com/pulumi/pulumi-aws/sdk/v5/go/aws/lb"
-	"github.com/pulumi/pulumi-awsx-go/sdk/go/awsx-go"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/zchase/pulumi-awsx-go/sdk/go/awsx-go"
 )
 
 // Provides an Application Load Balancer resource with listeners, default target group and default security group.
